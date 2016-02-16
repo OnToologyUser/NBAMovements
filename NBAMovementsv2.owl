@@ -4280,7 +4280,6 @@
     </rdf:Description>
     <rdf:Description rdf:about="http://schema.org/color">
         <rdfs:label xml:lang="en">Color</rdfs:label>
-        <rdfs:comment xml:lang="en">The color of the product.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="http://schema.org/Product"/>
     </rdf:Description>
     <rdf:Description rdf:about="http://schema.org/applicationSuite">

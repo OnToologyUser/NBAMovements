@@ -88,19 +88,19 @@
          </data>
          <data key="d1" />
       </node>
-      <node id="nid_-4fd3725f:1531d7ed571:-7ff7">
+      <node id="nid_-4b02dbc2:1531d878f1d:-7ffc">
          <data key="d0">
             <y:ShapeNode>
                <y:Geometry height="30.0" width="270.0" x="0.0" y="0.0" />
                <y:Fill color="#FFFFFF" transparent="false" />
                <y:BorderStyle color="#000000" type="line" width="1.0" />
-               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="internal" modelPosition="c" textColor="#000000" visible="true">-4fd3725f:1531d7ed571:-7ff7</y:NodeLabel>
+               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="internal" modelPosition="c" textColor="#000000" visible="true">-4b02dbc2:1531d878f1d:-7ffc</y:NodeLabel>
                <y:Shape type="rectangle" />
             </y:ShapeNode>
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_terms:contributor2" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_-4fd3725f:1531d7ed571:-7ff7">
+    <edge id="eid_terms:contributor2" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_-4b02dbc2:1531d878f1d:-7ffc">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -111,24 +111,47 @@
          </data>
          <data key="d3" />
       </edge>
-      <node id="nid_-4fd3725f:1531d7ed571:-7ffc">
+      <node id="nid_-4b02dbc2:1531d878f1d:-7ff8">
          <data key="d0">
             <y:ShapeNode>
                <y:Geometry height="30.0" width="270.0" x="0.0" y="0.0" />
                <y:Fill color="#FFFFFF" transparent="false" />
                <y:BorderStyle color="#000000" type="line" width="1.0" />
-               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="internal" modelPosition="c" textColor="#000000" visible="true">-4fd3725f:1531d7ed571:-7ffc</y:NodeLabel>
+               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="internal" modelPosition="c" textColor="#000000" visible="true">-4b02dbc2:1531d878f1d:-7ff8</y:NodeLabel>
                <y:Shape type="rectangle" />
             </y:ShapeNode>
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_terms:contributor3" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_-4fd3725f:1531d7ed571:-7ffc">
+    <edge id="eid_terms:contributor3" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_-4b02dbc2:1531d878f1d:-7ff8">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
                <y:Arrows source="none" target="normal" />
                <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true">terms:contributor</y:EdgeLabel>
+               <y:BendStyle smoothed="false" />
+            </y:PolyLineEdge>
+         </data>
+         <data key="d3" />
+      </edge>
+      <node id="nid_-4b02dbc2:1531d878f1d:-7ff9">
+         <data key="d0">
+            <y:ShapeNode>
+               <y:Geometry height="30.0" width="270.0" x="0.0" y="0.0" />
+               <y:Fill color="#FFFFFF" transparent="false" />
+               <y:BorderStyle color="#000000" type="line" width="1.0" />
+               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="internal" modelPosition="c" textColor="#000000" visible="true">-4b02dbc2:1531d878f1d:-7ff9</y:NodeLabel>
+               <y:Shape type="rectangle" />
+            </y:ShapeNode>
+         </data>
+         <data key="d1" />
+      </node>
+    <edge id="eid_terms:hasFormat4" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_-4b02dbc2:1531d878f1d:-7ff9">
+         <data key="d2">
+            <y:PolyLineEdge>
+               <y:LineStyle color="black" type="line" width="1.0" />
+               <y:Arrows source="none" target="normal" />
+               <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true">terms:hasFormat</y:EdgeLabel>
                <y:BendStyle smoothed="false" />
             </y:PolyLineEdge>
          </data>
@@ -146,35 +169,12 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_terms:hasFormat4" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://schema.rdfs.org/all.ttl">
+    <edge id="eid_terms:hasFormat5" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://schema.rdfs.org/all.ttl">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
                <y:Arrows source="none" target="normal" />
                <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true">terms:hasFormat</y:EdgeLabel>
-               <y:BendStyle smoothed="false" />
-            </y:PolyLineEdge>
-         </data>
-         <data key="d3" />
-      </edge>
-      <node id="nid_-4fd3725f:1531d7ed571:-7ff8">
-         <data key="d0">
-            <y:ShapeNode>
-               <y:Geometry height="30.0" width="270.0" x="0.0" y="0.0" />
-               <y:Fill color="#FFFFFF" transparent="false" />
-               <y:BorderStyle color="#000000" type="line" width="1.0" />
-               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="internal" modelPosition="c" textColor="#000000" visible="true">-4fd3725f:1531d7ed571:-7ff8</y:NodeLabel>
-               <y:Shape type="rectangle" />
-            </y:ShapeNode>
-         </data>
-         <data key="d1" />
-      </node>
-    <edge id="eid_terms:contributor5" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_-4fd3725f:1531d7ed571:-7ff8">
-         <data key="d2">
-            <y:PolyLineEdge>
-               <y:LineStyle color="black" type="line" width="1.0" />
-               <y:Arrows source="none" target="normal" />
-               <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true">terms:contributor</y:EdgeLabel>
                <y:BendStyle smoothed="false" />
             </y:PolyLineEdge>
          </data>
@@ -226,29 +226,6 @@
          </data>
          <data key="d3" />
       </edge>
-      <node id="nid_-4fd3725f:1531d7ed571:-7ff9">
-         <data key="d0">
-            <y:ShapeNode>
-               <y:Geometry height="30.0" width="270.0" x="0.0" y="0.0" />
-               <y:Fill color="#FFFFFF" transparent="false" />
-               <y:BorderStyle color="#000000" type="line" width="1.0" />
-               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="internal" modelPosition="c" textColor="#000000" visible="true">-4fd3725f:1531d7ed571:-7ff9</y:NodeLabel>
-               <y:Shape type="rectangle" />
-            </y:ShapeNode>
-         </data>
-         <data key="d1" />
-      </node>
-    <edge id="eid_terms:hasFormat8" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_-4fd3725f:1531d7ed571:-7ff9">
-         <data key="d2">
-            <y:PolyLineEdge>
-               <y:LineStyle color="black" type="line" width="1.0" />
-               <y:Arrows source="none" target="normal" />
-               <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true">terms:hasFormat</y:EdgeLabel>
-               <y:BendStyle smoothed="false" />
-            </y:PolyLineEdge>
-         </data>
-         <data key="d3" />
-      </edge>
       <node id="nid_http://www.opendatacommons.org/licenses/pddl/1.0/">
          <data key="d0">
             <y:ShapeNode>
@@ -261,7 +238,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_terms:license9" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://www.opendatacommons.org/licenses/pddl/1.0/">
+    <edge id="eid_terms:license8" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://www.opendatacommons.org/licenses/pddl/1.0/">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -284,7 +261,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_terms:license10" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://schema.org/docs/terms.html">
+    <edge id="eid_terms:license9" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://schema.org/docs/terms.html">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -307,7 +284,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_terms:source11" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://schema.org/">
+    <edge id="eid_terms:source10" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://schema.org/">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -318,19 +295,42 @@
          </data>
          <data key="d3" />
       </edge>
-      <node id="nid_-4fd3725f:1531d7ed571:-7ffa">
+      <node id="nid_-4b02dbc2:1531d878f1d:-7ffa">
          <data key="d0">
             <y:ShapeNode>
                <y:Geometry height="30.0" width="270.0" x="0.0" y="0.0" />
                <y:Fill color="#FFFFFF" transparent="false" />
                <y:BorderStyle color="#000000" type="line" width="1.0" />
-               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="internal" modelPosition="c" textColor="#000000" visible="true">-4fd3725f:1531d7ed571:-7ffa</y:NodeLabel>
+               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="internal" modelPosition="c" textColor="#000000" visible="true">-4b02dbc2:1531d878f1d:-7ffa</y:NodeLabel>
                <y:Shape type="rectangle" />
             </y:ShapeNode>
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_terms:contributor12" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_-4fd3725f:1531d7ed571:-7ffa">
+    <edge id="eid_terms:contributor11" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_-4b02dbc2:1531d878f1d:-7ffa">
+         <data key="d2">
+            <y:PolyLineEdge>
+               <y:LineStyle color="black" type="line" width="1.0" />
+               <y:Arrows source="none" target="normal" />
+               <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true">terms:contributor</y:EdgeLabel>
+               <y:BendStyle smoothed="false" />
+            </y:PolyLineEdge>
+         </data>
+         <data key="d3" />
+      </edge>
+      <node id="nid_-4b02dbc2:1531d878f1d:-7ffb">
+         <data key="d0">
+            <y:ShapeNode>
+               <y:Geometry height="30.0" width="270.0" x="0.0" y="0.0" />
+               <y:Fill color="#FFFFFF" transparent="false" />
+               <y:BorderStyle color="#000000" type="line" width="1.0" />
+               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="internal" modelPosition="c" textColor="#000000" visible="true">-4b02dbc2:1531d878f1d:-7ffb</y:NodeLabel>
+               <y:Shape type="rectangle" />
+            </y:ShapeNode>
+         </data>
+         <data key="d1" />
+      </node>
+    <edge id="eid_terms:contributor12" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_-4b02dbc2:1531d878f1d:-7ffb">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -444,19 +444,19 @@
          </data>
          <data key="d3" />
       </edge>
-      <node id="nid_-4fd3725f:1531d7ed571:-7ffb">
+      <node id="nid_-4b02dbc2:1531d878f1d:-7ff7">
          <data key="d0">
             <y:ShapeNode>
                <y:Geometry height="30.0" width="270.0" x="0.0" y="0.0" />
                <y:Fill color="#FFFFFF" transparent="false" />
                <y:BorderStyle color="#000000" type="line" width="1.0" />
-               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="internal" modelPosition="c" textColor="#000000" visible="true">-4fd3725f:1531d7ed571:-7ffb</y:NodeLabel>
+               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="internal" modelPosition="c" textColor="#000000" visible="true">-4b02dbc2:1531d878f1d:-7ff7</y:NodeLabel>
                <y:Shape type="rectangle" />
             </y:ShapeNode>
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_terms:contributor18" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_-4fd3725f:1531d7ed571:-7ffb">
+    <edge id="eid_terms:contributor18" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_-4b02dbc2:1531d878f1d:-7ff7">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />

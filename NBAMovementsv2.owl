@@ -37,7 +37,7 @@
     </rdfs:comment>
         <owl:versionInfo>0.2</owl:versionInfo>
         <rdfs:comment>This vocabulary allows multi-dimensional data, such as statistics, to be published in RDF. It is based on the core information model from SDMX (and thus also DDI).</rdfs:comment>
-        <dc:title>Friend of a Friend (FOAF) vocabulary</dc:title>
+        <dc:title>Friend of a Friend (FOAF) vocabulary </dc:title>
         <terms:title xml:lang="en">The schema.org terms in RDFS+OWL</terms:title>
         <terms:description xml:lang="en">This is a conversion of the terms defined at schema.org to RDFS and OWL.</terms:description>
         <terms:title>Vocabulary for multi-dimensional (e.g. statistical) data publishing</terms:title>
@@ -79,7 +79,7 @@
     
 
 
-    <!-- http://purl.org/dc/terms/hasPart -->
+    <!-- http://purl.org/dc/terms/hasPart test -->
 
     <owl:AnnotationProperty rdf:about="&terms;hasPart"/>
     

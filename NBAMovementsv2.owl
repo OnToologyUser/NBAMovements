@@ -943,6 +943,7 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements#Player">
         <rdfs:subClassOf rdf:resource="&foaf;Person"/>
+         <rdfs:comment>Player</rdfs:comment>
     </owl:Class>
     
 

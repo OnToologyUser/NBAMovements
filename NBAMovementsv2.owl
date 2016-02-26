@@ -121,7 +121,7 @@
     
 
 
-    <!-- http://www.w3.org/2001/XMLSchema#date -->
+    <!-- http://www.w3.org/2001/XMLSchema#date asdasd-->
 
     <rdfs:Datatype rdf:about="&xsd;date"/>
     

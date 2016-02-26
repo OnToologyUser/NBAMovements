@@ -910,6 +910,7 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements#Coach">
         <rdfs:subClassOf rdf:resource="&foaf;Person"/>
+         <rdfs:comment xml:lang="en"></rdfs:comment>
         <owl:disjointWith rdf:resource="http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements#Player"/>
     </owl:Class>
     

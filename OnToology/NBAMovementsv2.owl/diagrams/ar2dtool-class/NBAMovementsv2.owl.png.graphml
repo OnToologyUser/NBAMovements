@@ -5,7 +5,7 @@
    <key for="edge" id="d2" yfiles.type="edgegraphics" />
    <key attr.name="description" attr.type="string" for="edge" id="d3" />
    <key for="graphml" id="d4" yfiles.type="resources" />
-   <graph edgedefault="directed" id="G" parse.edges="85" parse.nodes="49" parse.order="free">
+   <graph edgedefault="directed" id="G" parse.edges="79" parse.nodes="43" parse.order="free">
       <node id="nid_base:Coach">
          <data key="d0">
             <y:ShapeNode>
@@ -88,98 +88,6 @@
          </data>
          <data key="d1" />
       </node>
-      <node id="nid_8c6f491:1531da8652a:-7ff8">
-         <data key="d0">
-            <y:ShapeNode>
-               <y:Geometry height="30.0" width="250.0" x="0.0" y="0.0" />
-               <y:Fill color="#FFFFFF" transparent="false" />
-               <y:BorderStyle color="#000000" type="line" width="1.0" />
-               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="internal" modelPosition="c" textColor="#000000" visible="true">8c6f491:1531da8652a:-7ff8</y:NodeLabel>
-               <y:Shape type="rectangle" />
-            </y:ShapeNode>
-         </data>
-         <data key="d1" />
-      </node>
-    <edge id="eid_terms:contributor2" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_8c6f491:1531da8652a:-7ff8">
-         <data key="d2">
-            <y:PolyLineEdge>
-               <y:LineStyle color="black" type="line" width="1.0" />
-               <y:Arrows source="none" target="normal" />
-               <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true">terms:contributor</y:EdgeLabel>
-               <y:BendStyle smoothed="false" />
-            </y:PolyLineEdge>
-         </data>
-         <data key="d3" />
-      </edge>
-      <node id="nid_8c6f491:1531da8652a:-7ff9">
-         <data key="d0">
-            <y:ShapeNode>
-               <y:Geometry height="30.0" width="250.0" x="0.0" y="0.0" />
-               <y:Fill color="#FFFFFF" transparent="false" />
-               <y:BorderStyle color="#000000" type="line" width="1.0" />
-               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="internal" modelPosition="c" textColor="#000000" visible="true">8c6f491:1531da8652a:-7ff9</y:NodeLabel>
-               <y:Shape type="rectangle" />
-            </y:ShapeNode>
-         </data>
-         <data key="d1" />
-      </node>
-    <edge id="eid_terms:hasFormat3" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_8c6f491:1531da8652a:-7ff9">
-         <data key="d2">
-            <y:PolyLineEdge>
-               <y:LineStyle color="black" type="line" width="1.0" />
-               <y:Arrows source="none" target="normal" />
-               <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true">terms:hasFormat</y:EdgeLabel>
-               <y:BendStyle smoothed="false" />
-            </y:PolyLineEdge>
-         </data>
-         <data key="d3" />
-      </edge>
-      <node id="nid_8c6f491:1531da8652a:-7ffa">
-         <data key="d0">
-            <y:ShapeNode>
-               <y:Geometry height="30.0" width="250.0" x="0.0" y="0.0" />
-               <y:Fill color="#FFFFFF" transparent="false" />
-               <y:BorderStyle color="#000000" type="line" width="1.0" />
-               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="internal" modelPosition="c" textColor="#000000" visible="true">8c6f491:1531da8652a:-7ffa</y:NodeLabel>
-               <y:Shape type="rectangle" />
-            </y:ShapeNode>
-         </data>
-         <data key="d1" />
-      </node>
-    <edge id="eid_terms:contributor4" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_8c6f491:1531da8652a:-7ffa">
-         <data key="d2">
-            <y:PolyLineEdge>
-               <y:LineStyle color="black" type="line" width="1.0" />
-               <y:Arrows source="none" target="normal" />
-               <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true">terms:contributor</y:EdgeLabel>
-               <y:BendStyle smoothed="false" />
-            </y:PolyLineEdge>
-         </data>
-         <data key="d3" />
-      </edge>
-      <node id="nid_8c6f491:1531da8652a:-7ffb">
-         <data key="d0">
-            <y:ShapeNode>
-               <y:Geometry height="30.0" width="250.0" x="0.0" y="0.0" />
-               <y:Fill color="#FFFFFF" transparent="false" />
-               <y:BorderStyle color="#000000" type="line" width="1.0" />
-               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="internal" modelPosition="c" textColor="#000000" visible="true">8c6f491:1531da8652a:-7ffb</y:NodeLabel>
-               <y:Shape type="rectangle" />
-            </y:ShapeNode>
-         </data>
-         <data key="d1" />
-      </node>
-    <edge id="eid_terms:contributor5" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_8c6f491:1531da8652a:-7ffb">
-         <data key="d2">
-            <y:PolyLineEdge>
-               <y:LineStyle color="black" type="line" width="1.0" />
-               <y:Arrows source="none" target="normal" />
-               <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true">terms:contributor</y:EdgeLabel>
-               <y:BendStyle smoothed="false" />
-            </y:PolyLineEdge>
-         </data>
-         <data key="d3" />
-      </edge>
       <node id="nid_http://schema.rdfs.org/all.ttl">
          <data key="d0">
             <y:ShapeNode>
@@ -192,7 +100,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_terms:hasFormat6" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://schema.rdfs.org/all.ttl">
+    <edge id="eid_terms:hasFormat2" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://schema.rdfs.org/all.ttl">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -215,7 +123,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_foaf:page7" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://schema.rdfs.org/">
+    <edge id="eid_foaf:page3" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://schema.rdfs.org/">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -238,35 +146,12 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_terms:hasFormat8" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://schema.rdfs.org/all.json">
+    <edge id="eid_terms:hasFormat4" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://schema.rdfs.org/all.json">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
                <y:Arrows source="none" target="normal" />
                <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true">terms:hasFormat</y:EdgeLabel>
-               <y:BendStyle smoothed="false" />
-            </y:PolyLineEdge>
-         </data>
-         <data key="d3" />
-      </edge>
-      <node id="nid_8c6f491:1531da8652a:-7ffc">
-         <data key="d0">
-            <y:ShapeNode>
-               <y:Geometry height="30.0" width="250.0" x="0.0" y="0.0" />
-               <y:Fill color="#FFFFFF" transparent="false" />
-               <y:BorderStyle color="#000000" type="line" width="1.0" />
-               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="internal" modelPosition="c" textColor="#000000" visible="true">8c6f491:1531da8652a:-7ffc</y:NodeLabel>
-               <y:Shape type="rectangle" />
-            </y:ShapeNode>
-         </data>
-         <data key="d1" />
-      </node>
-    <edge id="eid_terms:contributor9" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_8c6f491:1531da8652a:-7ffc">
-         <data key="d2">
-            <y:PolyLineEdge>
-               <y:LineStyle color="black" type="line" width="1.0" />
-               <y:Arrows source="none" target="normal" />
-               <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true">terms:contributor</y:EdgeLabel>
                <y:BendStyle smoothed="false" />
             </y:PolyLineEdge>
          </data>
@@ -284,7 +169,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_terms:license10" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://www.opendatacommons.org/licenses/pddl/1.0/">
+    <edge id="eid_terms:license5" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://www.opendatacommons.org/licenses/pddl/1.0/">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -307,7 +192,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_terms:license11" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://schema.org/docs/terms.html">
+    <edge id="eid_terms:license6" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://schema.org/docs/terms.html">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -330,35 +215,12 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_terms:source12" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://schema.org/">
+    <edge id="eid_terms:source7" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://schema.org/">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
                <y:Arrows source="none" target="normal" />
                <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true">terms:source</y:EdgeLabel>
-               <y:BendStyle smoothed="false" />
-            </y:PolyLineEdge>
-         </data>
-         <data key="d3" />
-      </edge>
-      <node id="nid_8c6f491:1531da8652a:-7ff7">
-         <data key="d0">
-            <y:ShapeNode>
-               <y:Geometry height="30.0" width="250.0" x="0.0" y="0.0" />
-               <y:Fill color="#FFFFFF" transparent="false" />
-               <y:BorderStyle color="#000000" type="line" width="1.0" />
-               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="internal" modelPosition="c" textColor="#000000" visible="true">8c6f491:1531da8652a:-7ff7</y:NodeLabel>
-               <y:Shape type="rectangle" />
-            </y:ShapeNode>
-         </data>
-         <data key="d1" />
-      </node>
-    <edge id="eid_terms:contributor13" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_8c6f491:1531da8652a:-7ff7">
-         <data key="d2">
-            <y:PolyLineEdge>
-               <y:LineStyle color="black" type="line" width="1.0" />
-               <y:Arrows source="none" target="normal" />
-               <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true">terms:contributor</y:EdgeLabel>
                <y:BendStyle smoothed="false" />
             </y:PolyLineEdge>
          </data>
@@ -376,7 +238,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_rdfs:seeAlso14" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://www.w3.org/TR/owl-time">
+    <edge id="eid_rdfs:seeAlso8" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://www.w3.org/TR/owl-time">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -387,7 +249,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_rdfs:seeAlso15" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://schema.org/">
+    <edge id="eid_rdfs:seeAlso9" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://schema.org/">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -410,7 +272,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_rdfs:seeAlso16" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://github.com/mhausenblas/schema-org-rdf">
+    <edge id="eid_rdfs:seeAlso10" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://github.com/mhausenblas/schema-org-rdf">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -433,7 +295,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_terms:hasFormat17" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://schema.rdfs.org/all.nt">
+    <edge id="eid_terms:hasFormat11" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://schema.rdfs.org/all.nt">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -456,7 +318,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_terms:hasFormat18" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://schema.rdfs.org/all.rdf">
+    <edge id="eid_terms:hasFormat12" source="nid_http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements" target="nid_http://schema.rdfs.org/all.rdf">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -479,7 +341,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_rdfs:subPropertyOf19" source="nid_base:is_played_in" target="nid_owl:topObjectProperty">
+    <edge id="eid_rdfs:subPropertyOf13" source="nid_base:is_played_in" target="nid_owl:topObjectProperty">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -514,7 +376,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_owl:equivalentProperty20" source="nid_foaf:familyName" target="nid_foaf:family_name">
+    <edge id="eid_owl:equivalentProperty14" source="nid_foaf:familyName" target="nid_foaf:family_name">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -549,7 +411,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_terms:hasPart21" source="nid_NULL" target="nid_http://schema.rdfs.org/all-properties.csv">
+    <edge id="eid_terms:hasPart15" source="nid_NULL" target="nid_http://schema.rdfs.org/all-properties.csv">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -572,7 +434,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_terms:hasPart22" source="nid_NULL" target="nid_http://schema.rdfs.org/all-classes.csv">
+    <edge id="eid_terms:hasPart16" source="nid_NULL" target="nid_http://schema.rdfs.org/all-classes.csv">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -595,7 +457,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_owl:someValuesFrom23" source="nid_NULL" target="nid_base:Match">
+    <edge id="eid_owl:someValuesFrom17" source="nid_NULL" target="nid_base:Match">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -618,7 +480,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_owl:someValuesFrom24" source="nid_NULL" target="nid_http://schema.org/State">
+    <edge id="eid_owl:someValuesFrom18" source="nid_NULL" target="nid_http://schema.org/State">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -641,7 +503,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_owl:onProperty25" source="nid_NULL" target="nid_base:part_Of">
+    <edge id="eid_owl:onProperty19" source="nid_NULL" target="nid_base:part_Of">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -676,7 +538,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_base:location26" source="nid_base:Team" target="nid_rdfs:Literal">
+    <edge id="eid_base:location20" source="nid_base:Team" target="nid_rdfs:Literal">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -711,7 +573,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_foaf:maker27" source="nid_owl:Thing" target="nid_foaf:Agent">
+    <edge id="eid_foaf:maker21" source="nid_owl:Thing" target="nid_foaf:Agent">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -722,7 +584,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_base:nickname28" source="nid_base:Player" target="nid_rdfs:Literal">
+    <edge id="eid_base:nickname22" source="nid_base:Player" target="nid_rdfs:Literal">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -733,7 +595,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_base:position29" source="nid_base:Player" target="nid_rdfs:Literal">
+    <edge id="eid_base:position23" source="nid_base:Player" target="nid_rdfs:Literal">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -768,7 +630,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_base:points_home_movement30" source="nid_base:Movement" target="nid_xsd:integer">
+    <edge id="eid_base:points_home_movement24" source="nid_base:Movement" target="nid_xsd:integer">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -791,7 +653,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_http://www.w3.org/2006/time#intervalOverlaps31" source="nid_http://www.w3.org/2006/time#ProperInterval" target="nid_http://www.w3.org/2006/time#ProperInterval">
+    <edge id="eid_http://www.w3.org/2006/time#intervalOverlaps25" source="nid_http://www.w3.org/2006/time#ProperInterval" target="nid_http://www.w3.org/2006/time#ProperInterval">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -802,7 +664,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_foaf:logo32" source="nid_owl:Thing" target="nid_owl:Thing">
+    <edge id="eid_foaf:logo26" source="nid_owl:Thing" target="nid_owl:Thing">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -813,7 +675,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_foaf:made33" source="nid_foaf:Agent" target="nid_owl:Thing">
+    <edge id="eid_foaf:made27" source="nid_foaf:Agent" target="nid_owl:Thing">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -824,7 +686,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_foaf:birthday34" source="nid_foaf:Agent" target="nid_rdfs:Literal">
+    <edge id="eid_foaf:birthday28" source="nid_foaf:Agent" target="nid_rdfs:Literal">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -835,7 +697,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_base:realizaes_a35" source="nid_base:Player" target="nid_base:Movement">
+    <edge id="eid_base:realizaes_a29" source="nid_base:Player" target="nid_base:Movement">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -858,7 +720,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_foaf:familyName36" source="nid_foaf:Person" target="nid_rdfs:Literal">
+    <edge id="eid_foaf:familyName30" source="nid_foaf:Person" target="nid_rdfs:Literal">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -869,7 +731,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_base:result37" source="nid_base:Movement" target="nid_rdfs:Literal">
+    <edge id="eid_base:result31" source="nid_base:Movement" target="nid_rdfs:Literal">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -880,7 +742,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_foaf:firstName38" source="nid_foaf:Person" target="nid_rdfs:Literal">
+    <edge id="eid_foaf:firstName32" source="nid_foaf:Person" target="nid_rdfs:Literal">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -891,7 +753,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_base:home_participant39" source="nid_base:Team" target="nid_base:Match">
+    <edge id="eid_base:home_participant33" source="nid_base:Team" target="nid_base:Match">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -902,7 +764,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_foaf:currentProject40" source="nid_foaf:Person" target="nid_owl:Thing">
+    <edge id="eid_foaf:currentProject34" source="nid_foaf:Person" target="nid_owl:Thing">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -925,7 +787,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_base:has_statistics_data41" source="nid_base:Movement" target="nid_http://purl.org/linked-data/cube#Observation">
+    <edge id="eid_base:has_statistics_data35" source="nid_base:Movement" target="nid_http://purl.org/linked-data/cube#Observation">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -936,7 +798,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_http://www.w3.org/2006/time#intervalStarts42" source="nid_http://www.w3.org/2006/time#ProperInterval" target="nid_http://www.w3.org/2006/time#ProperInterval">
+    <edge id="eid_http://www.w3.org/2006/time#intervalStarts36" source="nid_http://www.w3.org/2006/time#ProperInterval" target="nid_http://www.w3.org/2006/time#ProperInterval">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -971,7 +833,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_http://www.w3.org/2006/time#xsdDateTime43" source="nid_http://www.w3.org/2006/time#DateTimeInterval" target="nid_xsd:dateTime">
+    <edge id="eid_http://www.w3.org/2006/time#xsdDateTime37" source="nid_http://www.w3.org/2006/time#DateTimeInterval" target="nid_xsd:dateTime">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -982,7 +844,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_foaf:topic_interest44" source="nid_foaf:Agent" target="nid_owl:Thing">
+    <edge id="eid_foaf:topic_interest38" source="nid_foaf:Agent" target="nid_owl:Thing">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -993,7 +855,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_base:has_a_duration45" source="nid_base:Movement" target="nid_http://www.w3.org/2006/time#DateTimeInterval">
+    <edge id="eid_base:has_a_duration39" source="nid_base:Movement" target="nid_http://www.w3.org/2006/time#DateTimeInterval">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1004,7 +866,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_foaf:gender46" source="nid_foaf:Agent" target="nid_rdfs:Literal">
+    <edge id="eid_foaf:gender40" source="nid_foaf:Agent" target="nid_rdfs:Literal">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1027,7 +889,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_base:name47" source="nid_base:Movement" target="nid_xsd:string">
+    <edge id="eid_base:name41" source="nid_base:Movement" target="nid_xsd:string">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1038,7 +900,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_base:points_away48" source="nid_base:Match" target="nid_xsd:integer">
+    <edge id="eid_base:points_away42" source="nid_base:Match" target="nid_xsd:integer">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1049,7 +911,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_base:away_participant49" source="nid_base:Team" target="nid_base:Match">
+    <edge id="eid_base:away_participant43" source="nid_base:Team" target="nid_base:Match">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1060,7 +922,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_http://www.w3.org/2006/time#intervalDuring50" source="nid_http://www.w3.org/2006/time#ProperInterval" target="nid_http://www.w3.org/2006/time#ProperInterval">
+    <edge id="eid_http://www.w3.org/2006/time#intervalDuring44" source="nid_http://www.w3.org/2006/time#ProperInterval" target="nid_http://www.w3.org/2006/time#ProperInterval">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1083,7 +945,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_base:belongs_to51" source="nid_base:Team" target="nid_base:Conference">
+    <edge id="eid_base:belongs_to45" source="nid_base:Team" target="nid_base:Conference">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1094,7 +956,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_http://www.w3.org/2006/time#intervalFinishes52" source="nid_http://www.w3.org/2006/time#ProperInterval" target="nid_http://www.w3.org/2006/time#ProperInterval">
+    <edge id="eid_http://www.w3.org/2006/time#intervalFinishes46" source="nid_http://www.w3.org/2006/time#ProperInterval" target="nid_http://www.w3.org/2006/time#ProperInterval">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1105,7 +967,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_base:coaches_a53" source="nid_base:Coach" target="nid_base:Player">
+    <edge id="eid_base:coaches_a47" source="nid_base:Coach" target="nid_base:Player">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1116,7 +978,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_base:founded54" source="nid_base:Team" target="nid_xsd:integer">
+    <edge id="eid_base:founded48" source="nid_base:Team" target="nid_xsd:integer">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1127,7 +989,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_base:win55" source="nid_base:Team" target="nid_base:Match">
+    <edge id="eid_base:win49" source="nid_base:Team" target="nid_base:Match">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1138,7 +1000,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_base:points_home56" source="nid_base:Match" target="nid_xsd:integer">
+    <edge id="eid_base:points_home50" source="nid_base:Match" target="nid_xsd:integer">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1161,7 +1023,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_base:percent_win57" source="nid_base:Team" target="nid_xsd:double">
+    <edge id="eid_base:percent_win51" source="nid_base:Team" target="nid_xsd:double">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1172,7 +1034,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_foaf:family_name58" source="nid_foaf:Person" target="nid_rdfs:Literal">
+    <edge id="eid_foaf:family_name52" source="nid_foaf:Person" target="nid_rdfs:Literal">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1183,7 +1045,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_base:distance59" source="nid_base:Movement" target="nid_xsd:double">
+    <edge id="eid_base:distance53" source="nid_base:Movement" target="nid_xsd:double">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1206,7 +1068,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_base:weight60" source="nid_base:Player" target="nid_xsd:float">
+    <edge id="eid_base:weight54" source="nid_base:Player" target="nid_xsd:float">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1217,7 +1079,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_base:lose61" source="nid_base:Team" target="nid_base:Match">
+    <edge id="eid_base:lose55" source="nid_base:Team" target="nid_base:Match">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1228,7 +1090,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_foaf:theme62" source="nid_owl:Thing" target="nid_owl:Thing">
+    <edge id="eid_foaf:theme56" source="nid_owl:Thing" target="nid_owl:Thing">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1251,7 +1113,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_base:date63" source="nid_base:Match" target="nid_xsd:date">
+    <edge id="eid_base:date57" source="nid_base:Match" target="nid_xsd:date">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1262,7 +1124,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_foaf:age64" source="nid_foaf:Agent" target="nid_rdfs:Literal">
+    <edge id="eid_foaf:age58" source="nid_foaf:Agent" target="nid_rdfs:Literal">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1273,7 +1135,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_foaf:mbox65" source="nid_foaf:Agent" target="nid_owl:Thing">
+    <edge id="eid_foaf:mbox59" source="nid_foaf:Agent" target="nid_owl:Thing">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1284,7 +1146,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_foaf:lastName66" source="nid_foaf:Person" target="nid_rdfs:Literal">
+    <edge id="eid_foaf:lastName60" source="nid_foaf:Person" target="nid_rdfs:Literal">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1295,7 +1157,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_base:percent_lose67" source="nid_base:Team" target="nid_xsd:double">
+    <edge id="eid_base:percent_lose61" source="nid_base:Team" target="nid_xsd:double">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1306,7 +1168,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_http://www.w3.org/2006/time#intervalEquals68" source="nid_http://www.w3.org/2006/time#ProperInterval" target="nid_http://www.w3.org/2006/time#ProperInterval">
+    <edge id="eid_http://www.w3.org/2006/time#intervalEquals62" source="nid_http://www.w3.org/2006/time#ProperInterval" target="nid_http://www.w3.org/2006/time#ProperInterval">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1317,7 +1179,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_foaf:pastProject69" source="nid_foaf:Person" target="nid_owl:Thing">
+    <edge id="eid_foaf:pastProject63" source="nid_foaf:Person" target="nid_owl:Thing">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1328,7 +1190,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_base:match_id70" source="nid_base:Match" target="nid_xsd:integer">
+    <edge id="eid_base:match_id64" source="nid_base:Match" target="nid_xsd:integer">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1339,7 +1201,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_base:is_made_by71" source="nid_base:Movement" target="nid_base:Player">
+    <edge id="eid_base:is_made_by65" source="nid_base:Movement" target="nid_base:Player">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1362,7 +1224,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_base:is_played_in72" source="nid_base:Match" target="nid_http://schema.org/StadiumOrArena">
+    <edge id="eid_base:is_played_in66" source="nid_base:Match" target="nid_http://schema.org/StadiumOrArena">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1373,7 +1235,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_foaf:knows73" source="nid_foaf:Person" target="nid_foaf:Person">
+    <edge id="eid_foaf:knows67" source="nid_foaf:Person" target="nid_foaf:Person">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1384,7 +1246,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_base:plays_a74" source="nid_base:Player" target="nid_base:Match">
+    <edge id="eid_base:plays_a68" source="nid_base:Player" target="nid_base:Match">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1395,7 +1257,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_foaf:plan75" source="nid_foaf:Person" target="nid_rdfs:Literal">
+    <edge id="eid_foaf:plan69" source="nid_foaf:Person" target="nid_rdfs:Literal">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1406,7 +1268,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_foaf:geekcode76" source="nid_foaf:Person" target="nid_rdfs:Literal">
+    <edge id="eid_foaf:geekcode70" source="nid_foaf:Person" target="nid_rdfs:Literal">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1429,7 +1291,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_base:pertain77" source="nid_base:Team" target="nid_http://schema.org/City">
+    <edge id="eid_base:pertain71" source="nid_base:Team" target="nid_http://schema.org/City">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1452,7 +1314,7 @@
          </data>
          <data key="d1" />
       </node>
-    <edge id="eid_base:quarter_number78" source="nid_base:Quarter" target="nid_xsd:integer">
+    <edge id="eid_base:quarter_number72" source="nid_base:Quarter" target="nid_xsd:integer">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1463,7 +1325,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_base:leads79" source="nid_base:Coach" target="nid_base:Team">
+    <edge id="eid_base:leads73" source="nid_base:Coach" target="nid_base:Team">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1474,7 +1336,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_base:is_made80" source="nid_base:Movement" target="nid_base:Match">
+    <edge id="eid_base:is_made74" source="nid_base:Movement" target="nid_base:Match">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1485,7 +1347,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_http://www.w3.org/2006/time#intervalMeets81" source="nid_http://www.w3.org/2006/time#ProperInterval" target="nid_http://www.w3.org/2006/time#ProperInterval">
+    <edge id="eid_http://www.w3.org/2006/time#intervalMeets75" source="nid_http://www.w3.org/2006/time#ProperInterval" target="nid_http://www.w3.org/2006/time#ProperInterval">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1496,7 +1358,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_base:height82" source="nid_base:Player" target="nid_xsd:float">
+    <edge id="eid_base:height76" source="nid_base:Player" target="nid_xsd:float">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1507,7 +1369,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_base:points_away_movement83" source="nid_base:Movement" target="nid_xsd:integer">
+    <edge id="eid_base:points_away_movement77" source="nid_base:Movement" target="nid_xsd:integer">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />
@@ -1518,7 +1380,7 @@
          </data>
          <data key="d3" />
       </edge>
-    <edge id="eid_foaf:myersBriggs84" source="nid_foaf:Person" target="nid_rdfs:Literal">
+    <edge id="eid_foaf:myersBriggs78" source="nid_foaf:Person" target="nid_rdfs:Literal">
          <data key="d2">
             <y:PolyLineEdge>
                <y:LineStyle color="black" type="line" width="1.0" />

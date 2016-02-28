@@ -14,6 +14,9 @@
 ]>
 
 
+
+
+
 <rdf:RDF xmlns="http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements#"
      xml:base="http://www.semanticweb.org/davidchaves/ontologies/2015/11/NBAMovements"
      xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -53,24 +56,6 @@
         <terms:hasFormat rdf:resource="http://schema.rdfs.org/all.ttl"/>
         <terms:license rdf:resource="http://www.opendatacommons.org/licenses/pddl/1.0/"/>
         <rdfs:seeAlso rdf:resource="http://www.w3.org/TR/owl-time"/>
-        <terms:contributor>
-            <rdf:Description/>
-        </terms:contributor>
-        <terms:contributor>
-            <rdf:Description/>
-        </terms:contributor>
-        <terms:contributor>
-            <rdf:Description/>
-        </terms:contributor>
-        <terms:hasFormat>
-            <rdf:Description/>
-        </terms:hasFormat>
-        <terms:contributor>
-            <rdf:Description/>
-        </terms:contributor>
-        <terms:contributor>
-            <rdf:Description/>
-        </terms:contributor>
     </owl:Ontology>
     
 

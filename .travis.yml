@@ -3,5 +3,5 @@ python:
   - "2.7"
  
  
-after_script:
+script:
   - echo "Hello World"

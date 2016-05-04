@@ -4,6 +4,6 @@ python:
 before_install:
  - sudo apt-get update -qq
  - sudo apt-get install -qq python3.2 python2.7
- 
+ - chmod a+x run_build.sh
  
 script:  ./run_build.sh

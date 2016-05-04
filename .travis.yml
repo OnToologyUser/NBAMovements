@@ -4,4 +4,4 @@ language: python
 
 
 script: 
-  -make build
+  make build

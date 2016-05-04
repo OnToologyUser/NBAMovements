@@ -3,5 +3,4 @@ python:
   - "2.7"
  
  
-script:
-  - echo "Hello World"
+script: ./run_build.sh

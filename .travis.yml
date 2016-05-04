@@ -6,4 +6,4 @@ before_install:
  - sudo apt-get install -qq python3.2 python2.7
  
  
-script: ./run_build.sh
+script: sudo ./run_build.sh

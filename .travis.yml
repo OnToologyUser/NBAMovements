@@ -1,0 +1,12 @@
+language: java
+jdk:
+  - openjdk7
+
+# whitelist
+branches:
+  only:
+    - master
+
+notifications:
+  email:
+    - albaizq@hotmail.com

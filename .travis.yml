@@ -4,7 +4,7 @@ python:
 before_install:
  - sudo apt-get update -qq
  - sudo apt-get install -qq python3.2 python2.7
- - pip install pygithub3
+ - pip install pygithub
  - chmod a+x run_build.py
  
 script: python run_build.py

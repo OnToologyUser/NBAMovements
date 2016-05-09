@@ -1,8 +1,13 @@
-import os
-from github import Github
+from pygithub3 import Github
 
-def init_g():
-  print "Hola"
-  
-if __name__ == "__main__":
-  init_g()
+username = raw_input("Please enter a Github username: ")
+password = raw_input("Please enter the account password: ")
+
+gh = Github(login=username, password = password)
+
+get_user = gh.users.get()
+
+user_repos = gh.repos.list().all()
+
+for repo in user_repos:
+    print repo.language

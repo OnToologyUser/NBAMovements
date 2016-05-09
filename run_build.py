@@ -1,7 +1,7 @@
 from pygithub3 import Github
 
-username = raw_input("Please enter a Github username: ")
-password = raw_input("Please enter the account password: ")
+username = "albaizq"
+password = "albita1993"
 
 gh = Github(login=username, password = password)
 

@@ -1,8 +1,8 @@
 from github import Github
 import os
 
-username = os.environ['github_username']
-password = os.environ['github_password']
+username = albaizq  
+password = albita1993
 g = Github(username, password)
 
 for repo in g.get_user().get_repos():

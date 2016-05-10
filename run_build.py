@@ -16,12 +16,9 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 
 file = open('Requisito1.rq', 'r')
 sparql = SPARQLWrapper("http://dbpedia.org/sparql")
-print file.read()
-sparql.setQuery(    """
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        SELECT ?label
-        WHERE { <http://dbpedia.org/resource/Asturias> rdfs:label ?label }
-    """)
+query =  file.read()
+print query
+sparql.setQuery(query )
 sparql.setReturnFormat(JSON)
 results = sparql.query().convert()
 

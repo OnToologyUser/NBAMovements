@@ -10,6 +10,6 @@ ontoology_home_name = 'OnToology'
 
 for repo in g.get_user().get_repos():
     print repo.name
-    sha = repo.get_commits()[0].sha
-    files = repo.get_git_tree(sha=sha, recursive=True).tree
+   
+    files = repo.get_files()
     print files

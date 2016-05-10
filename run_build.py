@@ -11,7 +11,7 @@
 #for repo in g.get_user().get_repos():
 #    print repo.name
  #   repo.create_issue('Travis CI test', repo.name)
-from SPARQLWrapper import SPARQLWrapper, JSON
+from SPARQLWrapper import Wrapper, JSON
 
 
 file = open('Requisito1.rq', 'r')

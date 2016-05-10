@@ -16,8 +16,8 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 
 file = open('Requisito1.rq', 'r')
 sparql = SPARQLWrapper("http://dbpedia.org/sparql")
-sparql.setQuery(""" + file.read() + 
-""")
+sparql.setQuery('"""' + file.read() + 
+'"""')
 sparql.setReturnFormat(JSON)
 results = sparql.query().convert()
 

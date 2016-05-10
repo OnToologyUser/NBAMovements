@@ -1,0 +1,4 @@
+PREFIX nbam: <https://raw.githubusercontent.com/albaizq/NBAMovements/master/NBAMovementsv2.owl#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+    SELECT ?label
+    WHERE { nbam:Vehicle rdfs:label ?label}

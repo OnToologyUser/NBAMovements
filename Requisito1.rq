@@ -5,3 +5,4 @@
         WHERE { <http://dbpedia.org/resource/Asturias> rdfs:label ?label
     """
 
+

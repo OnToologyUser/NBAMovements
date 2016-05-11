@@ -14,21 +14,21 @@ g = Github(username, password)
 ############################################################################
 #############################ACCEPTANCE TEST################################
 ############################################################################
-
-list_of_files = glob.glob('./*.rq')
-# Each file a requirement
-for file in list_of_files:
- req = open(file, 'r')
- sparql = SPARQLWrapper("http://dbpedia.org/sparql")
- query =  req.read()
- sparql.setQuery(query )
- sparql.setReturnFormat(JSON)
- results = sparql.query().convert()
- for result in results["results"]["bindings"]:
-   print(result["label"]["value"])
-   
- repo.create_issue('Acceptance test bug notification', body =  'Ontology created did not support Requiremnt 1 ' , labels = 'Acceptance test bug')
- req.close()
+for repo in g.get_user().get_repos():
+ list_of_files = glob.glob('./*.rq')
+ # Each file a requirement
+ for file in list_of_files:
+  req = open(file, 'r')
+  sparql = SPARQLWrapper("http://dbpedia.org/sparql")
+  query =  req.read()
+  sparql.setQuery(query )
+  sparql.setReturnFormat(JSON)
+  results = sparql.query().convert()
+  for result in results["results"]["bindings"]:
+    print(result["label"]["value"])
+    
+  repo.create_issue('Acceptance test bug notification', body =  'Ontology created did not support Requiremnt 1 ' , labels = 'Acceptance test bug')
+  req.close()
 
 ############################################################################
 ################################UNIT TEST###################################

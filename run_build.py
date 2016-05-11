@@ -24,14 +24,15 @@ for repo in g.get_user().get_repos():
   query =  req.read()
   sparql.setQuery(query )
   sparql.setReturnFormat(JSON)
-  
+  results = sparql.query()
+  print  len(results)
   results = sparql.query().convert()
   print results["results"]["bindings"]
   #for result in results["results"]["bindings"]:
    # print(result["label"]["value"])
     
   #if results["results"]["bindings"]  == []:
-  print  len(results)
+  
    # repo.create_issue('Acceptance test bug notification', 'Ontology created did not support ' + os.path.splitext(os.path.basename(file))[0] , labels = ['bug'])
   req.close()
 

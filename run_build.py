@@ -16,9 +16,8 @@ g = Github(username, password)
 ############################################################################
 for repo in g.get_user().get_repos():
  #create labels
- for labels in  repo.get_labels():
-  print labels
- #repo.create_label("Acceptance test bug", "F50511")
+
+ repo.create_label("Acceptance test bug", "F50511")
  list_of_files = glob.glob('./*.rq')
  print list_of_files
  # Each file a requirement
@@ -37,7 +36,7 @@ for repo in g.get_user().get_repos():
     flag = False
   #flag = True
   if flag == False:
-   repo.create_issue('Acceptance test bug notification', 'The ontology created did not support the requirement with ID' + os.path.splitext(os.path.basename(file)).split("_")[1] , labels = ['Acceptance test bug'])
+   repo.create_issue('Acceptance test bug notification', 'The ontology created did not support the requirement with ID' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
   req.close()
 
 ############################################################################

@@ -16,6 +16,7 @@ g = Github(username, password)
 ############################################################################
 for repo in g.get_user().get_repos():
  list_of_files = glob.glob('./*.rq')
+ print list_of_files
  # Each file a requirement
  for file in list_of_files:
   req = open(file, 'r')
@@ -29,7 +30,7 @@ for repo in g.get_user().get_repos():
   for result in results["results"]["bindings"]:
     print(result["label"]["value"])
     
-  if results["results"]["bindings"]  == []
+  if results["results"]["bindings"]  == []:
     repo.create_issue('Acceptance test bug notification', 'Ontology created did not support ' + os.path.splitext(os.path.basename(file))[0] , labels = ['bug'])
   req.close()
 

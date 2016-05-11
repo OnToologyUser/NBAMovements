@@ -8,14 +8,15 @@ import glob
 username = "albaizq"  
 password = "albita1993"
 g = Github(username, password)
-#create labels
-repo.create_label("Acceptance test bug", "F50511")
+
 
 
 ############################################################################
 #############################ACCEPTANCE TEST################################
 ############################################################################
 for repo in g.get_user().get_repos():
+ #create labels
+ repo.create_label("Acceptance test bug", "F50511")
  list_of_files = glob.glob('./*.rq')
  print list_of_files
  # Each file a requirement

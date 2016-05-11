@@ -29,7 +29,7 @@ for repo in g.get_user().get_repos():
   flag = True
   for result in results["results"]["bindings"]:
    print result
-   if result == '':
+   if result == {}:
     flag = False
   #flag = True
   if flag == False:

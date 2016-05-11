@@ -26,12 +26,13 @@ for repo in g.get_user().get_repos():
   
   sparql.setReturnFormat(JSON)
   results = sparql.query().convert()
-  print results
-  for result in results["results"]:
-   print result
+  flag True
+  for result in results["results"]["bindings"]:
+   if result == '':
+    flag = False
   #flag = True
-  #if flag == False:
-  # repo.create_issue('Acceptance test bug notification', 'Ontology created did not support ' + os.path.splitext(os.path.basename(file))[0] , labels = ['bug'])
+  if flag == False:
+   repo.create_issue('Acceptance test bug notification', 'Ontology created did not support ' + os.path.splitext(os.path.basename(file))[0] , labels = ['bug'])
   req.close()
 
 ############################################################################

@@ -26,6 +26,7 @@ for repo in g.get_user().get_repos():
   results = sparql.query().convert()
   for result in results["results"]["bindings"]:
     print(result["label"]["value"])
+    print result.length
     
   repo.create_issue('Acceptance test bug notification', 'Ontology created did not support ' + os.path.splitext(file)[0] , labels = ['bug'])
   req.close()

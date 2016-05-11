@@ -23,13 +23,10 @@ for repo in g.get_user().get_repos():
   sparql = SPARQLWrapper("http://dbpedia.org/sparql")
   query =  req.read()
   sparql.setQuery(query )
-  sparql.setReturnFormat(JSON)
+  sparql.setReturnFormat(XML)
   results = sparql.query().convert()
-  
   flag = True
-  for result in results["results"]["bindings"]:
-   if result  == {}:
-     flag = False
+  print results
   
   if flag == False:
    repo.create_issue('Acceptance test bug notification', 'Ontology created did not support ' + os.path.splitext(os.path.basename(file))[0] , labels = ['bug'])

@@ -39,7 +39,7 @@ for repo in g.get_user().get_repos():
       flag = False
   
     if flag == False:
-     repo.create_issue('Acceptance test bug notification', 'The ontology created did not support the requirement with ID' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
+     repo.create_issue('Acceptance test bug notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
     req.close()
 
 ############################################################################

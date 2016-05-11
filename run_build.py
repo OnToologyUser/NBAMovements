@@ -30,7 +30,7 @@ for repo in g.get_user().get_repos():
   
   for result in results["results"]["bindings"]:
    print result["label"]["value"]
-   if result["label"]["value"] == " "
+   if result["label"]["value"] == '':
      print "Vacio"
   #if results["results"]["bindings"]  == []:
   

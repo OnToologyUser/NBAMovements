@@ -11,12 +11,6 @@ g = Github(username, password)
 
 
 
-for repo in g.get_user().get_repos():
-    print repo.name
-    repo.create_issue('Travis CI test', repo.name)
- 
-
-
 ############################################################################
 #############################ACCEPTANCE TEST################################
 ############################################################################
@@ -33,7 +27,7 @@ for file in list_of_files:
  for result in results["results"]["bindings"]:
    print(result["label"]["value"])
    
- repo.create_issue('Acceptance test bug notification', body =  'Ontology created did not support Requiremnt 1 ' , label = 'Acceptance test bug')
+ repo.create_issue('Acceptance test bug notification', body =  'Ontology created did not support Requiremnt 1 ' , labels = 'Acceptance test bug')
  req.close()
 
 ############################################################################

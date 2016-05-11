@@ -12,15 +12,20 @@
 #    print repo.name
  #   repo.create_issue('Travis CI test', repo.name)
 from SPARQLWrapper import SPARQLWrapper, JSON
+import glob
 
 
-file = open('Requisito1.rq', 'r')
-sparql = SPARQLWrapper("http://dbpedia.org/sparql")
-query =  file.read()
-print query
-sparql.setQuery(query )
-sparql.setReturnFormat(JSON)
-results = sparql.query().convert()
-
-for result in results["results"]["bindings"]:
-    print(result["label"]["value"])
+list_of_files = glob.glob('./*.rq')
+# Each file a requirement
+for file in list_of_files:
+ req = open(file, 'r')
+ sparql = SPARQLWrapper("http://dbpedia.org/sparql")
+ query =  file.read()
+ sparql.setQuery(query )
+ sparql.setReturnFormat(JSON)
+ results = sparql.query().convert()
+ for result in results["results"]["bindings"]:
+   print(result["label"]["value"])
+ file.close()
+ 
+ 

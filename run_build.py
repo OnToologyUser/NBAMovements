@@ -16,8 +16,13 @@ g = Github(username, password)
 ############################################################################
 for repo in g.get_user().get_repos():
  #create labels
-
- repo.create_label("Acceptance test bug", "F50511")
+ flag2 = False
+ for label in repo.get_labels():
+  if label.name == "Acceptance test bug":
+    flag2 = True
+ if flag2 == False:  
+  repo.create_label("Acceptance test bug", "F50511")
+  
  list_of_files = glob.glob('./*.rq')
  print list_of_files
  # Each file a requirement

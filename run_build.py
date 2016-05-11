@@ -15,34 +15,33 @@ g = Github(username, password)
 #############################ACCEPTANCE TEST################################
 ############################################################################
 for repo in g.get_user().get_repos():
- #create labels
- flag2 = False
- for label in repo.get_labels():
-  if label.name == "Acceptance test bug":
-    flag2 = True
- if flag2 == False:  
-  repo.create_label("Acceptance test bug", "F50511")
+ for file in repo.get_files():
+  if file.name == "OnToology":
+  #create labels
+   flag2 = False
+   for label in repo.get_labels():
+    if label.name == "Acceptance test bug":
+      flag2 = True
+   if flag2 == False:  
+    repo.create_label("Acceptance test bug", "F50511")
+    
+   list_of_files = glob.glob('./*.rq')
+   # Each file a requirement
+   for file in list_of_files:
+    req = open(file, 'r')
+    sparql = SPARQLWrapper("http://dbpedia.org/sparql")
+    query =  req.read()
+    sparql.setQuery(query )
+    sparql.setReturnFormat(JSON)
+    results = sparql.query().convert()
+    flag = True
+    for result in results["results"]["bindings"]:
+     if result == {}:
+      flag = False
   
- list_of_files = glob.glob('./*.rq')
- print list_of_files
- # Each file a requirement
- for file in list_of_files:
-  req = open(file, 'r')
-  sparql = SPARQLWrapper("http://dbpedia.org/sparql")
-  query =  req.read()
-  sparql.setQuery(query )
-  
-  sparql.setReturnFormat(JSON)
-  results = sparql.query().convert()
-  flag = True
-  for result in results["results"]["bindings"]:
-   print result
-   if result == {}:
-    flag = False
-  #flag = True
-  if flag == False:
-   repo.create_issue('Acceptance test bug notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
-  req.close()
+    if flag == False:
+     repo.create_issue('Acceptance test bug notification', 'The ontology created did not support the requirement with ID' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
+    req.close()
 
 ############################################################################
 ################################UNIT TEST###################################

@@ -24,12 +24,12 @@ for repo in g.get_user().get_repos():
   query =  req.read()
   sparql.setQuery(query )
   
-  sparql.setReturnFormat(RDF)
-  results = sparql.query().convert()
-  print results.serialize()
-  
-  if flag == False:
-   repo.create_issue('Acceptance test bug notification', 'Ontology created did not support ' + os.path.splitext(os.path.basename(file))[0] , labels = ['bug'])
+  sparql.setReturnFormat(JSON)
+  results = sparql.query()
+  print results.print_results()
+  #flag = True
+  #if flag == False:
+  # repo.create_issue('Acceptance test bug notification', 'Ontology created did not support ' + os.path.splitext(os.path.basename(file))[0] , labels = ['bug'])
   req.close()
 
 ############################################################################

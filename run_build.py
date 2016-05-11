@@ -15,8 +15,8 @@ g = Github(username, password)
 #############################ACCEPTANCE TEST################################
 ############################################################################
 for repo in g.get_user().get_repos():
- for file in repo.get_files():
-  if file.name == "OnToology":
+ for user in repo.get_collaborators():
+   print user
   #create labels
    flag2 = False
    for label in repo.get_labels():

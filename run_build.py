@@ -28,7 +28,7 @@ for repo in g.get_user().get_repos():
     print(result["label"]["value"])
     print result.length
     
-  repo.create_issue('Acceptance test bug notification', 'Ontology created did not support ' + os.path.splitext(file)[0] , labels = ['bug'])
+  repo.create_issue('Acceptance test bug notification', 'Ontology created did not support ' + os.path.splitext(os.path.basename(file))[0] , labels = ['bug'])
   req.close()
 
 ############################################################################

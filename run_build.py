@@ -5,8 +5,8 @@ import glob
 
 
 #GitHub authentication
-username = ""  
-password = ""
+username = "albaizq"  
+password = "albita1993"
 g = Github(username, password)
 
 

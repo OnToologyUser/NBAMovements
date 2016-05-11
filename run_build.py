@@ -25,9 +25,11 @@ for repo in g.get_user().get_repos():
   sparql.setQuery(query )
   sparql.setReturnFormat(JSON)
   results = sparql.query()
-  print  len(results)
+ 
   results = sparql.query().convert()
   print results["results"]["bindings"]
+  print  len(results)
+  print  len(results["results"]["bindings"])
   #for result in results["results"]["bindings"]:
    # print(result["label"]["value"])
     

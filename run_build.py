@@ -24,8 +24,6 @@ for repo in g.get_user().get_repos():
   query =  req.read()
   sparql.setQuery(query )
   sparql.setReturnFormat(JSON)
-  results = sparql.query()
-  print results
   results = sparql.query().convert()
   
   flag = True

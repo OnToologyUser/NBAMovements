@@ -31,7 +31,7 @@ for repo in g.get_user().get_repos():
    # print(result["label"]["value"])
     
   #if results["results"]["bindings"]  == []:
-  print 'Length' + len(results)
+  print  len(results)
    # repo.create_issue('Acceptance test bug notification', 'Ontology created did not support ' + os.path.splitext(os.path.basename(file))[0] , labels = ['bug'])
   req.close()
 

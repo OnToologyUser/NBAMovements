@@ -8,7 +8,8 @@ import glob
 username = "albaizq"  
 password = "albita1993"
 g = Github(username, password)
-
+#create labels
+repo.create_label("Acceptance test bug", "F50511")
 
 
 ############################################################################
@@ -33,7 +34,7 @@ for repo in g.get_user().get_repos():
     flag = False
   #flag = True
   if flag == False:
-   repo.create_issue('Acceptance test bug notification', 'Ontology created did not support ' + os.path.splitext(os.path.basename(file))[0] , labels = ['bug'])
+   repo.create_issue('Acceptance test bug notification', 'The ontology created did not support ' + os.path.splitext(os.path.basename(file))[0] , labels = ['Acceptance test bug'])
   req.close()
 
 ############################################################################

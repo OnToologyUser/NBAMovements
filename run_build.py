@@ -20,7 +20,7 @@ list_of_files = glob.glob('./*.rq')
 for file in list_of_files:
  req = open(file, 'r')
  sparql = SPARQLWrapper("http://dbpedia.org/sparql")
- query =  file.read()
+ query =  req.read()
  sparql.setQuery(query )
  sparql.setReturnFormat(JSON)
  results = sparql.query().convert()

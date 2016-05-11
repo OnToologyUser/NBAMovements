@@ -17,7 +17,7 @@ g = Github(username, password)
 for repo in g.get_user().get_repos():
  #create labels
  for labels in  repo.get_labels():
- print labels
+  print labels
  #repo.create_label("Acceptance test bug", "F50511")
  list_of_files = glob.glob('./*.rq')
  print list_of_files

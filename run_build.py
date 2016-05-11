@@ -1,6 +1,6 @@
 from github import Github
 import os
-from SPARQLWrapper import SPARQLWrapper, JSON, XML
+from SPARQLWrapper import SPARQLWrapper, JSON, XML, RDF
 import glob
 
 

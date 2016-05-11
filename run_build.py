@@ -26,7 +26,7 @@ for repo in g.get_user().get_repos():
   sparql.setReturnFormat(XML)
   results = sparql.query().convert()
   flag = True
-  print results
+  print resultsresults.toxml()
   
   if flag == False:
    repo.create_issue('Acceptance test bug notification', 'Ontology created did not support ' + os.path.splitext(os.path.basename(file))[0] , labels = ['bug'])

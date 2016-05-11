@@ -27,12 +27,11 @@ for repo in g.get_user().get_repos():
   results = sparql.query()
  
   results = sparql.query().convert()
-  print results["results"]["bindings"]
-  print  len(results)
-  print  len(results["results"]["bindings"])
-  #for result in results["results"]["bindings"]:
-   # print(result["label"]["value"])
-    
+  
+  for result in results["results"]["bindings"]:
+   print result["label"]["value"]
+   if result["label"]["value"] = " "
+     print "Vacio"
   #if results["results"]["bindings"]  == []:
   
    # repo.create_issue('Acceptance test bug notification', 'Ontology created did not support ' + os.path.splitext(os.path.basename(file))[0] , labels = ['bug'])

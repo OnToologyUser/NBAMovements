@@ -28,6 +28,7 @@ for repo in g.get_user().get_repos():
   results = sparql.query().convert()
   flag = True
   for result in results["results"]["bindings"]:
+   print result
    if result == '':
     flag = False
   #flag = True

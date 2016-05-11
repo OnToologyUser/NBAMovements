@@ -26,7 +26,7 @@ for repo in g.get_user().get_repos():
   
   sparql.setReturnFormat(JSON)
   results = sparql.query().convert()
-  flag True
+  flag = True
   for result in results["results"]["bindings"]:
    if result == '':
     flag = False

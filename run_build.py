@@ -11,8 +11,8 @@ import requests
 
 
 
-client_id = 'bbfc39dd5b6065bbe53b'  # 'bbfc39dd5b6065bbe53b'
-client_secret = '60014ba718601441f542213855607810573c391e'  # '60014ba718601441f542213855607810573c391e'
+client_id = '3995f5db01f035de44c6'  # 'bbfc39dd5b6065bbe53b'
+client_secret = '141f896e53db4a4427db177f1ef2c9975e8a3c1f'  # '60014ba718601441f542213855607810573c391e'
 # host = 'http://54.172.63.231'
 host = 'http://ontoology.linkeddata.es'
 

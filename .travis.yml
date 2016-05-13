@@ -8,6 +8,7 @@ before_install:
  - pip install SPARQLWrapper
  - chmod a+x run_build.py
  - pip install requests
+ - pip install oauth2
  
  
 notifications: 

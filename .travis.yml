@@ -7,7 +7,7 @@ before_install:
  - pip install PyGithub
  - pip install SPARQLWrapper
  - chmod a+x run_build.py
- - sudo pip install requests
+ - pip install requests
  
  
 notifications: 

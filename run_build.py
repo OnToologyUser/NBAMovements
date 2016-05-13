@@ -8,8 +8,8 @@ import requests
 #username = "albaizq"  
 #password = "albita1993"
 #g = Github(username, password)
-client_id = raw_input('Github username: ')
-client_secret = raw_input('Github password: ')
+client_id = os.environ['github_username']
+client_secret = os.environ['github_password']
 
 
 # host = 'http://54.172.63.231'

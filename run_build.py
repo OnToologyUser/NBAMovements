@@ -3,6 +3,7 @@ import os
 from SPARQLWrapper import SPARQLWrapper, JSON, XML, RDF
 import glob
 import requests
+import myconf
 
 #GitHub authentication
 #username = "albaizq"  

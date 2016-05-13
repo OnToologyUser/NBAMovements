@@ -6,9 +6,6 @@ import requests
 import myconf
 
 #GitHub authentication
-#username = "albaizq"  
-#password = "albita1993"
-#g = Github(username, password)
 client_id = os.environ['github_username']
 client_secret = os.environ['github_password']
 
@@ -19,7 +16,7 @@ g = Github(client_id,client_secret)
 ############################################################################
 for repo in g.get_user().get_repos():
  if repo.has_in_collaborators('OnToologyUser'):
-  #create labels
+  #create labels for acceptance test notifications
    flag2 = False
    for label in repo.get_labels():
     if label.name == "Acceptance test bug":

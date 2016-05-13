@@ -11,39 +11,8 @@ import myconf
 #g = Github(username, password)
 client_id = os.environ['github_username']
 client_secret = os.environ['github_password']
-print client_id
 
-# host = 'http://54.172.63.231'
-host = 'http://ontoology.linkeddata.es'
-
-import urlparse
-import oauth2 as oauth
-
-consumer_key = client_id
-consumer_secret = client_secret
-
-request_token_url = 'https://github.com/login/oauth/access_token'
-
-consumer = oauth.Consumer(consumer_key, consumer_secret)
-client = oauth.Client(consumer)
-
-# Step 1: Get a request token. This is a temporary token that is used for 
-# having the user authorize an access token and to sign the request to obtain 
-# said access token.
-
-resp, content = client.request(request_token_url, "GET")
-if resp['status'] != '200':
-    raise Exception("Invalid response %s." % resp['status'])
-
-request_token = dict(urlparse.parse_qsl(content))
-access_token = request_token['oauth_token']
-print "Request Token:"
-print access_token
-
-
-
-
-g = Github(access_token)
+g = Github(client_id,client_secret)
 
 ############################################################################
 #############################ACCEPTANCE TEST################################

@@ -11,8 +11,8 @@ import requests
 
 
 
-client_id = GITHUB_APP_ID  # 'bbfc39dd5b6065bbe53b'
-client_secret = GITHUB_API_SECRET  # '60014ba718601441f542213855607810573c391e'
+client_id = 'bbfc39dd5b6065bbe53b'  # 'bbfc39dd5b6065bbe53b'
+client_secret = '60014ba718601441f542213855607810573c391e'  # '60014ba718601441f542213855607810573c391e'
 # host = 'http://54.172.63.231'
 host = 'http://ontoology.linkeddata.es'
 

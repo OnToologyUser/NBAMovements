@@ -19,8 +19,8 @@ host = 'http://ontoology.linkeddata.es'
 import urlparse
 import oauth2 as oauth
 
-consumer_key = GITHUB_APP_ID
-consumer_secret = GITHUB_API_SECRET
+consumer_key = client_id
+consumer_secret = client_secret
 
 request_token_url = 'https://github.com/login/oauth/access_token'
 

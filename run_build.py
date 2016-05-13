@@ -11,7 +11,7 @@ import myconf
 #g = Github(username, password)
 client_id = os.environ['github_username']
 client_secret = os.environ['github_password']
-
+print client_id
 
 # host = 'http://54.172.63.231'
 host = 'http://ontoology.linkeddata.es'

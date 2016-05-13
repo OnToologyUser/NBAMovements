@@ -8,12 +8,10 @@ import requests
 #username = "albaizq"  
 #password = "albita1993"
 #g = Github(username, password)
+client_id = raw_input('Github username: ')
+client_secret = raw_input('Github password: ')
 
 
-
-client_id = os.environ.get('GITHUB_USERNAME', None) # 'bbfc39dd5b6065bbe53b'
-print client_id
-client_secret = os.environ.get('GITHUB_PASSWORD', None) # '60014ba718601441f542213855607810573c391e'
 # host = 'http://54.172.63.231'
 host = 'http://ontoology.linkeddata.es'
 

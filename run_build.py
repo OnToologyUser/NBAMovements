@@ -80,7 +80,7 @@ for repo in g.get_user().get_repos():
     repo.create_label("Ontology Language",  "F50511")   
     
  def get_pitfalls(ont_file):
-  url = 'http://oops-ws.oeg-upm.net/rest'
+    url = 'http://oops-ws.oeg-upm.net/rest'
     xml_content = """
     <?xml version="1.0" encoding="UTF-8"?>
     <OOPSRequest>

@@ -4,7 +4,7 @@ from SPARQLWrapper import SPARQLWrapper, JSON, XML, RDF
 import glob
 import requests
 import myconf
-import rdfxml
+import rdfxml  as rdfxml
 
 #GitHub authentication
 client_id = os.environ['github_username']

@@ -19,7 +19,7 @@ for repo in g.get_user().get_repos():
   ##Acceptance test
   list_of_files = glob.glob('./*.rq')
    # Each file a requirement
-   for file in list_of_files:
+  for file in list_of_files:
     results = ont_query(file)
     flag = True
     for result in results["results"]["bindings"]:
@@ -49,7 +49,7 @@ for repo in g.get_user().get_repos():
     return results
     
  def create_labels(repo):
-     flag_acc = False
+   flag_acc = False
    flag_unit = False
    flag_inference = False
    flag_model = False

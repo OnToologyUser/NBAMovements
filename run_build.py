@@ -69,8 +69,6 @@ for repo in g.get_user().get_repos():
       flag_model = True
     elif label.name == "Ontology Language":
       flag_lang = True
-     
-      
    if flag_acc == False:  
     repo.create_label("Acceptance test bug", "F50511")
    if flag_unit == False: 
@@ -93,6 +91,7 @@ for repo in g.get_user().get_repos():
           <OutputFormat></OutputFormat>
     </OOPSRequest>
     """ % (ont)
+    print xml_content
     headers = {'Content-Type': 'application/xml',
                'Connection': 'Keep-Alive',
                'Content-Length': len(xml_content),

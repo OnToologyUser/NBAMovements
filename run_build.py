@@ -98,6 +98,7 @@ for repo in g.get_user().get_repos():
                'Accept-Charset': 'utf-8'
                }
     print "will call oops webservice"
+
     oops_reply = requests.post(url, data=xml_content, headers = headers)
     print "will get oops text reply"
     oops_reply = oops_reply.text
@@ -109,10 +110,11 @@ for repo in g.get_user().get_repos():
             raise Exception('Ontology is too big for OOPS')
         else:
             raise Exception('Generic error from OOPS')
-    issues_s = output_parsed_pitfalls(ont, oops_reply)
+    issues_s = output_parsed_pitfalls(ont_file, oops_reply)
     return issues_s
     
  def output_parsed_pitfalls(ont_file, oops_reply):
+   print oops_reply
     issues, interesting_features = parse_oops_issues(oops_reply)
     s = ""
     for i in issues:

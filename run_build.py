@@ -100,10 +100,10 @@ for repo in g.get_user().get_repos():
     print "will call oops webservice"
 
     oops_reply = requests.post(url, data=xml_content, headers = headers)
-    print "will get oops text reply"
+   # print "will get oops text reply"
     oops_reply = oops_reply.text
-    print 'oops reply is: <<' + oops_reply + '>>' 
-    print '<<<end of oops reply>>>'
+   # print 'oops reply is: <<' + oops_reply + '>>' 
+    #print '<<<end of oops reply>>>'
     
     if oops_reply[:50] == '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">':
         if '<title>502 Proxy Error</title>' in oops_reply:
@@ -114,7 +114,7 @@ for repo in g.get_user().get_repos():
     return issues_s
     
  def output_parsed_pitfalls(ont_file, oops_reply):
-   print oops_reply
+    print oops_reply
     issues, interesting_features = parse_oops_issues(oops_reply)
     s = ""
     for i in issues:

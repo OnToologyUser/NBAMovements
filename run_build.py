@@ -92,6 +92,7 @@ for repo in g.get_user().get_repos():
           <OutputFormat></OutputFormat>
     </OOPSRequest>
     """ % (ont)
+    print xml_content
     headers = {'Content-Type': 'application/xml',
                'Connection': 'Keep-Alive',
                'Content-Length': len(xml_content),

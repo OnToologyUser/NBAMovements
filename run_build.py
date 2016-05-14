@@ -32,7 +32,8 @@ for repo in g.get_user().get_repos():
   ##Unit test
   ont_files = glob.glob('./*.owl')
   for file in ont_files:
-    ont = open(file, 'r')
+    f = open(file, 'r')
+    ont = f.read()
     issues_s = get_pitfalls(ont)
     close_old_oops_issues_in_github(repo, ont)
     create_oops_issue_in_github(repo, ont, issues_s)

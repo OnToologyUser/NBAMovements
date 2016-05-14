@@ -90,8 +90,7 @@ for repo in g.get_user().get_repos():
           <Pitfalls></Pitfalls>
           <OutputFormat></OutputFormat>
     </OOPSRequest>
-    """ % (ont)
-    print xml_content
+    """ % (ont_file)
     headers = {'Content-Type': 'application/xml',
                'Connection': 'Keep-Alive',
                'Content-Length': len(xml_content),
@@ -102,7 +101,7 @@ for repo in g.get_user().get_repos():
     print url
     print data
     print headers
-    oops_reply = requests.post(url, data=xml_content)
+    oops_reply = requests.post(url, data=xml_content, headers = headers)
     print "will get oops text reply"
     oops_reply = oops_reply.text
     print 'oops reply is: <<' + oops_reply + '>>' 

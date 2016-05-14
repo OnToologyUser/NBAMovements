@@ -59,7 +59,7 @@ for repo in g.get_user().get_repos():
    for label in repo.get_labels():
     if label.name == "Acceptance test bug":
       flag_acc = True
-    elif label.name == "Unit test":
+    elif label.name == "Unit test bug":
       flag_unit =True
     elif label.name == "Inference":
       flag_inference =True

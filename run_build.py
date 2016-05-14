@@ -90,7 +90,7 @@ for repo in g.get_user().get_repos():
           <Pitfalls></Pitfalls>
           <OutputFormat></OutputFormat>
     </OOPSRequest>
-    """ % (ont_file_content)
+    """ % (ont)
     headers = {'Content-Type': 'application/xml',
                'Connection': 'Keep-Alive',
                'Content-Length': len(xml_content),

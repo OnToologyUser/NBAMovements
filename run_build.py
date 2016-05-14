@@ -102,7 +102,7 @@ for repo in g.get_user().get_repos():
     print url
     print data
     print headers
-    oops_reply = requests.post(url, data=xml_content, headers=headers)
+    oops_reply = requests.post(url, data=xml_content)
     print "will get oops text reply"
     oops_reply = oops_reply.text
     print 'oops reply is: <<' + oops_reply + '>>' 

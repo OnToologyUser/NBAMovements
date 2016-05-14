@@ -62,9 +62,9 @@ for repo in g.get_user().get_repos():
       flag_unit =True
     elif label.name == "Inference":
       flag_inference =True
-    elif label.name = "Modelling":
+    elif label.name == "Modelling":
       flag_model = True
-    elif label.name = "Ontology Language":
+    elif label.name == "Ontology Language":
       flag_lang = True
      
       

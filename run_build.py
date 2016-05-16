@@ -175,6 +175,8 @@ for repo in g.get_user().get_repos():
     
  def close_old_oops_issues_in_github(target_repo, ont_file):
     print 'will close old issues'
+    print g.get_repo(target_repo)
+    print g.get_repo(target_repo).get_issues(state='open')
     for i in g.get_repo(target_repo).get_issues(state='open'):
         if i.title == ('OOPS! Evaluation for ' + ont_file):
             i.edit(state='closed')

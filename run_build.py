@@ -173,11 +173,10 @@ for repo in g.get_user().get_repos():
                 oops_issues_filter4[i][intda] = oops_issues_filter3[i][intda]
     return oops_issues_filter4, issue_interesting_data
     
- def close_old_oops_issues_in_github(target_repo, ont_file):
+ def close_old_oops_issues_in_github(repo, ont_file):
     print 'will close old issues'
-    print g.get_repo(target_repo)
-    print g.get_repo(target_repo).get_issues(state='open')
-    for i in g.get_repo(target_repo).get_issues(state='open'):
+    print repo.get_issues(state='open')
+    for i in repo.get_issues(state='open'):
         if i.title == ('OOPS! Evaluation for ' + ont_file):
             i.edit(state='closed')
             

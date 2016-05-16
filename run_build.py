@@ -216,7 +216,7 @@ for repo in g.get_user().get_repos():
     print 'will create an oops issue'
     try:
         repo.create_issue(
-            'OOPS! Evaluation for ' + os.path.splitext(os.path.basename(ont_file))[0]., oops_issues, labels = label)
+            'OOPS! Evaluation for ' + os.path.splitext(os.path.basename(ont_file))[0], oops_issues, labels = label)
     except Exception as e:
         print 'exception when creating issue: ' + str(e)
 

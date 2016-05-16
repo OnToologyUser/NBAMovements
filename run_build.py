@@ -36,7 +36,7 @@ for repo in g.get_user().get_repos():
     ont = f.read()
     issues_s = get_pitfalls(ont)
     close_old_oops_issues_in_github(repo, ont)
-    nicer_oops_output(issues_s,ont)
+    nicer_oops_output(issues_s,file)
     #create_oops_issue_in_github(repo, ont, issues_s)
     
     

@@ -225,7 +225,7 @@ for repo in g.get_user().get_repos():
     print 'will close old issues'
     print repo.get_issues(state='open')
     for i in repo.get_issues(state='open'):
-       print i.title
+        print i.title
         if i.title == ('Acceptance test bug notification'):
             i.edit(state='closed')
             

@@ -189,20 +189,22 @@ for repo in g.get_user().get_repos():
      nodes = issues.split("====================")
      suggs = []
      print nodes
+     desc = ""
      for node in nodes[:-1]:
         attrs = node.split("\n")
         if pitf_flag in node: 
           for attr in attrs:
-           if 'hasImportanceLevel: \"Minor\"' in attr:
-             if  'hasDescription' in attr:
-                print 'descri'
-                suggs.append(attr.replace('hasDescription: ', ''))
+           if  'hasDescription' in attr:
+            desc = attr.replace('hasDescription: ', '')
+           if  'hasImportanceLevel: \"Minor\"' in attr and desc != "":
+                suggs.append(desc))
+                break
                 
         if sugg_flag in node:
             for attr in attrs:
                 if 'hasDescription' in attr:
                     suggs.append(attr.replace('hasDescription: ', ''))
-                    
+                    break
      if len(suggs) > 0:
         s += "The Suggestions are the following:\n"
         for i in range(len(suggs)):

@@ -114,7 +114,6 @@ for repo in g.get_user().get_repos():
     return issues_s
     
  def output_parsed_pitfalls(ont_file, oops_reply):
-    print oops_reply
     issues, interesting_features = parse_oops_issues(oops_reply)
     s = ""
     for i in issues:
@@ -130,7 +129,10 @@ for repo in g.get_user().get_repos():
     return s
     
  def parse_oops_issues(oops_rdf):
+    print oops_rdf
     p = rdfxml.parseRDF(oops_rdf)
+    print 'oops_rdf'
+    print p
     raw_oops_list = p.result
     oops_issues = {}
 

@@ -35,7 +35,7 @@ for repo in g.get_user().get_repos():
     f = open(file, 'r')
     ont = f.read()
     issues_s = get_pitfalls(ont)
-    close_old_oops_issues_in_github(repo, ont)
+    close_old_oops_issues_in_github(repo, file)
     nicer_oops_output(issues_s,file)
     #create_oops_issue_in_github(repo, ont, issues_s)
     
@@ -184,10 +184,10 @@ for repo in g.get_user().get_repos():
     num_of_warnings = issues.count(warn_flag)
     #create suggestions issue
     if num_of_suggestions > 0:
-     s = " OOPS! has encountered %d suggestions" % (num_of_suggestions)
-     s +=". "
+     s = " OOPS! has some suggestions to improve the ontology.\n" 
      nodes = issues.split("====================")
      suggs = []
+     m_pitf = []
      print nodes
      desc = ""
      for node in nodes[:-1]:
@@ -197,7 +197,7 @@ for repo in g.get_user().get_repos():
            if  'hasDescription' in attr:
             desc = attr.replace('hasDescription: ', '')
            if  'hasImportanceLevel: \"Minor\"' in attr and desc != "":
-                suggs.append(desc)
+                m_pitf.append(desc)
                 break
                 
         if sugg_flag in node:
@@ -217,7 +217,7 @@ for repo in g.get_user().get_repos():
     print 'will close old issues'
     print repo.get_issues(state='open')
     for i in repo.get_issues(state='open'):
-        if i.title == ('OOPS! Evaluation for ' + ont_file):
+        if i.title == ('OOPS! Evaluation for ' + s.path.splitext(os.path.basename(ont_file))[0]):
             i.edit(state='closed')
             
  def create_oops_issue_in_github(repo, ont_file, oops_issues,label):

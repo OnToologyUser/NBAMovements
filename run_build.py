@@ -129,10 +129,7 @@ for repo in g.get_user().get_repos():
     return s
     
  def parse_oops_issues(oops_rdf):
-    print oops_rdf
     p = rdfxml.parseRDF(oops_rdf)
-    print 'oops_rdf'
-    print p
     raw_oops_list = p.result
     oops_issues = {}
 
@@ -157,6 +154,24 @@ for repo in g.get_user().get_repos():
     for i in oops_issues_filter2:
         if '<http://www.oeg-upm.net/oops#hasNumberAffectedElements>' in oops_issues_filter2[i]:
             oops_issues_filter3[i] = oops_issues_filter2[i]
+    # Filter #4
+    # Only include data of interest about the issue
+    oops_issues_filter4 = {}
+    issue_interesting_data = [
+        '<http://www.oeg-upm.net/oops#hasName>',
+        '<http://www.oeg-upm.net/oops#hasCode>',
+        '<http://www.oeg-upm.net/oops#hasDescription>',
+        '<http://www.oeg-upm.net/oops#hasNumberAffectedElements>',
+        '<http://www.oeg-upm.net/oops#hasImportanceLevel>',
+        #'<http://www.oeg-upm.net/oops#hasAffectedElement>',
+        '<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>',
+    ]
+    for i in oops_issues_filter3:
+        oops_issues_filter4[i] = {}
+        for intda in issue_interesting_data:
+            if intda in oops_issues_filter3[i]:
+                oops_issues_filter4[i][intda] = oops_issues_filter3[i][intda]
+    return oops_issues_filter4, issue_interesting_data
     
  def close_old_oops_issues_in_github(target_repo, ont_file):
     print 'will close old issues'

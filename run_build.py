@@ -17,8 +17,10 @@ for repo in g.get_user().get_repos():
  if repo.has_in_collaborators('OnToologyUser'):
   #create labels for acceptance test notifications
   create_labels(repo)
+  
   ##Acceptance test
   list_of_files = glob.glob('./*.rq')
+  close_old_acc_issues_in_github(repo)
    # Each file a requirement
   for file in list_of_files:
     results = ont_query(file)
@@ -199,7 +201,6 @@ for repo in g.get_user().get_repos():
            if  'hasImportanceLevel: \"Minor\"' in attr and desc != "":
                 m_pitf.append(desc)
                 break
-                
         if sugg_flag in node:
             for attr in attrs:
                 if 'hasDescription' in attr:
@@ -217,7 +218,14 @@ for repo in g.get_user().get_repos():
     print 'will close old issues'
     print repo.get_issues(state='open')
     for i in repo.get_issues(state='open'):
-        if i.title == ('OOPS! Evaluation for ' + s.path.splitext(os.path.basename(ont_file))[0]):
+        if i.title == ('OOPS! Evaluation for ' + os.path.splitext(os.path.basename(ont_file))[0]):
+            i.edit(state='closed')
+            
+ def close_old_acc_issues_in_github(repo):
+    print 'will close old issues'
+    print repo.get_issues(state='open')
+    for i in repo.get_issues(state='open'):
+        if i.title == ('Acceptance test bug notification'):
             i.edit(state='closed')
             
  def create_oops_issue_in_github(repo, ont_file, oops_issues,label):

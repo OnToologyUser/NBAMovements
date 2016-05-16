@@ -193,7 +193,7 @@ for repo in g.get_user().get_repos():
         if sugg_flag in node:
             for attr in attrs:
                 if 'hasName' in attr:
-                    suggs.append(attr.replace('hasName: ', ''))
+                    suggs.append(attr.replace('hasCode: ', ''))
                     break
                 if 'hasDescription' in attr:
                     suggs.append(attr.replace('hasDescription: ', ''))
@@ -201,7 +201,7 @@ for repo in g.get_user().get_repos():
         s += "The Suggestions are the following:\n"
         for i in range(len(suggs)):
             s += "%d. " % (i + 1) + suggs[i] + "\n"
-        labels = ["Unit test bug", "enhancement"]
+        labels = ["enhancement", "Unit test bug"]
         create_oops_issue_in_github(repo, ont_file, s, labels)    
     
     

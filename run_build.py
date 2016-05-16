@@ -36,7 +36,8 @@ for repo in g.get_user().get_repos():
     ont = f.read()
     issues_s = get_pitfalls(ont)
     close_old_oops_issues_in_github(repo, ont)
-    create_oops_issue_in_github(repo, ont, issues_s)
+    nicer_oops_output(issues_s,ont)
+    #create_oops_issue_in_github(repo, ont, issues_s)
     
     
  
@@ -58,6 +59,7 @@ for repo in g.get_user().get_repos():
    flag_model = False
    flag_metadata = False
    flag_lang = False
+   flag_en = False
    for label in repo.get_labels():
     if label.name == "Acceptance test bug":
       flag_acc = True
@@ -69,6 +71,8 @@ for repo in g.get_user().get_repos():
       flag_model = True
     elif label.name == "Ontology Language":
       flag_lang = True
+    elif label.name == "Enhancement":
+      flag_en = True
    if flag_acc == False:  
     repo.create_label("Acceptance test bug", "F50511")
    if flag_unit == False: 
@@ -79,7 +83,8 @@ for repo in g.get_user().get_repos():
     repo.create_label("Modelling",  "F50511")
    if flag_lang == False:
     repo.create_label("Ontology Language",  "F50511")   
-    
+   if flag_en == False:
+    repo.create_label("Enhancement",  "F50511")     
  def get_pitfalls(ont_file):
     url = 'http://oops-ws.oeg-upm.net/rest'
     xml_content = """
@@ -173,6 +178,35 @@ for repo in g.get_user().get_repos():
                 oops_issues_filter4[i][intda] = oops_issues_filter3[i][intda]
     return oops_issues_filter4, issue_interesting_data
     
+ def nicer_oops_output(issues,ont_file):
+    sugg_flag = '<http://www.oeg-upm.net/oops#suggestion>'
+    pitf_flag = '<http://www.oeg-upm.net/oops#pitfall>'
+    warn_flag = '<http://www.oeg-upm.net/oops#warning>'
+    num_of_suggestions = issues.count(sugg_flag)
+    num_of_pitfalls = issues.count(pitf_flag)
+    num_of_warnings = issues.count(warn_flag)
+    #create suggestions issue
+    if num_of_suggestions > 0:
+     s = " OOPS! has encountered %d suggestions" % (num_of_suggestions)
+     nodes = issues.split("====================")
+     suggs = []
+     for node in nodes[:-1]:
+        attrs = node.split("\n")
+        if sugg_flag in node:
+            for attr in attrs:
+                if 'hasName' in attr:
+                    suggs.append(attr.replace('hasName: ', ''))
+                    break
+                if 'hasDescription' in attr:
+                    suggs.append(attr.replace('hasDescription: ', ''))
+     if len(suggs) > 0:
+        s += "The Suggestions are the following:\n"
+        for i in range(len(suggs)):
+            s += "%d. " % (i + 1) + suggs[i] + "\n"
+        labels = ["Unit test bug", "Enhancement"]
+        create_oops_issue_in_github(repo, ont_file, s, labels)    
+    
+    
  def close_old_oops_issues_in_github(repo, ont_file):
     print 'will close old issues'
     print repo.get_issues(state='open')
@@ -180,11 +214,11 @@ for repo in g.get_user().get_repos():
         if i.title == ('OOPS! Evaluation for ' + ont_file):
             i.edit(state='closed')
             
- def create_oops_issue_in_github(repo, ont_file, oops_issues):
+ def create_oops_issue_in_github(repo, ont_file, oops_issues,label):
     print 'will create an oops issue'
     try:
         repo.create_issue(
-            'OOPS! Evaluation for ' + ont_file, oops_issues)
+            'OOPS! Evaluation for ' + ont_file, oops_issues, labels = label)
     except Exception as e:
         print 'exception when creating issue: ' + str(e)
 

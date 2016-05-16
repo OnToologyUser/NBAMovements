@@ -185,18 +185,23 @@ for repo in g.get_user().get_repos():
     #create suggestions issue
     if num_of_suggestions > 0:
      s = " OOPS! has encountered %d suggestions" % (num_of_suggestions)
+     s +=". "
      nodes = issues.split("====================")
      suggs = []
      print nodes
      for node in nodes[:-1]:
         attrs = node.split("\n")
+        if pitf_flag in node: 
+          for attr in attrs:
+           if 'hasImportanceLevel: \"Minor\" ' in attr:
+              if  'hasDescription' in attr:
+                suggs.append(attr.replace('hasName: ', ''))
+                break
         if sugg_flag in node:
             for attr in attrs:
-                if 'hasName' in attr:
+                if 'hasCode' in attr:
                     suggs.append(attr.replace('hasCode: ', ''))
                     break
-                if 'hasDescription' in attr:
-                    suggs.append(attr.replace('hasDescription: ', ''))
      if len(suggs) > 0:
         s += "The Suggestions are the following:\n"
         for i in range(len(suggs)):

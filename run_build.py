@@ -197,7 +197,7 @@ for repo in g.get_user().get_repos():
            if  'hasDescription' in attr:
             desc = attr.replace('hasDescription: ', '')
            if  'hasImportanceLevel: \"Minor\"' in attr and desc != "":
-                suggs.append(desc))
+                suggs.append(desc)
                 break
                 
         if sugg_flag in node:

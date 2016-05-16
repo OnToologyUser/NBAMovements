@@ -193,21 +193,21 @@ for repo in g.get_user().get_repos():
         attrs = node.split("\n")
         if pitf_flag in node: 
           for attr in attrs:
-           print 'hasImportanceLevel: \"Minor\" ' 
-           if 'hasImportanceLevel: \"Minor\" ' in attr:
+           if 'hasImportanceLevel: \"Minor\"' in attr:
+            print 'entro'
               if  'hasDescription' in attr:
-                suggs.append(attr.replace('hasName: ', ''))
+                suggs.append(attr.replace('hasDescription: ', ''))
                 break
         if sugg_flag in node:
             for attr in attrs:
-                if 'hasCode' in attr:
-                    suggs.append(attr.replace('hasCode: ', ''))
+                if 'hasDescription' in attr:
+                    suggs.append(attr.replace('hasDescription: ', ''))
                     break
      if len(suggs) > 0:
         s += "The Suggestions are the following:\n"
         for i in range(len(suggs)):
             s += "%d. " % (i + 1) + suggs[i] + "\n"
-        labels = ["enhancement", "Unit test bug"]
+        labels = ["enhancement"]
         create_oops_issue_in_github(repo, ont_file, s, labels)    
     
     

@@ -180,10 +180,10 @@ for repo in g.get_user().get_repos():
         if i.title == ('OOPS! Evaluation for ' + ont_file):
             i.edit(state='closed')
             
- def create_oops_issue_in_github(target_repo, ont_file, oops_issues):
+ def create_oops_issue_in_github(repo, ont_file, oops_issues):
     print 'will create an oops issue'
     try:
-        g.get_repo(target_repo).create_issue(
+        repo.create_issue(
             'OOPS! Evaluation for ' + ont_file, oops_issues)
     except Exception as e:
         print 'exception when creating issue: ' + str(e)

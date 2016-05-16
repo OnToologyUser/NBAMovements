@@ -71,8 +71,6 @@ for repo in g.get_user().get_repos():
       flag_model = True
     elif label.name == "Ontology Language":
       flag_lang = True
-    elif label.name == "Enhancement":
-      flag_en = True
    if flag_acc == False:  
     repo.create_label("Acceptance test bug", "F50511")
    if flag_unit == False: 
@@ -82,9 +80,8 @@ for repo in g.get_user().get_repos():
    if flag_model == False:
     repo.create_label("Modelling",  "F50511")
    if flag_lang == False:
-    repo.create_label("Ontology Language",  "F50511")   
-   if flag_en == False:
-    repo.create_label("Enhancement",  "F50511")     
+    repo.create_label("Ontology Language",  "F50511")    
+    
  def get_pitfalls(ont_file):
     url = 'http://oops-ws.oeg-upm.net/rest'
     xml_content = """
@@ -203,7 +200,7 @@ for repo in g.get_user().get_repos():
         s += "The Suggestions are the following:\n"
         for i in range(len(suggs)):
             s += "%d. " % (i + 1) + suggs[i] + "\n"
-        labels = ["Unit test bug", "Enhancement"]
+        labels = ["Unit test bug", "enhancement"]
         create_oops_issue_in_github(repo, ont_file, s, labels)    
     
     

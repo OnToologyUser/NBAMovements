@@ -194,7 +194,7 @@ for repo in g.get_user().get_repos():
         if pitf_flag in node: 
           for attr in attrs:
            if 'hasImportanceLevel: \"Minor\"' in attr:
-            print 'entro'
+             print 'entro'
               if  'hasDescription' in attr:
                 suggs.append(attr.replace('hasDescription: ', ''))
                 break

@@ -185,33 +185,94 @@ for repo in g.get_user().get_repos():
     num_of_pitfalls = issues.count(pitf_flag)
     num_of_warnings = issues.count(warn_flag)
     #create suggestions issue
-    if num_of_suggestions > 0:
+    if num_of_suggestions > 0 or num_pitfalls > 0 :
      s = " OOPS! has some suggestions to improve the ontology.\n" 
+     p = " OOPS! has encountered some pitfalls. \n" 
+     p += "The Pitfalls are the following: \n"
      nodes = issues.split("====================")
      suggs = []
      m_pitf = []
-     print nodes
+     inf_pitf = []
+     mod_pitf = []
+     met_pitf = []
+     lang_pitf = []
      desc = ""
      for node in nodes[:-1]:
         attrs = node.split("\n")
         if pitf_flag in node: 
           for attr in attrs:
+           desc = ""
+           #minor pitfalls
            if  'hasDescription' in attr:
             desc = attr.replace('hasDescription: ', '')
            if  'hasImportanceLevel: \"Minor\"' in attr and desc != "":
                 m_pitf.append(desc)
                 break
+           #inference pitfalls
+           if 'hasCode' in attr:
+            if attr == 'P06' or attr == 'P19' or attr == 'P29' or attr == 'P28' or attr == 'P31' or attr == 'P05' or attr == 'P27' or attr == 'P15' or attr == 'P01' or attr == 'P16' or attr == 'P18' or attr == 'P11' or attr == 'P12' or attr == 'P30':
+              desc = attr
+           if 'hasDescription' in attr and desc != "": 
+              inf_pitf.append(attr.replace('hasDescription: ', ''))
+           #modelling pitfalls
+           if 'hasCode' in attr:
+            if attr == 'P03' or attr == 'P14' or attr == 'P24' or attr == 'P25' or attr == 'P26' or attr == 'P17' or attr == 'P23' or attr == 'P10':
+              desc = attr
+           if 'hasDescription' in attr and desc != "" : 
+              mod_pitf.append(attr.replace('hasDescription: ', ''))
+           #metadata pitfalls
+           if 'hasCode' in attr:
+            if attr == 'P39' or attr == 'P40' or attr == 'P38' or attr == 'P41':
+              desc = attr
+           if 'hasDescription' in attr and desc != "": 
+              met_pitf.append(attr.replace('hasDescription: ', ''))
+           #language pitfalls
+           if 'hasCode' in attr:
+            if attr == 'P34' or attr == 'P35':
+              desc = attr
+           if 'hasDescription' in attr and desc != "": 
+              lang_pitf.append(attr.replace('hasDescription: ', ''))
+           
         if sugg_flag in node:
             for attr in attrs:
                 if 'hasDescription' in attr:
                     suggs.append(attr.replace('hasDescription: ', ''))
                     break
+                   
      if len(suggs) > 0:
         s += "The Suggestions are the following:\n"
         for i in range(len(suggs)):
             s += "%d. " % (i + 1) + suggs[i] + "\n"
         labels = ["enhancement"]
-        create_oops_issue_in_github(repo, ont_file, s, labels)    
+        create_oops_issue_in_github(repo, ont_file, s, labels) 
+     if len(inf_pitf) > 0:
+        i_p = p
+        for i in range(len(inf_pitf)):
+            i_p += "%d. " % (i + 1) + inf_pitf[i] + "\n"
+        labels = ["Unit test bug", "Inference"]
+        create_oops_issue_in_github(repo, ont_file, i_p, labels)
+     if len(mod_pitf) > 0:
+        #p += "The Pitfalls are the following: \n"
+        m_p = p
+        for i in range(len(mod_pitf)):
+            m_p += "%d. " % (i + 1) + mod_pitf[i] + "\n"
+        labels = ["Unit test bug", "Modelling"]
+        create_oops_issue_in_github(repo, ont_file, m_p, labels)
+      if len(met_pitf) > 0:
+        #i_p += "The Pitfalls are the following: \n"
+        met_p = p
+        for i in range(len(met_pitf)):
+            met_p += "%d. " % (i + 1) + met_pitf[i] + "\n"
+        labels = ["Unit test bug", "Metadata"]
+        create_oops_issue_in_github(repo, ont_file, met_p, labels)
+      if len(lang_pitf) > 0:
+        l_p  = p
+        for i in range(len(lang_pitf)):
+            l_p += "%d. " % (i + 1) + lang_pitf[i] + "\n"
+        labels = ["Unit test bug", "Language"]
+        create_oops_issue_in_github(repo, ont_file, l_p, labels)
+         
+             
     
     
  def close_old_oops_issues_in_github(repo, ont_file):

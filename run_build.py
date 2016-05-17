@@ -25,11 +25,16 @@ for repo in g.get_user().get_repos():
   for file in list_of_files:
     results = ont_query(file)
     flag = True
+    if results:
+    	print 'not empty'
+    elif not results:
+    	print 'empty'
+
     for result in results["results"]["bindings"]:
      if result == {}:
       flag = False
     #if flag == False:
-    # repo.create_issue('Acceptance test bug notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
+    # repo.create_issue('Acceptance test  notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
    
   ##Unit test
   ont_files = glob.glob('./*.owl')
@@ -47,7 +52,7 @@ for repo in g.get_user().get_repos():
     req = open(req_file, 'r')
     sparql = SPARQLWrapper("http://dbpedia.org/sparql")
     query =  req.read()
-    sparql.setQuery(query )
+    sparql.setQuery(query)
     sparql.setReturnFormat(JSON)
     results = sparql.query().convert()
     req.close()
@@ -189,10 +194,11 @@ for repo in g.get_user().get_repos():
     num_of_warnings = issues.count(warn_flag)
     #create suggestions issue
     if num_of_suggestions > 0 or num_pitfalls > 0 :
-     s = " OOPS! has some suggestions to improve the ontology.\n" 
+     s = " OOPS! has some suggestions and warnings to improve the ontology.\n" 
      p = " OOPS! has encountered some pitfalls related to " 
     
      nodes = issues.split("====================")
+     warn = []
      suggs = []
      m_pitf = []
      inf_pitf = []
@@ -264,11 +270,27 @@ for repo in g.get_user().get_repos():
                 if 'hasDescription' in attr:
                     suggs.append(attr.replace('hasDescription: ', ''))
                     break
+        #warnings
+        if warn_flag in node:
+           for attr in attrs:
+                if 'hasDescription' in attr:
+                    warn.append(attr.replace('hasDescription: ', ''))
+                    break
+
                    
-     if len(suggs) > 0 :
-        s += "The Suggestions are the following:\n"
-        for i in range(len(suggs)):
-            s += "%d. " % (i + 1) + suggs[i] +"\n\n"
+     if len(suggs) > 0 or len(m_pitf)> 0 or len(warn) > 0 :
+     	if len(suggs) > 0:
+        	s += "The Suggestions are the following:\n"
+       		for i in range(len(suggs)):
+            	s += "%d. " % (i + 1) + suggs[i] +"\n"
+        if len(warn) > 0:
+        	s += "\n\nThe Warnings are the following:\n"
+        	for i in range(len(warn)):
+            	s += "%d. " % (i + 1) + warn[i] +"\n"
+        if len(m_pitf) > 0:
+        	s += "\n\nThe minor pitfalls are the following:\n" 
+        	for i in range(len(m_pitf)):
+            	s += "%d. " % (i + 1) + m_pitf[i] +"\n"
         labels = ["enhancement"]
         create_oops_issue_in_github(repo, ont_file, s, labels) 
      if len(inf_pitf) > 0:
@@ -277,7 +299,7 @@ for repo in g.get_user().get_repos():
         i_p += "The Pitfalls are the following: \n"
         for i in range(len(inf_pitf)):
           print inf_pitf_i
-          i_p += "%d. " % (i + 1) + inf_pitf[i] + ". Importance level: "+ inf_pitf_i[i] +"\n\n"
+          i_p += "%d. " % (i + 1) + inf_pitf[i] + ". Importance level: "+ inf_pitf_i[i] +"\n"
         labels = ["Unit test bug", "Inference"]
         create_oops_issue_in_github(repo, ont_file, i_p, labels)
      if len(mod_pitf) > 0:
@@ -286,7 +308,7 @@ for repo in g.get_user().get_repos():
         m_p += "modelling. \n"
         m_p += "The Pitfalls are the following: \n"
         for i in range(len(mod_pitf)):
-            m_p += "%d. " % (i + 1) + mod_pitf[i] + ". Importance level: "+ mod_pitf_i[i] + "\n\n"
+            m_p += "%d. " % (i + 1) + mod_pitf[i] + ". Importance level: "+ mod_pitf_i[i] + "\n"
         labels = ["Unit test bug", "Modelling"]
         create_oops_issue_in_github(repo, ont_file, m_p, labels)
      if len(met_pitf) > 0:
@@ -294,7 +316,7 @@ for repo in g.get_user().get_repos():
         met_p += "metadata. \n"
         met_p += "The Pitfalls are the following: \n"
         for i in range(len(met_pitf)):
-            met_p += "%d. " % (i + 1) + met_pitf[i] + ". Importance level: "+ met_pitf_i[i] +"\n\n"
+            met_p += "%d. " % (i + 1) + met_pitf[i] + ". Importance level: "+ met_pitf_i[i] +"\n"
         labels = ["Unit test bug", "Metadata"]
         create_oops_issue_in_github(repo, ont_file, met_p, labels)
      if len(lang_pitf) > 0:
@@ -302,7 +324,7 @@ for repo in g.get_user().get_repos():
         l_p = "ontology language. \n"
         l_p = "The Pitfalls are the following: \n"
         for i in range(len(lang_pitf)):
-            l_p += "%d. " % (i + 1) + lang_pitf[i] + ". Importance level: "+ lang_pitf_i[i].replace('\"','') +"\n\n"
+            l_p += "%d. " % (i + 1) + lang_pitf[i] + ". Importance level: "+ lang_pitf_i[i].replace('\"','') +"\n"
         labels = ["Unit test bug", "Language"]
         create_oops_issue_in_github(repo, ont_file, l_p, labels)
          
@@ -321,7 +343,7 @@ for repo in g.get_user().get_repos():
     print repo.get_issues(state='open')
     for i in repo.get_issues(state='open'):
         print i.title
-        if i.title == ('Acceptance test bug notification'):
+        if i.title == ('Acceptance test notification'):
             i.edit(state='closed')
             
  def create_oops_issue_in_github(repo, ont_file, oops_issues,label):

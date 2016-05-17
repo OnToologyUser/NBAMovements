@@ -247,6 +247,8 @@ for repo in g.get_user().get_repos():
               break
              
            if 'hasImportanceLevel' in attr:
+            print 'Importance'
+            print attr
             if flag_i == True:
              inf_pitf_i.append(attr.replace('hasImportanceLevel: ', ''))
              break

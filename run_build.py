@@ -268,27 +268,27 @@ for repo in g.get_user().get_repos():
      if len(inf_pitf) > 0:
         i_p = p
         for i in range(len(inf_pitf)):
-            i_p += "%d. " % (i + 1) + inf_pitf[i] + ". Importance level: "+  inf_pit_i[i]+ "\n\n"
+            i_p += "%d. " % (i + 1) + inf_pitf[i] + ". Importance level: "+  inf_pitf_i[i]+ "\n\n"
         labels = ["Unit test bug", "Inference"]
         create_oops_issue_in_github(repo, ont_file, i_p, labels)
      if len(mod_pitf) > 0:
         #p += "The Pitfalls are the following: \n"
         m_p = p
         for i in range(len(mod_pitf)):
-            m_p += "%d. " % (i + 1) + mod_pitf[i] + ". Importance level: "+  mod_pit_i[i] + "\n\n"
+            m_p += "%d. " % (i + 1) + mod_pitf[i] + ". Importance level: "+  mod_pitf_i[i] + "\n\n"
         labels = ["Unit test bug", "Modelling"]
         create_oops_issue_in_github(repo, ont_file, m_p, labels)
      if len(met_pitf) > 0:
         #i_p += "The Pitfalls are the following: \n"
         met_p = p
         for i in range(len(met_pitf)):
-            met_p += "%d. " % (i + 1) + met_pitf[i] + ". Importance level: "+  met_pit_i[i]+ "\n\n"
+            met_p += "%d. " % (i + 1) + met_pitf[i] + ". Importance level: "+  met_pitf_i[i]+ "\n\n"
         labels = ["Unit test bug", "Metadata"]
         create_oops_issue_in_github(repo, ont_file, met_p, labels)
      if len(lang_pitf) > 0:
         l_p  = p
         for i in range(len(lang_pitf)):
-            l_p += "%d. " % (i + 1) + lang_pitf[i] + ". Importance level: "+  lang_pit_i[i]+ "\n\n"
+            l_p += "%d. " % (i + 1) + lang_pitf[i] + ". Importance level: "+  lang_pitf_i[i]+ "\n\n"
         labels = ["Unit test bug", "Language"]
         create_oops_issue_in_github(repo, ont_file, l_p, labels)
          

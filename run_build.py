@@ -282,12 +282,12 @@ for repo in g.get_user().get_repos():
      	if len(suggs) > 0:
         	s += "The Suggestions are the following:\n"
        		for i in range(len(suggs)):
-            	s += "%d. " % (i + 1) + suggs[i] +"\n"
-        if len(warn) > 0:
+          s += "%d. " % (i + 1) + suggs[i] +"\n"
+      if len(warn) > 0:
         	s += "\n\nThe Warnings are the following:\n"
         	for i in range(len(warn)):
             	s += "%d. " % (i + 1) + warn[i] +"\n"
-        if len(m_pitf) > 0:
+      if len(m_pitf) > 0:
         	s += "\n\nThe minor pitfalls are the following:\n" 
         	for i in range(len(m_pitf)):
             	s += "%d. " % (i + 1) + m_pitf[i] +"\n"

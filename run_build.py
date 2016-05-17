@@ -224,7 +224,7 @@ for repo in g.get_user().get_repos():
               desc = attr.replace('hasName: ', '')
            #minor pitfalls
            if  'hasImportanceLevel: \"Minor\"' in attr and desc != "":
-                suggs.append(desc)
+                m_pitf.append(desc)
                 break
            #critical-important pitfalls     
            if 'hasCode' in attr:

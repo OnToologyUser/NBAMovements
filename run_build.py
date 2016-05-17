@@ -278,7 +278,7 @@ for repo in g.get_user().get_repos():
                     break
 
                    
-					if len(suggs) > 0 or len(m_pitf)> 0 or len(warn) > 0 :
+		 if len(suggs) > 0 or len(m_pitf)> 0 or len(warn) > 0 :
 							if len(suggs) > 0:
 										s += "The Suggestions are the following:\n"
 										for i in range(len(suggs)):
@@ -291,8 +291,8 @@ for repo in g.get_user().get_repos():
 											s += "\n\nThe minor pitfalls are the following:\n" 
 											for i in range(len(m_pitf)):
 														s += "%d. " % (i + 1) + m_pitf[i] +"\n"
-       labels = ["enhancement"]
-       create_oops_issue_in_github(repo, ont_file, s, labels) 
+              labels = ["enhancement"]
+              create_oops_issue_in_github(repo, ont_file, s, labels) 
      if len(inf_pitf) > 0:
         i_p = p
         i_p += "inference. \n"

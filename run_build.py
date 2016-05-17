@@ -268,7 +268,8 @@ for repo in g.get_user().get_repos():
      if len(inf_pitf) > 0:
         i_p = p
         for i in range(len(inf_pitf)):
-            i_p += "%d. " % (i + 1) + inf_pitf[i] + ". Importance level: "+  inf_pitf_i[i]+ "\n\n"
+          print inf_pitf_i
+          i_p += "%d. " % (i + 1) + inf_pitf[i] + ". Importance level: "+  inf_pitf_i[i]+ "\n\n"
         labels = ["Unit test bug", "Inference"]
         create_oops_issue_in_github(repo, ont_file, i_p, labels)
      if len(mod_pitf) > 0:

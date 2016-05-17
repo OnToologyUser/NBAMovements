@@ -212,8 +212,6 @@ for repo in g.get_user().get_repos():
            #catching the name of the pitfall
            if 'hasName' in attr: 
               desc = attr.replace('hasName: ', '')
-              print desc 
-              print 'sale'
            #minor pitfalls
         #   if  'hasDescription' in attr:
          #   desc = attr.replace('hasDescription: ', '')
@@ -223,24 +221,25 @@ for repo in g.get_user().get_repos():
 
             #inference pitfalls
            if 'hasCode' in attr:
-            print 'code'
-            print attr
-            attr = attr.replace('hasCode: ', '')
-            print attr
-            if attr == 'P06' or attr == 'P19' or attr == 'P29' or attr == 'P28' or attr == 'P31' or attr == 'P05' or attr == 'P27' or attr == 'P15' or attr == 'P01' or attr == 'P16' or attr == 'P18' or attr == 'P11' or attr == 'P12' or attr == 'P30':
+            attr_n = attr.replace('hasCode: ', '')
+            if attr_n == 'P06' or attr_n == 'P19' or attr_n == 'P29' or attr_n == 'P28' or attr_n == 'P31' or attr_n == 'P05' or attr_n == 'P27' or attr_n == 'P15' or attr_n == 'P01' or attr_n == 'P16' or attr_n == 'P18' or attr_n == 'P11' or attr_n == 'P12' or attr_n == 'P30':
               print desc
               inf_pitf.append(desc)
               flag = True
-            elif attr == 'P03' or attr == 'P14' or attr == 'P24' or attr == 'P25' or attr == 'P26' or attr == 'P17' or attr == 'P23' or attr == 'P10':
+              break
+            elif attr_n == 'P03' or attr_n == 'P14' or attr_n == 'P24' or attr_n == 'P25' or attr_n == 'P26' or attr_n == 'P17' or attr_n == 'P23' or attr_n == 'P10':
                mod_pitf.append(desc)
                flag = True
-            elif attr == 'P39' or attr == 'P40' or attr == 'P38' or attr == 'P41':
+               break
+            elif attr_n == 'P39' or attr_n == 'P40' or attr_n == 'P38' or attr_n == 'P41':
                 met_pitf.append(desc)
                 flag = True
-            elif attr == 'P34' or attr == 'P35':
-              print desc 
+                break
+            elif attr_n == 'P34' or attr_n == 'P35':
+              print 'append ' + desc 
               lang_pitf.append(desc)
               flag = True
+              break
                
             #suggestions
         if sugg_flag in node:

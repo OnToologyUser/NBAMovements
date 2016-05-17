@@ -17,11 +17,11 @@ for repo in g.get_user().get_repos():
  if repo.has_in_collaborators('OnToologyUser'):
   #create labels for acceptance test notifications
   create_labels(repo)
-  
+  ##########TESTS#########
   ##Acceptance test
   list_of_files = glob.glob('./*.rq')
   close_old_acc_issues_in_github(repo)
-   # Each file a requirement
+   # Each file has a requirement
   for file in list_of_files:
     results = ont_query(file)
     flag = True
@@ -258,14 +258,14 @@ for repo in g.get_user().get_repos():
             m_p += "%d. " % (i + 1) + mod_pitf[i] + "\n"
         labels = ["Unit test bug", "Modelling"]
         create_oops_issue_in_github(repo, ont_file, m_p, labels)
-      if len(met_pitf) > 0:
+     if len(met_pitf) > 0:
         #i_p += "The Pitfalls are the following: \n"
         met_p = p
         for i in range(len(met_pitf)):
             met_p += "%d. " % (i + 1) + met_pitf[i] + "\n"
         labels = ["Unit test bug", "Metadata"]
         create_oops_issue_in_github(repo, ont_file, met_p, labels)
-      if len(lang_pitf) > 0:
+     if len(lang_pitf) > 0:
         l_p  = p
         for i in range(len(lang_pitf)):
             l_p += "%d. " % (i + 1) + lang_pitf[i] + "\n"

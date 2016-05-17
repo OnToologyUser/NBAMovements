@@ -206,7 +206,8 @@ for repo in g.get_user().get_repos():
      desc = ""
      for node in nodes[:-1]:
         attrs = node.split("\n")
-        if pitf_flag in node: 
+        if pitf_flag in node:
+          flag = False
           for attr in attrs:
            desc = ""
            #minor pitfalls
@@ -215,40 +216,40 @@ for repo in g.get_user().get_repos():
            if  'hasImportanceLevel: \"Minor\"' in attr and desc != "":
                 m_pitf.append(desc)
                 break
-           #inference pitfalls
+           #catching the name of the pitfall
+           if 'hasName' in attr: 
+              desc = attr.replace('hasName: ', '')
+              
+            #inference pitfalls
            if 'hasCode' in attr:
             if attr == 'P06' or attr == 'P19' or attr == 'P29' or attr == 'P28' or attr == 'P31' or attr == 'P05' or attr == 'P27' or attr == 'P15' or attr == 'P01' or attr == 'P16' or attr == 'P18' or attr == 'P11' or attr == 'P12' or attr == 'P30':
-              desc = attr
-           if 'hasDescription' in attr and desc != "": 
-              inf_pitf.append(attr.replace('hasName: ', ''))
-           if 'hasImportanceLevel' in attr and desc != "":
+              inf_pitf.append(desc)
+              flag = True
+           if 'hasImportanceLevel' in attr and flag == True:
               inf_pitf_i.append(attr.replace('hasImportanceLevel: ',''))
               break
            #modelling pitfalls
            if 'hasCode' in attr:
             if attr == 'P03' or attr == 'P14' or attr == 'P24' or attr == 'P25' or attr == 'P26' or attr == 'P17' or attr == 'P23' or attr == 'P10':
-              desc = attr
-           if 'hasDescription' in attr and desc != "" : 
-              mod_pitf.append(attr.replace('hasName: ', ''))
-           if 'hasImportanceLevel' in attr and desc != "":
+              mod_pitf.append(desc)
+              flag = True
+           if 'hasImportanceLevel' in attr and  flag == True:
               mod_pitf_i.append(attr.replace('hasImportanceLevel: ',''))
               break
            #metadata pitfalls
            if 'hasCode' in attr:
             if attr == 'P39' or attr == 'P40' or attr == 'P38' or attr == 'P41':
-              desc = attr
-           if 'hasDescription' in attr and desc != "": 
-              met_pitf.append(attr.replace('hasName: ', ''))
-           if 'hasImportanceLevel' in attr and desc != "":
+              met_pitf.append(desc)
+              flag = True
+           if 'hasImportanceLevel' in attr and flag == True:
               met_pitf_i.append(attr.replace('hasImportanceLevel: ',''))
               break
            #language pitfalls
            if 'hasCode' in attr:
             if attr == 'P34' or attr == 'P35':
-              desc = attr
-           if 'hasDescription' in attr and desc != "": 
-              lang_pitf.append(attr.replace('hasName: ', ''))
-           if 'hasImportanceLevel' in attr and desc != "":
+               lang_pitf.append(desc)
+               flag = True
+           if 'hasImportanceLevel' in attr and flag ==True:
               lang_pitf_i.append(attr.replace('hasImportanceLevel: ',''))
               break
         #suggestions

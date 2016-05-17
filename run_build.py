@@ -204,6 +204,7 @@ for repo in g.get_user().get_repos():
      met_pitf_i = []
      lang_pitf_i = []
      desc = ""
+     print nodes
      for node in nodes[:-1]:
         attrs = node.split("\n")
         if pitf_flag in node:

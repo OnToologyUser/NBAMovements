@@ -43,7 +43,6 @@ for repo in g.get_user().get_repos():
     
     
  
- 
  def ont_query(req_file):
     req = open(req_file, 'r')
     sparql = SPARQLWrapper("http://dbpedia.org/sparql")

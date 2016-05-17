@@ -211,17 +211,19 @@ for repo in g.get_user().get_repos():
           for attr in attrs:
            #minor pitfalls
            if  'hasDescription' in attr:
-            desc = attr.replace('hasName: ', '')
+            desc = attr.replace('hasDescription: ', '')
            if  'hasImportanceLevel: \"Minor\"' in attr and desc != "":
                 m_pitf.append(desc)
                 break
            #catching the name of the pitfall
            if 'hasName' in attr: 
               desc = attr.replace('hasName: ', '')
-              
+              print desc 
+              print 'sale'
             #inference pitfalls
            if 'hasCode' in attr:
             if attr == 'P06' or attr == 'P19' or attr == 'P29' or attr == 'P28' or attr == 'P31' or attr == 'P05' or attr == 'P27' or attr == 'P15' or attr == 'P01' or attr == 'P16' or attr == 'P18' or attr == 'P11' or attr == 'P12' or attr == 'P30':
+              print desc
               inf_pitf.append(desc)
               flag = True
            if 'hasImportanceLevel' in attr and flag == True:

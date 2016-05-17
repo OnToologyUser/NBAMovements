@@ -233,20 +233,20 @@ for repo in g.get_user().get_repos():
               print desc
               inf_pitf.append(desc)
               flag_i = True
-              break
+              
             elif attr_n == '\"P03\"' or attr_n == '\"P14\"' or attr_n == '\"P24\"' or attr_n == '\"P25\"' or attr_n == '\"P26\"' or attr_n == '\"P17\"' or attr_n == '\"P23\"' or attr_n == '\"P10\"':
                mod_pitf.append(desc)
                flag_mo = True
-               break
+               
             elif attr_n == '\"P39\"' or attr_n == '\"P40\"' or attr_n == '\"P38\"' or attr_n == '\"P41\"':
                 met_pitf.append(desc)
                 flag_me = True
-                break
+                
             elif attr_n == '\"P34\"' or attr_n == '\"P35\"':
               print 'append ' + desc 
               lang_pitf.append(desc)
               flag_l = True
-              break
+              
              
            if 'hasImportanceLevel' in attr:
             print 'Importance'

@@ -71,8 +71,10 @@ for repo in g.get_user().get_repos():
       flag_inference =True
     elif label.name == "Modelling":
       flag_model = True
-    elif label.name == "Ontology Language":
+    elif label.name == "Language":
       flag_lang = True
+    elif label.name == "Metadata":
+      flag_metadata = True
    if flag_acc == False:  
     repo.create_label("Acceptance test bug", "F50511")
    if flag_unit == False: 
@@ -83,7 +85,7 @@ for repo in g.get_user().get_repos():
     repo.create_label("Modelling",  "d4c5f9")
    if flag_lang == False:
     repo.create_label("Language",  "fef2c0")
-   if flag_met == False:
+   if flag_metadata == False:
     repo.create_label("Metadata", "c5def5")
     
  def get_pitfalls(ont_file):

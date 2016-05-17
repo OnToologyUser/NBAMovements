@@ -209,7 +209,6 @@ for repo in g.get_user().get_repos():
         if pitf_flag in node:
           flag = False
           for attr in attrs:
-           desc = ""
            #minor pitfalls
            if  'hasDescription' in attr:
             desc = attr.replace('hasName: ', '')

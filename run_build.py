@@ -207,7 +207,10 @@ for repo in g.get_user().get_repos():
      for node in nodes[:-1]:
         attrs = node.split("\n")
         if pitf_flag in node:
-          flag = False
+          flag_i = False
+          flag_mo = False
+          flag_me = False
+          flag_l = False
           for attr in attrs:
            #catching the name of the pitfall
            if 'hasName' in attr: 
@@ -222,23 +225,39 @@ for repo in g.get_user().get_repos():
             #inference pitfalls
            if 'hasCode' in attr:
             attr_n = attr.replace('hasCode: ', '')
-            if attr_n == 'P06' or attr_n == 'P19' or attr_n == 'P29' or attr_n == 'P28' or attr_n == 'P31' or attr_n == 'P05' or attr_n == 'P27' or attr_n == 'P15' or attr_n == 'P01' or attr_n == 'P16' or attr_n == 'P18' or attr_n == 'P11' or attr_n == 'P12' or attr_n == 'P30':
+            print attr_n
+            
+            if attr_n == '\"P06\"' or attr_n == '\"P19\"' or attr_n == '\"P29\"' or attr_n == '\"P28\"' or attr_n == '\"P31\"' or attr_n == '\"P05\"' or attr_n == '\"P27\"' or attr_n == '\"P15\"' or attr_n == '\"P01\"' or attr_n == '\"P16\"' or attr_n == '\"P18\"' or attr_n == '\"P11\"' or attr_n == '\"P12\"' or attr_n == '\"P30\"':
               print desc
               inf_pitf.append(desc)
-              flag = True
+              flag_i = True
               break
-            elif attr_n == 'P03' or attr_n == 'P14' or attr_n == 'P24' or attr_n == 'P25' or attr_n == 'P26' or attr_n == 'P17' or attr_n == 'P23' or attr_n == 'P10':
+            elif attr_n == '\"P03\"' or attr_n == '\"P14\"' or attr_n == '\"P24\"' or attr_n == '\"P25\"' or attr_n == '\"P26\"' or attr_n == '\"P17\"' or attr_n == '\"P23\"' or attr_n == '\"P10\"':
                mod_pitf.append(desc)
-               flag = True
+               flag_mo = True
                break
-            elif attr_n == 'P39' or attr_n == 'P40' or attr_n == 'P38' or attr_n == 'P41':
+            elif attr_n == '\"P39\"' or attr_n == '\"P40\"' or attr_n == '\"P38\"' or attr_n == '\"P41\"':
                 met_pitf.append(desc)
-                flag = True
+                flag_me = True
                 break
-            elif attr_n == 'P34' or attr_n == 'P35':
+            elif attr_n == '\"P34\"' or attr_n == '\"P35\"':
               print 'append ' + desc 
               lang_pitf.append(desc)
-              flag = True
+              flag_l = True
+              break
+             
+           if 'hasImportanceLevel' in attr:
+            if flag_i == True:
+             inf_pitf_i.append(attr.replace('hasImportanceLevel: ', ''))
+             break
+            elif flag_mo ==True:
+              mod_pitf_i.append(attr.replace('hasImportanceLevel: ', ''))
+              break   
+            elif flag_me ==True:
+              met_pitf_i.append(attr.replace('hasImportanceLevel: ', ''))
+              break
+            elif flag_l == True:
+              lang_pitf_i.append(attr.replace('hasImportanceLevel: ', ''))
               break
                
             #suggestions
@@ -258,27 +277,27 @@ for repo in g.get_user().get_repos():
         i_p = p
         for i in range(len(inf_pitf)):
           print inf_pitf_i
-          i_p += "%d. " % (i + 1) + inf_pitf[i] + ". Importance level: "+ "\n\n"
+          i_p += "%d. " % (i + 1) + inf_pitf[i] + ". Importance level: "+ inf_pitf_i[i] +"\n\n"
         labels = ["Unit test bug", "Inference"]
         create_oops_issue_in_github(repo, ont_file, i_p, labels)
      if len(mod_pitf) > 0:
         #p += "The Pitfalls are the following: \n"
         m_p = p
         for i in range(len(mod_pitf)):
-            m_p += "%d. " % (i + 1) + mod_pitf[i] + ". Importance level: "+  "\n\n"
+            m_p += "%d. " % (i + 1) + mod_pitf[i] + ". Importance level: "+ mod_pitf_i[i] + "\n\n"
         labels = ["Unit test bug", "Modelling"]
         create_oops_issue_in_github(repo, ont_file, m_p, labels)
      if len(met_pitf) > 0:
         #i_p += "The Pitfalls are the following: \n"
         met_p = p
         for i in range(len(met_pitf)):
-            met_p += "%d. " % (i + 1) + met_pitf[i] + ". Importance level: "+  "\n\n"
+            met_p += "%d. " % (i + 1) + met_pitf[i] + ". Importance level: "+ met_pitf_i[i] +"\n\n"
         labels = ["Unit test bug", "Metadata"]
         create_oops_issue_in_github(repo, ont_file, met_p, labels)
      if len(lang_pitf) > 0:
         l_p  = p
         for i in range(len(lang_pitf)):
-            l_p += "%d. " % (i + 1) + lang_pitf[i] + ". Importance level: "+  "\n\n"
+            l_p += "%d. " % (i + 1) + lang_pitf[i] + ". Importance level: "+ lang_pitf_i[i] +"\n\n"
         labels = ["Unit test bug", "Language"]
         create_oops_issue_in_github(repo, ont_file, l_p, labels)
          

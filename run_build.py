@@ -214,25 +214,28 @@ for repo in g.get_user().get_repos():
               desc = attr
            if 'hasDescription' in attr and desc != "": 
               inf_pitf.append(attr.replace('hasDescription: ', ''))
+              break
            #modelling pitfalls
            if 'hasCode' in attr:
             if attr == 'P03' or attr == 'P14' or attr == 'P24' or attr == 'P25' or attr == 'P26' or attr == 'P17' or attr == 'P23' or attr == 'P10':
               desc = attr
            if 'hasDescription' in attr and desc != "" : 
               mod_pitf.append(attr.replace('hasDescription: ', ''))
+              break
            #metadata pitfalls
            if 'hasCode' in attr:
             if attr == 'P39' or attr == 'P40' or attr == 'P38' or attr == 'P41':
               desc = attr
            if 'hasDescription' in attr and desc != "": 
               met_pitf.append(attr.replace('hasDescription: ', ''))
+              break
            #language pitfalls
            if 'hasCode' in attr:
             if attr == 'P34' or attr == 'P35':
               desc = attr
            if 'hasDescription' in attr and desc != "": 
               lang_pitf.append(attr.replace('hasDescription: ', ''))
-           
+              break
         if sugg_flag in node:
             for attr in attrs:
                 if 'hasDescription' in attr:

@@ -78,11 +78,13 @@ for repo in g.get_user().get_repos():
    if flag_unit == False: 
     repo.create_label("Unit test bug", "F50511")
    if flag_inference == False:
-    repo.create_label("Inference",  "F50511")
+    repo.create_label("Inference",  "c2e0c6")
    if flag_model == False:
-    repo.create_label("Modelling",  "F50511")
+    repo.create_label("Modelling",  "d4c5f9")
    if flag_lang == False:
-    repo.create_label("Ontology Language",  "F50511")    
+    repo.create_label("Language",  "fef2c0")
+   if flag_met == False:
+    repo.create_label("Metadata", "c5def5")
     
  def get_pitfalls(ont_file):
     url = 'http://oops-ws.oeg-upm.net/rest'
@@ -196,6 +198,10 @@ for repo in g.get_user().get_repos():
      mod_pitf = []
      met_pitf = []
      lang_pitf = []
+     inf_pitf_i = []
+     mod_pitf_i = []
+     met_pitf_i = []
+     lang_pitf_i = []
      desc = ""
      for node in nodes[:-1]:
         attrs = node.split("\n")
@@ -204,7 +210,7 @@ for repo in g.get_user().get_repos():
            desc = ""
            #minor pitfalls
            if  'hasDescription' in attr:
-            desc = attr.replace('hasDescription: ', '')
+            desc = attr.replace('hasName: ', '')
            if  'hasImportanceLevel: \"Minor\"' in attr and desc != "":
                 m_pitf.append(desc)
                 break
@@ -213,29 +219,38 @@ for repo in g.get_user().get_repos():
             if attr == 'P06' or attr == 'P19' or attr == 'P29' or attr == 'P28' or attr == 'P31' or attr == 'P05' or attr == 'P27' or attr == 'P15' or attr == 'P01' or attr == 'P16' or attr == 'P18' or attr == 'P11' or attr == 'P12' or attr == 'P30':
               desc = attr
            if 'hasDescription' in attr and desc != "": 
-              inf_pitf.append(attr.replace('hasDescription: ', ''))
+              inf_pitf.append(attr.replace('hasName: ', ''))
+           if 'hasImportanceLevel' in attr and desc != "":
+              inf_pitf_i.append(attr.replace('hasImportanceLevel: ',''))
               break
            #modelling pitfalls
            if 'hasCode' in attr:
             if attr == 'P03' or attr == 'P14' or attr == 'P24' or attr == 'P25' or attr == 'P26' or attr == 'P17' or attr == 'P23' or attr == 'P10':
               desc = attr
            if 'hasDescription' in attr and desc != "" : 
-              mod_pitf.append(attr.replace('hasDescription: ', ''))
+              mod_pitf.append(attr.replace('hasName: ', ''))
+           if 'hasImportanceLevel' in attr and desc != "":
+              mod_pitf_i.append(attr.replace('hasImportanceLevel: ',''))
               break
            #metadata pitfalls
            if 'hasCode' in attr:
             if attr == 'P39' or attr == 'P40' or attr == 'P38' or attr == 'P41':
               desc = attr
            if 'hasDescription' in attr and desc != "": 
-              met_pitf.append(attr.replace('hasDescription: ', ''))
+              met_pitf.append(attr.replace('hasName: ', ''))
+           if 'hasImportanceLevel' in attr and desc != "":
+              met_pitf_i.append(attr.replace('hasImportanceLevel: ',''))
               break
            #language pitfalls
            if 'hasCode' in attr:
             if attr == 'P34' or attr == 'P35':
               desc = attr
            if 'hasDescription' in attr and desc != "": 
-              lang_pitf.append(attr.replace('hasDescription: ', ''))
+              lang_pitf.append(attr.replace('hasName: ', ''))
+           if 'hasImportanceLevel' in attr and desc != "":
+              lang_pitf_i.append(attr.replace('hasImportanceLevel: ',''))
               break
+        #suggestions
         if sugg_flag in node:
             for attr in attrs:
                 if 'hasDescription' in attr:
@@ -245,33 +260,33 @@ for repo in g.get_user().get_repos():
      if len(suggs) > 0:
         s += "The Suggestions are the following:\n"
         for i in range(len(suggs)):
-            s += "%d. " % (i + 1) + suggs[i] + "\n"
+            s += "%d. " % (i + 1) + suggs[i] +"\n\n"
         labels = ["enhancement"]
         create_oops_issue_in_github(repo, ont_file, s, labels) 
      if len(inf_pitf) > 0:
         i_p = p
         for i in range(len(inf_pitf)):
-            i_p += "%d. " % (i + 1) + inf_pitf[i] + "\n"
+            i_p += "%d. " % (i + 1) + inf_pitf[i] + ". Importance level: "+  inf_pit_i[i]+ "\n\n"
         labels = ["Unit test bug", "Inference"]
         create_oops_issue_in_github(repo, ont_file, i_p, labels)
      if len(mod_pitf) > 0:
         #p += "The Pitfalls are the following: \n"
         m_p = p
         for i in range(len(mod_pitf)):
-            m_p += "%d. " % (i + 1) + mod_pitf[i] + "\n"
+            m_p += "%d. " % (i + 1) + mod_pitf[i] + ". Importance level: "+  mod_pit_i[i] + "\n\n"
         labels = ["Unit test bug", "Modelling"]
         create_oops_issue_in_github(repo, ont_file, m_p, labels)
      if len(met_pitf) > 0:
         #i_p += "The Pitfalls are the following: \n"
         met_p = p
         for i in range(len(met_pitf)):
-            met_p += "%d. " % (i + 1) + met_pitf[i] + "\n"
+            met_p += "%d. " % (i + 1) + met_pitf[i] + ". Importance level: "+  met_pit_i[i]+ "\n\n"
         labels = ["Unit test bug", "Metadata"]
         create_oops_issue_in_github(repo, ont_file, met_p, labels)
      if len(lang_pitf) > 0:
         l_p  = p
         for i in range(len(lang_pitf)):
-            l_p += "%d. " % (i + 1) + lang_pitf[i] + "\n"
+            l_p += "%d. " % (i + 1) + lang_pitf[i] + ". Importance level: "+  lang_pit_i[i]+ "\n\n"
         labels = ["Unit test bug", "Language"]
         create_oops_issue_in_github(repo, ont_file, l_p, labels)
          

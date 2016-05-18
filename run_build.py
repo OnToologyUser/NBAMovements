@@ -25,7 +25,15 @@ for repo in g.get_user().get_repos():
   for file in list_of_files:
     results = ont_query(file)
     flag = True
-    print results.toxml()
+    results = results.toxml()
+    root = results.getroot()
+    for result in root.findall('result'):
+    	if result is None:
+        	print 'empty'
+	 else:
+    		print 'not empty'
+    
+    
     #for result in results["results"]["bindings"]:
      #if result == {}:
       #flag = False

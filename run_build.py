@@ -27,7 +27,7 @@ for repo in g.get_user().get_repos():
     flag = True
     results = results.toxml()
    # root = results.getroot()
-    for result in results.findall('result'):
+    for result in results.find('result'):
     	if result is None:
         	print 'empty'
 	else:

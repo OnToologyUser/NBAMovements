@@ -25,11 +25,16 @@ for repo in g.get_user().get_repos():
   for file in list_of_files:
     results = ont_query(file)
     flag = True
-    if results:
-    	print 'not empty'
-    elif not results:
-    	print 'empty'
-
+    print '================================================='
+    print 'results'
+    print results
+    print 'results[results]'
+    print results["results"]
+    print 'results[results][bindings]'
+    print results["results"]["bindings"]
+    print '================================================='
+    
+    
     for result in results["results"]["bindings"]:
      if result == {}:
       flag = False
@@ -194,7 +199,6 @@ for repo in g.get_user().get_repos():
     num_of_warnings = issues.count(warn_flag)
     #create suggestions issue
     if num_of_suggestions > 0 or num_pitfalls > 0 :
-     s = " OOPS! has some suggestions and warnings to improve the ontology.\n" 
      p = " OOPS! has encountered some pitfalls related to " 
     
      nodes = issues.split("====================")
@@ -210,7 +214,6 @@ for repo in g.get_user().get_repos():
      met_pitf_i = []
      lang_pitf_i = []
      desc = ""
-     print nodes
      for node in nodes[:-1]:
         attrs = node.split("\n")
         if pitf_flag in node:
@@ -250,8 +253,6 @@ for repo in g.get_user().get_repos():
               
            #importance for each pitfall  
            if 'hasImportanceLevel' in attr:
-            print 'Importance'
-            print attr
             if flag_i == True:
              inf_pitf_i.append(attr.replace('hasImportanceLevel: ', ''))
              break
@@ -278,16 +279,19 @@ for repo in g.get_user().get_repos():
                     break
 
      if len(suggs) > 0 or len(m_pitf)> 0 or len(warn) > 0 :
+        #s = " OOPS! has some warnings to improve the ontology. \n " 
 		if len(suggs) > 0:
-			s += "The Suggestions are the following:\n"
+			
+			s += "OOPS! has some suggestions to improve the ontology:\n"
 			for i in range(len(suggs)):
 				s += "%d. " % (i + 1) + suggs[i] +"\n"
 		if len(warn) > 0:
-			s += "\n\nThe Warnings are the following:\n"
+			s += 
+			s += "\n\nOOPS! has some warnings to improve the ontology:\n"
 			for i in range(len(warn)):
 				s += "%d. " % (i + 1) + warn[i] +"\n"
 		if len(m_pitf) > 0:
-			s += "\n\nThe minor pitfalls are the following:\n" 
+			s += "\n\nOOPS! has encountered some minor pitfalls:\n" 
 			for i in range(len(m_pitf)):
 				s += "%d. " % (i + 1) + m_pitf[i] +"\n"                   
                 labels = ["enhancement"]

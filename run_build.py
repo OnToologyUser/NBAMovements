@@ -32,7 +32,7 @@ for repo in g.get_user().get_repos():
    # root = results.getroot()
     list_results = root.findall('result')
   
-    if list_results is None:
+    if list_results == '[]':
         print 'empty'
         print list_results
     else:

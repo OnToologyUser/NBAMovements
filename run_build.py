@@ -30,7 +30,7 @@ for repo in g.get_user().get_repos():
     for result in root.findall('result'):
     	if result is None:
         	print 'empty'
-	 else:
+	else:
     		print 'not empty'
     
     

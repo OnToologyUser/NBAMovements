@@ -5,6 +5,8 @@ import glob
 import requests
 import myconf
 import rdfxml  as rdfxml
+from xml.etree import ElementTree as ElementTree
+
 
 #GitHub authentication
 client_id = os.environ['github_username']
@@ -26,8 +28,9 @@ for repo in g.get_user().get_repos():
     results = ont_query(file)
     flag = True
     results = results.toxml()
+    root = ElementTree.fromstring(results)
    # root = results.getroot()
-    for result in results.find('result'):
+    for result in root.findall('result'):
     	if result is None:
         	print 'empty'
 	else:

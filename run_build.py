@@ -26,8 +26,8 @@ for repo in g.get_user().get_repos():
     results = ont_query(file)
     flag = True
     results = results.toxml()
-    root = results.getroot()
-    for result in root.findall('result'):
+   # root = results.getroot()
+    for result in results.findall('result'):
     	if result is None:
         	print 'empty'
 	else:

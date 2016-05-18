@@ -30,11 +30,12 @@ for repo in g.get_user().get_repos():
     results = results.toxml()
     root = ElementTree.fromstring(results)
    # root = results.getroot()
-    for result in root.findall('result'):
-    	if result is None:
-        	print 'empty'
-	else:
-    		print 'not empty'
+    list_results = root.findall('result')
+  
+    if list_results is None:
+        print 'empty'
+    else:
+    	print 'not empty'
     
     
     #for result in results["results"]["bindings"]:

@@ -9,6 +9,7 @@ before_install:
  - chmod a+x run_build.py
  - pip install requests
  - pip install oauth2
+ - pip install python-lxml
  
  
 notifications: 

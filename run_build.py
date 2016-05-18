@@ -34,8 +34,10 @@ for repo in g.get_user().get_repos():
   
     if list_results is None:
         print 'empty'
+        print list_results
     else:
     	print 'not empty'
+    	print list_results
     
     
     #for result in results["results"]["bindings"]:

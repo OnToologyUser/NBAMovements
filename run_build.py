@@ -25,19 +25,10 @@ for repo in g.get_user().get_repos():
   for file in list_of_files:
     results = ont_query(file)
     flag = True
-    print '================================================='
-    print 'results'
-    print results
-    print 'results[results]'
-    print results["results"]
-    print 'results[results][bindings]'
-    print results["results"]["bindings"]
-    print '================================================='
-    
-    
-    for result in results["results"]["bindings"]:
-     if result == {}:
-      flag = False
+    print results.toxml()
+    #for result in results["results"]["bindings"]:
+     #if result == {}:
+      #flag = False
     #if flag == False:
     # repo.create_issue('Acceptance test  notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
    
@@ -58,7 +49,7 @@ for repo in g.get_user().get_repos():
     sparql = SPARQLWrapper("http://dbpedia.org/sparql")
     query =  req.read()
     sparql.setQuery(query)
-    sparql.setReturnFormat(JSON)
+    sparql.setReturnFormat(XML)
     results = sparql.query().convert()
     req.close()
     return results

@@ -32,13 +32,13 @@ for repo in g.get_user().get_repos():
    # root = results.getroot()
     list_results = root.findall('result')
     print list_results
-    for result in list_results:
-    	if result.text is None:
-    	 	print 'empty'
-    	elif result is None:
-    		print 'empty'
-     	else:
-     		print 'nt empty'
+    if not list_results:
+    	print 'empty'
+    elif len(list_results) == 0:
+    	print 'empty'
+    else:
+    	print 'not empty'
+     	
     
     
     #for result in results["results"]["bindings"]:

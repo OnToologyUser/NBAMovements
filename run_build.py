@@ -31,10 +31,12 @@ for repo in g.get_user().get_repos():
     root = ElementTree.fromstring(results)
    # root = results.getroot()
     list_results = root.findall('result')
-  
-    if list_results == '[]':
+    print list_results
+    if list_results is "[]":
         print 'empty'
         print list_results
+    elif list_results is '[]':
+    	print 'empty'
     else:
     	print 'not empty'
     	print list_results

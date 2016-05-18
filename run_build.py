@@ -25,28 +25,22 @@ for repo in g.get_user().get_repos():
   close_old_acc_issues_in_github(repo)
    # Each file has a requirement
   for file in list_of_files:
-    results = ont_query(file)
+    results,list_results_user = ont_query(file)
     flag = True
     results = results.toxml()
     root = ElementTree.fromstring(results)
    # root = results.getroot()
     list_results = root.findall('result')
-    print list_results
     if not list_results:
     	print 'empty'
-    elif len(list_results) == 0:
-    	print 'empty'
+    	# repo.create_issue('Acceptance test  notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
     else:
-    	print 'not empty'
-     	
-    
-    
-    #for result in results["results"]["bindings"]:
-     #if result == {}:
-      #flag = False
-    #if flag == False:
-    # repo.create_issue('Acceptance test  notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
-   
+    	for result in list_results:
+    		if not result in list_results_user:
+    				print 'not results'
+    				# repo.create_issue('Acceptance test  notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])	
+    		
+    		
   ##Unit test
   ont_files = glob.glob('./*.owl')
   for file in ont_files:
@@ -62,12 +56,14 @@ for repo in g.get_user().get_repos():
  def ont_query(req_file):
     req = open(req_file, 'r')
     sparql = SPARQLWrapper("http://dbpedia.org/sparql")
-    query =  req.read()
-    sparql.setQuery(query)
+    query_c =  req.read()
+    query = query_c.split('Result')
+    sparql.setQuery(query[0])
+    list_results_user = query[1]
     sparql.setReturnFormat(XML)
     results = sparql.query().convert()
     req.close()
-    return results
+    return results,list_results_user
     
  def create_labels(repo):
    flag_acc = False

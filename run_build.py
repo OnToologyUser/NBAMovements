@@ -279,7 +279,7 @@ for repo in g.get_user().get_repos():
                     break
 
      if len(suggs) > 0 or len(m_pitf)> 0 or len(warn) > 0 :
-        #s = " OOPS! has some warnings to improve the ontology. \n " 
+        	s = " " 
 		if len(suggs) > 0:
 			
 			s += "OOPS! has some suggestions to improve the ontology:\n"

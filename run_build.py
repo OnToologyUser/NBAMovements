@@ -286,7 +286,6 @@ for repo in g.get_user().get_repos():
 			for i in range(len(suggs)):
 				s += "%d. " % (i + 1) + suggs[i] +"\n"
 		if len(warn) > 0:
-			s += 
 			s += "\n\nOOPS! has some warnings to improve the ontology:\n"
 			for i in range(len(warn)):
 				s += "%d. " % (i + 1) + warn[i] +"\n"

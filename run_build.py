@@ -60,6 +60,8 @@ for repo in g.get_user().get_repos():
     sparql = SPARQLWrapper("http://dbpedia.org/sparql")
     query_c =  req.read()
     query = query_c.split('Result')
+    print 'query'
+    print query[0]
     sparql.setQuery(query[0])
     list_results_user = query[1]
     sparql.setReturnFormat(XML)

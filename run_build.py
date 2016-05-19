@@ -33,10 +33,15 @@ for repo in g.get_user().get_repos():
     print 'xml'
     print results
    # root = results.getroot()
-    list_results = root.findall('results')
+    #list_results = root.findall('results')
     print list_results
     print 'root_tag'
     print root.tag
+    for child in root:
+      print child.tag, child.attrib
+    
+    
+    
     if not list_results:
     	print 'empty'
     	# repo.create_issue('Acceptance test  notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])

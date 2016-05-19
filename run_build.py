@@ -30,9 +30,10 @@ for repo in g.get_user().get_repos():
     results = results.toxml()
    
     root = ElementTree.fromstring(results)
-    print root
+    print 'xml'
+    print results
    # root = results.getroot()
-    list_results = root.find('result')
+    list_results = root.findall('result')
     print list_results
     if not list_results:
     	print 'empty'

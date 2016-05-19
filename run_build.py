@@ -28,8 +28,9 @@ for repo in g.get_user().get_repos():
     results,list_results_user = ont_query(file)
     flag = True
     results = results.toxml()
-    print results
+   
     root = ElementTree.fromstring(results)
+    print root
    # root = results.getroot()
     list_results = root.findall('result')
     print list_results

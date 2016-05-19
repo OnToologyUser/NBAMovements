@@ -44,8 +44,8 @@ for repo in g.get_user().get_repos():
     		for r in fa_r:
     			b = r.find('{http://www.w3.org/2005/sparql-results#}binding')
     			print b
-    			print b.find('{http://www.w3.org/2005/sparql-results#}literal')
-    			if not b.find('{http://www.w3.org/2005/sparql-results#}literal') in list_results_user:
+    			print b.find('{http://www.w3.org/2005/sparql-results#}literal').text
+    			if not b.find('{http://www.w3.org/2005/sparql-results#}literal').text in list_results_user:
     				print 'not results'
     				# repo.create_issue('Acceptance test  notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])	
     		

@@ -33,18 +33,18 @@ for repo in g.get_user().get_repos():
     print 'xml'
     print results
    # root = results.getroot()
-    list_results = root.findall('{http://www.w3.org/2005/sparql-results#}results')
+    list_results = root.findall('{http://www.w3.org/2005/sparql-results#}results/{http://www.w3.org/2005/sparql-results#}result/{http://www.w3.org/2005/sparql-results#}binding')
 
     if not list_results:
     	print 'empty'
     	# repo.create_issue('Acceptance test  notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
-    else:
-    	for result in list_results:
-    		fa_r = result.findall('{http://www.w3.org/2005/sparql-results#}result')
-    		for r in fa_r:
-    			b = r.find('{http://www.w3.org/2005/sparql-results#}binding')
-    			if not b.child.text in list_results_user:
-    				print 'not results'
+   # else:
+    #	for result in list_results:
+    #		fa_r = result.findall('{http://www.w3.org/2005/sparql-results#}result')
+    #		for r in fa_r:
+    #			b = r.find('{http://www.w3.org/2005/sparql-results#}binding')
+    #			if not b..text in list_results_user:
+    #				print 'not results'
     				# repo.create_issue('Acceptance test  notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])	
     		
     		

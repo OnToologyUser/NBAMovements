@@ -36,6 +36,7 @@ for repo in g.get_user().get_repos():
     	# repo.create_issue('Acceptance test  notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
     else:
     	for result in list_results:
+    		print result
     		if not result in list_results_user:
     				print 'not results'
     				# repo.create_issue('Acceptance test  notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])	

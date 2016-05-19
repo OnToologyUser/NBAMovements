@@ -339,14 +339,15 @@ for repo in g.get_user().get_repos():
     
     
  def close_old_oops_issues_in_github(repo, ont_file):
-    print 'will close old issues'
+    print 'will close old oops issues'
     for i in repo.get_issues(state='open'):
         if i.title == ('OOPS! Evaluation for ' + os.path.splitext(os.path.basename(ont_file))[0]):
             i.edit(state='closed')
             
  def close_old_acc_issues_in_github(repo):
-    print 'will close old issues'
+    print 'will close old acc issues'
     for i in repo.get_issues(state='open'):
+    	print i.title
         if i.title == ('Acceptance test notification'):
             i.edit(state='closed')
             

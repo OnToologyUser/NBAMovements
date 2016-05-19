@@ -31,6 +31,7 @@ for repo in g.get_user().get_repos():
     root = ElementTree.fromstring(results)
    # root = results.getroot()
     list_results = root.findall('result')
+    print list_results
     if not list_results:
     	print 'empty'
     	# repo.create_issue('Acceptance test  notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])

@@ -42,7 +42,7 @@ for repo in g.get_user().get_repos():
     	for result in list_results:
     		fa_r = result.findall('{http://www.w3.org/2005/sparql-results#}result')
     		for r in fa_r:
-    			b = r.get('{http://www.w3.org/2005/sparql-results#}bindings')
+    			b = r.text
     			print b
     		if not b.text in list_results_user:
     			print 'not results'

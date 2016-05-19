@@ -33,7 +33,7 @@ for repo in g.get_user().get_repos():
     print 'xml'
     print results
    # root = results.getroot()
-    #list_results = root.findall('results')
+    list_results = root.findall('results')
     print list_results
     print 'root_tag'
     print root.tag

@@ -34,22 +34,20 @@ for repo in g.get_user().get_repos():
     print results
    # root = results.getroot()
     list_results = root.findall('{http://www.w3.org/2005/sparql-results#}results')
-    print list_results
-    print 'root_tag'
-    print root.tag
-    for child in root:
-      print child.tag
-    
-    
-    
+
     if not list_results:
     	print 'empty'
     	# repo.create_issue('Acceptance test  notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
     else:
     	for result in list_results:
-    		print result
-    		if not result in list_results_user:
-    				print 'not results'
+    		fa_r = result.findall('{http://www.w3.org/2005/sparql-results#}result')
+    		print fa_r
+    		for r in fa_r:
+    			fa_b = r.findall('{http://www.w3.org/2005/sparql-results#}bindings')
+    			print fa_b
+    			for b in fa_b:
+    				if not fa_b.find('{http://www.w3.org/2005/sparql-results#}literal').text in list_results_user:
+    					print 'not results'
     				# repo.create_issue('Acceptance test  notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])	
     		
     		

@@ -45,7 +45,7 @@ for repo in g.get_user().get_repos():
     				s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
     				break
    
-  repo.create_issue('Acceptance test  notification', s , labels = ['Acceptance test bug']) 
+  repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug']) 
     		
   ##Unit test
   ont_files = glob.glob('./*.owl')

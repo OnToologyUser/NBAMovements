@@ -66,6 +66,7 @@ for repo in g.get_user().get_repos():
     list_results_user = query[1]
     sparql.setReturnFormat(XML)
     results = sparql.query().convert()
+    print results
     req.close()
     return results,list_results_user
     

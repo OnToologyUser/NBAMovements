@@ -328,8 +328,8 @@ for repo in g.get_user().get_repos():
         create_oops_issue_in_github(repo, ont_file, met_p, labels)
      if len(lang_pitf) > 0:
         l_p  = p
-        l_p = "ontology language. \n"
-        l_p = "The Pitfalls are the following: \n"
+        l_p += "ontology language. \n"
+        l_p += "The Pitfalls are the following: \n"
         for i in range(len(lang_pitf)):
             l_p += "%d. " % (i + 1) + lang_pitf[i] + ". Importance level: "+ lang_pitf_i[i].replace('\"','') +"\n"
         labels = ["Unit test bug", "Language"]

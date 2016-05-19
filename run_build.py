@@ -32,7 +32,7 @@ for repo in g.get_user().get_repos():
     root = ElementTree.fromstring(results)
     print root
    # root = results.getroot()
-    list_results = root.findall('result')
+    list_results = root.find('result')
     print list_results
     if not list_results:
     	print 'empty'

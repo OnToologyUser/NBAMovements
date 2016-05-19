@@ -24,6 +24,8 @@ for repo in g.get_user().get_repos():
   list_of_files = glob.glob('./*.rq')
   close_old_acc_issues_in_github(repo)
    # Each file has a requirement
+  s = "The ontology has not pass the acceptance test:\n" 
+  i = 0
   for file in list_of_files:
     results,list_results_user = ont_query(file)
     flag = True
@@ -33,13 +35,17 @@ for repo in g.get_user().get_repos():
 
     if not list_results:
     	print 'empty list'
-    	repo.create_issue('Acceptance test  notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
+    	i += 1
+    	s += "%d. " % (i) + '- The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
+    #	repo.create_issue('Acceptance test  notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
     else:
     	for result in list_results:
     		if not list(result.iter())[1].text in list_results_user:
-    			print 'not results'
-     			repo.create_issue('Acceptance test  notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])	
-    			break
+    				i += 1
+    				s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
+    				break
+   
+  repo.create_issue('Acceptance test  notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug']) 
     		
   ##Unit test
   ont_files = glob.glob('./*.owl')

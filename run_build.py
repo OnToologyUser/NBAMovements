@@ -33,12 +33,12 @@ for repo in g.get_user().get_repos():
     print 'xml'
     print results
    # root = results.getroot()
-    list_results = root.findall('results')
+    list_results = root.findall('{http://www.w3.org/2005/sparql-results#}results')
     print list_results
     print 'root_tag'
     print root.tag
     for child in root:
-      print child.tag, child.attrib
+      print child.tag
     
     
     

@@ -24,7 +24,7 @@ for repo in g.get_user().get_repos():
   list_of_files = glob.glob('./*.rq')
   close_old_acc_issues_in_github(repo)
    # Each file has a requirement
-  s = "The ontology has not pass the acceptance test:\n" 
+  s = "The ontology created has not passed the acceptance test:\n" 
   i = 0
   for file in list_of_files:
     results,list_results_user = ont_query(file)
@@ -36,7 +36,7 @@ for repo in g.get_user().get_repos():
     if not list_results:
     	print 'empty list'
     	i += 1
-    	s += "%d. " % (i) + '- The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
+    	s += "%d. " % (i) + '- The ontology did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
     	repo.create_issue('Acceptance test notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
     else:
     	for result in list_results:

@@ -28,6 +28,7 @@ for repo in g.get_user().get_repos():
     results,list_results_user = ont_query(file)
     flag = True
     results = results.toxml()
+    print results
     root = ElementTree.fromstring(results)
    # root = results.getroot()
     list_results = root.findall('result')
@@ -60,13 +61,11 @@ for repo in g.get_user().get_repos():
     sparql = SPARQLWrapper("http://dbpedia.org/sparql")
     query_c =  req.read()
     query = query_c.split('Result')
-    print 'query'
-    print query[0]
+
     sparql.setQuery(query[0])
     list_results_user = query[1]
     sparql.setReturnFormat(XML)
     results = sparql.query().convert()
-    print results
     req.close()
     return results,list_results_user
     

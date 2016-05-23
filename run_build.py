@@ -69,7 +69,9 @@ for repo in g.get_user().get_repos():
     			break
         #checking if the types are the same
         for result in list_results:
+        	print 'tag'
         	print type_res.replace(" ","")
+        	print type_res.replace(' ','')
         	print list(result.iter())[1].tag
         	tag = list(result.iter())[1].tag
     	   	if not type_res.replace(" ","") in list(result.iter())[1].tag or tag.find(type_res.replace(" ","")) == -1:

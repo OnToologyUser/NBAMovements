@@ -49,7 +49,7 @@ for repo in g.get_user().get_repos():
     	   		i += 1
     		 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
     	 	 	break
-    	elif "=" in num_res:
+    	else:
     		 if len(list_results) != int(num_res.replace('=','')):
     	   		i += 1
     		 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
@@ -62,8 +62,8 @@ for repo in g.get_user().get_repos():
     			break
         #checking if the types are the same
         for result in list_results:
-        	print list(result.iter())[1].attrib
-    	   	if list(result.iter())[1].attrib != type_res:
+        	print list(result.iter())[1].tag
+    	   	if type_res in list(result.iter())[1].tag:
     	   		i += 1
     	   	 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
     	   		break		
@@ -101,7 +101,7 @@ for repo in g.get_user().get_repos():
     sparql.setReturnFormat(XML)
     results = sparql.query().convert()
     req.close()
-    return results, num_res,type_res,list_elements_result
+    return results, num_res.replace(' ',''),type_res.replace(' ',''),list_elements_result
     
  def create_labels(repo):
    flag_acc = False

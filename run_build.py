@@ -31,7 +31,10 @@ for repo in g.get_user().get_repos():
     results = results.toxml()
     root = ElementTree.fromstring(results)
     list_results = root.findall('{http://www.w3.org/2005/sparql-results#}results/{http://www.w3.org/2005/sparql-results#}result/{http://www.w3.org/2005/sparql-results#}binding')
-
+    list_r = []
+    for result in list_results:
+    	list_r.append(list(result.iter())[1].text)
+    	
     if not list_results:
     	print 'empty list'
     	i += 1
@@ -60,8 +63,8 @@ for repo in g.get_user().get_repos():
         #checking if the user examples are contained in the results
         for result in list_results_user:
         	print result.replace(" ","").replace("\n","") 
-        	print list_results
-    	   	if not result.replace(" ","").replace("\n","") in list_results:
+        	print list_r
+    	   	if not result.replace(" ","").replace("\n","") in list_r:
     	   		print 'error list'
     	   		i += 1
     			s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
@@ -70,7 +73,7 @@ for repo in g.get_user().get_repos():
         for result in list_results:
         	print type_res.replace(" ","").replace("\n","") 
         	print list(result.iter())[1].tag
-    	   	if  list(result.iter())[1].tag.find(type_res.replace(" ","")):
+    	   	if  list(result.iter())[1].tag.find(type_res.replace(" ","")) == -1:
     	   		print 'error tag'
     	   		i += 1
     	   	 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'

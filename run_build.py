@@ -60,6 +60,7 @@ for repo in g.get_user().get_repos():
         #checking if the user examples are contained in the results
         for result in list_results_user:
         	print result.replace(" ","").replace("\n","") 
+        	print list_results
     	   	if not result.replace(" ","").replace("\n","") in list_results:
     	   		print 'error list'
     	   		i += 1
@@ -68,7 +69,8 @@ for repo in g.get_user().get_repos():
         #checking if the types are the same
         for result in list_results:
         	print type_res.replace(" ","").replace("\n","") 
-    	   	if  type_res.replace(" ","") not in list(result.iter())[1].tag:
+        	print list(result.iter())[1].tag
+    	   	if  list(result.iter())[1].tag.find(type_res.replace(" ","")):
     	   		print 'error tag'
     	   		i += 1
     	   	 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'

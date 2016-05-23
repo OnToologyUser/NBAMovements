@@ -41,29 +41,33 @@ for repo in g.get_user().get_repos():
     	#checking if the number of results are the same
     	if  ">" in num_res:
     		if len(list_results) < int(num_res.replace('>','')):
+    			print 'error len'
     	   		i += 1
     		 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
     		 	break
     	elif "<" in num_res:
     		if len(list_results) > int(num_res.replace('<','')):
+    			print 'error len'
     	   		i += 1
     		 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
     	 	 	break
     	else:
     		 if len(list_results) != int(num_res.replace('=','')):
+    		 	print 'error len'
     	   		i += 1
     		 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
     	 	 	break
         #checking if the user examples are contained in the results
         for result in list_results_user:
     	   	if not result in list_results:
+    	   		print 'error list'
     	   		i += 1
     			s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
     			break
         #checking if the types are the same
         for result in list_results:
-        	print list(result.iter())[1].tag
-    	   	if type_res in list(result.iter())[1].tag:
+    	   	if not type_res in list(result.iter())[1].tag:
+    	   		print 'error tag'
     	   		i += 1
     	   	 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
     	   		break		

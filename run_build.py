@@ -66,7 +66,8 @@ for repo in g.get_user().get_repos():
     			break
         #checking if the types are the same
         for result in list_results:
-    	   	if not type_res in list(result.iter())[1].tag:
+        	print list(result.iter())[1].tag
+    	   	if  type_res not in list(result.iter())[1].tag:
     	   		print 'error tag'
     	   		i += 1
     	   	 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
@@ -101,7 +102,8 @@ for repo in g.get_user().get_repos():
     print "type_res" + type_res
     list_results_user = query_aux[1].split('List of results')[1]
     print list_results_user
-    list_elements_result = list_results_user.split("\n")
+    list_results_user.replace(' ','')
+    list_elements_result = list_results_user.split(",")
     print list_elements_result
     sparql.setReturnFormat(XML)
     results = sparql.query().convert()

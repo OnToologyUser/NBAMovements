@@ -3,7 +3,12 @@
         SELECT ?label
         WHERE { <http://dbpedia.org/resource/Asturias> rdfs:label ?label }
         
-        Result
-        "Asturias"@en
+        Results
+        Number of results
+        12
+        Type of the results
+        Literal
+        List of results
+        Asturias
 
 

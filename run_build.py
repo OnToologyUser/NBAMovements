@@ -69,7 +69,10 @@ for repo in g.get_user().get_repos():
     			break
         #checking if the types are the same
         for result in list_results:
-    	   	if not type_res.replace(" ","") in list(result.iter())[1].tag :
+        	print type_res.replace(" ","")
+        	print list(result.iter())[1].tag
+        	tag = list(result.iter())[1].tag
+    	   	if not type_res.replace(" ","") in list(result.iter())[1].tag or tag.find(type_res.replace(" ","")) == -1:
     	   		print 'error tag'
     	   		i += 1
     	   	 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'

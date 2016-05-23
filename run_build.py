@@ -59,7 +59,7 @@ for repo in g.get_user().get_repos():
     	 	 	break
         #checking if the user examples are contained in the results
         for result in list_results_user:
-        	print result
+        	print result.replace(" ","").replace("\n","") 
     	   	if not result.replace(" ","").replace("\n","") in list_results:
     	   		print 'error list'
     	   		i += 1
@@ -67,7 +67,7 @@ for repo in g.get_user().get_repos():
     			break
         #checking if the types are the same
         for result in list_results:
-        	print type_res
+        	print type_res.replace(" ","").replace("\n","") 
     	   	if  type_res.replace(" ","") not in list(result.iter())[1].tag:
     	   		print 'error tag'
     	   		i += 1

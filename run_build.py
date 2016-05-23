@@ -32,6 +32,12 @@ for repo in g.get_user().get_repos():
     root = ElementTree.fromstring(results)
     list_results = root.findall('{http://www.w3.org/2005/sparql-results#}results/{http://www.w3.org/2005/sparql-results#}result/{http://www.w3.org/2005/sparql-results#}binding')
 
+    print list_results
+    print list_results_user
+    print 'len'
+    print len(list_results)
+    print len(list_results_user)
+    
     if not list_results:
     	print 'empty list'
     	i += 1

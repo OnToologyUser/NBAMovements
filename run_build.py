@@ -26,29 +26,46 @@ for repo in g.get_user().get_repos():
   s = "The ontology created has not passed the acceptance test:\n" 
   i = 0
   for file in list_of_files:
-    results,list_results_user = ont_query(file)
+    results, num_res,type_res,list_results_user = ont_query(file)
     flag = True
     results = results.toxml()
     root = ElementTree.fromstring(results)
     list_results = root.findall('{http://www.w3.org/2005/sparql-results#}results/{http://www.w3.org/2005/sparql-results#}result/{http://www.w3.org/2005/sparql-results#}binding')
 
-    print list_results
-    print list_results_user
-    print 'len'
-    print len(list_results)
-    print len(list_results_user)
-    
     if not list_results:
     	print 'empty list'
     	i += 1
     	s += "%d. " % (i) + '- The ontology did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
     	repo.create_issue('Acceptance test notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
     else:
-    	for result in list_results:
-    		if not list(result.iter())[1].text in list_results_user:
-    				i += 1
-    				s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
-    				break
+    	#checking if the number of results are the same
+    	if  ">" in num_res:
+    		if len(list_results) < int(num_res.replace('>','')):
+    	   		i += 1
+    		 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
+    		 	break
+    	elif "<" in num_res:
+    		if len(list_results) > int(num_res.replace('<','')):
+    	   		i += 1
+    		 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
+    	 	 	break
+    	elif "=" in num_res:
+    		 if len(list_results) != int(num_res.replace('=','')):
+    	   		i += 1
+    		 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
+    	 	 	break
+       #checking if the user examples are contained in the results
+       for result in list_results_user:
+    	   	if not result in list_results:
+    	   		i += 1
+    			s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
+    			break
+       #checking if the types are the same
+       for result in list_results:
+    	   	if list(result.iter())[1].attrib != type_res:
+    	   		i += 1
+    	   	 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
+    	   		break		
    
   repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug']) 
     		
@@ -67,14 +84,23 @@ for repo in g.get_user().get_repos():
     req = open(req_file, 'r')
     sparql = SPARQLWrapper("http://dbpedia.org/sparql")
     query_c =  req.read()
-    query = query_c.split('Result')
-
+    query = query_c.split('Results')
     sparql.setQuery(query[0])
-    list_results_user = query[1]
+   # query_res = query[1].split('Number of results')
+    #num_res = query_res[0]
+    #query_aux = query_res[1].split('Type of the results')
+    query_aux = query[1].split('Type of the results')
+    num_res = query_aux[0].replace('Number of results','')
+    print "num res" + num_res
+    type_res = query_aux[1].split('List of results')[0]
+    print "type_res" + type_res
+    list_results_user = query_aux[1].split('List of results')[1]
+    list_elements_result = list_result_user.split("\n")
+    print list_elements_result
     sparql.setReturnFormat(XML)
     results = sparql.query().convert()
     req.close()
-    return results,list_results_user
+    return results, num_res,type_res,list_elements_result
     
  def create_labels(repo):
    flag_acc = False

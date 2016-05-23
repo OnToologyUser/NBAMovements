@@ -100,6 +100,7 @@ for repo in g.get_user().get_repos():
     type_res = query_aux[1].split('List of results')[0]
     print "type_res" + type_res
     list_results_user = query_aux[1].split('List of results')[1]
+    print list_results_user
     list_elements_result = list_results_user.split("\n")
     print list_elements_result
     sparql.setReturnFormat(XML)

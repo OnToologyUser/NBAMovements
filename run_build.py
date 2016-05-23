@@ -27,13 +27,13 @@ for repo in g.get_user().get_repos():
   i = 0
   for file in list_of_files:
     results, num_res,type_res,list_results_user = ont_query(file)
-    flag = True
+    flag = False
     results = results.toxml()
     root = ElementTree.fromstring(results)
     list_results = root.findall('{http://www.w3.org/2005/sparql-results#}results/{http://www.w3.org/2005/sparql-results#}result/{http://www.w3.org/2005/sparql-results#}binding')
-    list_r = []
+    list_elements_results = []
     for result in list_results:
-    	list_r.append(list(result.iter())[1].text)
+    	list_elements_results.append(list(result.iter())[1].text)
     	
     if not list_results:
     	print 'empty list'
@@ -47,25 +47,29 @@ for repo in g.get_user().get_repos():
     			print 'error len'
     	   		i += 1
     		 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
+    		 	flag = True
     		 	break
     	elif "<" in num_res:
     		if len(list_results) > int(num_res.replace('<','')):
     			print 'error len'
     	   		i += 1
     		 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
+    	 	 	flag = True
     	 	 	break
     	else:
     		 if len(list_results) != int(num_res.replace('=','')):
     		 	print 'error len'
     	   		i += 1
     		 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
+    	 	 	flag = True
     	 	 	break
         #checking if the user examples are contained in the results
         for result in list_results_user:
-    	   	if not result.replace(" ","").replace("\n","") in list_r:
+    	   	if not result.replace(" ","").replace("\n","") in list_elements_results:
     	   		print 'error list'
     	   		i += 1
     			s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
+    			flag = True
     			break
         #checking if the types are the same
         for result in list_results:
@@ -74,9 +78,10 @@ for repo in g.get_user().get_repos():
     	   		print 'error tag'
     	   		i += 1
     	   	 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
+    	   		flag = True
     	   		break		
-   
-  repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug']) 
+  if flag == True:
+	 repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug']) 
     		
   ##Unit test
   ont_files = glob.glob('./*.owl')

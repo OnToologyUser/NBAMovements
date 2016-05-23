@@ -9,10 +9,9 @@ from xml.etree import ElementTree as ElementTree
 
 
 #GitHub authentication
-client_id = os.environ['github_username']
-client_secret = os.environ['github_password']
+client_token = os.environ['github_token']
 
-g = Github(client_id,client_secret)
+g = Github(client_token)
 
 
 for repo in g.get_user().get_repos():

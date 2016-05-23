@@ -66,7 +66,7 @@ for repo in g.get_user().get_repos():
     			break
         #checking if the types are the same
         for result in list_results:
-        	print list(result.iter())[1].tag
+        	print type_res
     	   	if  type_res not in list(result.iter())[1].tag:
     	   		print 'error tag'
     	   		i += 1
@@ -97,14 +97,14 @@ for repo in g.get_user().get_repos():
     #query_aux = query_res[1].split('Type of the results')
     query_aux = query[1].split('Type of the results')
     num_res = query_aux[0].replace('Number of results','')
-    num_res = num_res.replace('\n','')
+    num_res = num_res.replace("\n",'')
     type_res = query_aux[1].split('List of results')[0]
     list_results_user = query_aux[1].split('List of results')[1]
     print list_results_user
     list_results_user.replace(' ','')
-    list_results_user.replace('\n','')
+    list_results_user.replace("\n",'')
     list_elements_result = list_results_user.split(",")
-    print list_elements_result
+    print list_elements_result.replace(' ','')
     sparql.setReturnFormat(XML)
     results = sparql.query().convert()
     req.close()

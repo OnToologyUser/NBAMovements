@@ -84,7 +84,7 @@ for repo in g.get_user().get_repos():
     	   		i += 1
     	   		s += "\t- The results returned by the ontology has not the data type expected by the user.\n"
     	   		flag = True
-    	error_list.clear()   				
+    	error_list[:] = [] 				
   if flag == True:
 	 repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug']) 
     		

@@ -90,8 +90,9 @@ for repo in g.get_user().get_repos():
     	   		s += "\t- The results returned by the ontology has not the data type expected by the user.\n"
     	   		flag = True
     	error_list[:] = [] 				
-  if flag == True:
-	 repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug']) 
+  	if flag == True:
+  		repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug']) 
+  		break
     		
   ##Unit test
   ont_files = glob.glob('./*.owl')

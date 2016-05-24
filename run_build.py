@@ -40,7 +40,8 @@ for repo in g.get_user().get_repos():
     		print child.tag
     		print child.text
     		print child.attrib
-    		list_elements_results.append(child.text)
+    		if child is not None: 
+    			list_elements_results.append(child.text)
     	
     error_list = []
     for result in list_results:

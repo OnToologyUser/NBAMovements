@@ -1,8 +1,7 @@
 
-        
 PREFIX type: <http://dbpedia.org/class/yago/>
 PREFIX prop: <http://dbpedia.org/property/>
-SELECT  ?population
+SELECT ?country_name 
 WHERE {
     ?country a type:LandlockedCountries ;
              rdfs:label ?country_name ;
@@ -15,8 +14,8 @@ WHERE {
         Number of results
         >5
         Type of the results
-        integer
+        literal
         List of results
-        90076012
+        Ethiopia
 
 

@@ -30,6 +30,7 @@ for repo in g.get_user().get_repos():
     results, num_res,type_res,list_results_user = ont_query(file)
     flag = False
     results = results.toxml()
+    print results
     list_elements_results = []
     error_list = []
     root = ElementTree.fromstring(results)

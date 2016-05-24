@@ -88,6 +88,8 @@ for repo in g.get_user().get_repos():
         	tag = list(result.iter())[1].tag
         	attrib = list(result.iter())[1].attrib
         	if attrib is not None:
+        		print 'attrib'
+        		print attrib
         		attrib = attrib.values()[0]
 		options = [tag, attrib]
 		if not any(type_res.replace(" ","").replace("\n","")  in op for op in options ):

@@ -20,6 +20,7 @@ for repo in g.get_user().get_repos():
   create_labels(repo)
   ##########TESTS#########
   ##Acceptance test
+  print 'Starting acceptance test...'
   list_of_files = glob.glob('./*.rq')
   close_old_acc_issues_in_github(repo)
    # Each file has a requirement
@@ -29,18 +30,15 @@ for repo in g.get_user().get_repos():
     results, num_res,type_res,list_results_user = ont_query(file)
     flag = False
     results = results.toxml()
-    print results
     list_elements_results = []
+    error_list = []
     root = ElementTree.fromstring(results)
     list_results = root.findall('{http://www.w3.org/2005/sparql-results#}results/{http://www.w3.org/2005/sparql-results#}result/{http://www.w3.org/2005/sparql-results#}binding')
     # "ask" queries
     if not list_results:
-    	print root.tag
     	for child in root:
     		if child.text is not None: 
     			list_elements_results.append(child.text)
-    	
-    error_list = []
     for result in list_results:
     	if not list(result.iter())[1].attrib == "head":
     		list_elements_results.append(list(result.iter())[1].text)
@@ -65,7 +63,6 @@ for repo in g.get_user().get_repos():
     		 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
     	 	 	flag = True
     	 	 	s += "\t- The ontology return more results than expected.\n" 
-    	 	 	
     	else:
     		 if len(list_elements_results) != int(num_res.replace('=','')):
     		 	error_list.append("len")
@@ -76,39 +73,35 @@ for repo in g.get_user().get_repos():
     	 	 
         #check if the user examples are contained in the results 
         for result in list_results_user:
-        	print 'check-----------------------'
-        	print result.replace(" ","").replace("\n","") 
-        	print list_elements_results[0]
     	   	if not result.replace(" ","").replace("\n","") in list_elements_results:
     	   		if not "len" in error_list:
     	   			i += 1
     	   			s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
    	   		error_list.append("list")
-   	   	
       			s += "\t- The ontology did not return the results that the user expected.\n"
     			flag = True
     			break
     			
-        #checking if the types are the same that the user expected
+        #check if the types are the same that the user expected
         for result in list_results:
         	tag = list(result.iter())[1].tag
     	   	if not type_res.replace(" ","").replace("\n","") in list(result.iter())[1].tag:
-    	   		print 'error_list: ' 
-    	   		print error_list
     	   		if not ("len" or  "list" in error_list):
     	   				i += 1
     	   				s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
-    	   		
     	   		s += "\t- The results returned by the ontology has not the data type expected by the user.\n"
     	   		flag = True
     	   		break
     	error_list[:] = [] 				
   	if flag == True:
+  		print 'Acceptance test notification'
+  		print s
   		repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug']) 
   		break
     		
   ##Unit test
   ont_files = glob.glob('./*.owl')
+  print 'Starting unit test with OOPS!...'
   for file in ont_files:
     f = open(file, 'r')
     ont = f.read()
@@ -124,9 +117,6 @@ for repo in g.get_user().get_repos():
     query_c =  req.read()
     query = query_c.split('Results')
     sparql.setQuery(query[0])
-   # query_res = query[1].split('Number of results')
-    #num_res = query_res[0]
-    #query_aux = query_res[1].split('Type of the results')
     query_aux = query[1].split('Type of the results')
     num_res = query_aux[0].replace('Number of results','')
     num_res = num_res.replace("\n","")
@@ -134,9 +124,7 @@ for repo in g.get_user().get_repos():
     list_results_user = query_aux[1].split('List of results')[1]
     list_results_user.replace(" ","")
     list_results_user.replace("\n","")
-    print list_results_user
     list_elements_result = list_results_user.split(",")
-    print list_elements_result
     sparql.setReturnFormat(XML)
     results = sparql.query().convert()
     req.close()
@@ -358,7 +346,6 @@ for repo in g.get_user().get_repos():
      if len(suggs) > 0 or len(m_pitf)> 0 or len(warn) > 0 :
         	s = " " 
 		if len(suggs) > 0:
-			
 			s += "OOPS! has some suggestions to improve the ontology:\n"
 			for i in range(len(suggs)):
 				s += "%d. " % (i + 1) + suggs[i] +"\n"
@@ -416,7 +403,7 @@ for repo in g.get_user().get_repos():
             i.edit(state='closed')
             
  def close_old_acc_issues_in_github(repo):
-    print 'will close old acc issues'
+    print 'will close old acceptance test issues'
     for i in repo.get_issues(state='open'):
     	print i.title
         if i.title == ('Acceptance test notification'):

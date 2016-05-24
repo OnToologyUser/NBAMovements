@@ -46,14 +46,14 @@ for repo in g.get_user().get_repos():
     		if len(list_results) < int(num_res.replace('>','')):
     			error_list.append("len")
     	   		i += 1
-    		 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.'
+    		 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
 			s += "\t- The ontology return fewer results than expected.\n"    		 
     		 	flag = True
     	elif "<" in num_res:
     		if len(list_results) > int(num_res.replace('<','')):
     			error_list.append("len")
     	   		i += 1
-    		 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
+    		 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
     	 	 	flag = True
     	 	 	s += "\t- The ontology return more results than expected.\n" 
     	 	 	
@@ -61,7 +61,7 @@ for repo in g.get_user().get_repos():
     		 if len(list_results) != int(num_res.replace('=','')):
     		 	error_list.append("len")
     	   		i += 1
-    		 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
+    		 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
     	 	 	s += "\t- The ontology did not return the number of results expected.\n" 
     	 	 	flag = True
     	 	 
@@ -69,7 +69,7 @@ for repo in g.get_user().get_repos():
         for result in list_results_user:
     	   	if not result.replace(" ","").replace("\n","") in list_elements_results:
     	   		if not "len" in error_list:
-    	   			s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
+    	   			s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
    	   		error_list.append("list")
    	   		i += 1
       			s += "\t- The ontology did not return the results that the user expected.\n"
@@ -80,7 +80,7 @@ for repo in g.get_user().get_repos():
         	tag = list(result.iter())[1].tag
     	   	if not type_res.replace(" ","").replace("\n","") in list(result.iter())[1].tag:
     	   		if not "len" in error_list or not "list" in error_list:
-    	   				s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
+    	   				s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
     	   		i += 1
     	   		s += "\t- The results returned by the ontology has not the data type expected by the user.\n"
     	   		flag = True

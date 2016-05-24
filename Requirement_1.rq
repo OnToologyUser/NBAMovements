@@ -1,19 +1,19 @@
 
         
-PREFIX prop: <http://dbpedia.org/property/>
-ASK
-{
-  <http://dbpedia.org/resource/Amazon_River> prop:length ?amazon .
-  <http://dbpedia.org/resource/Nile> prop:length ?nile .
-  FILTER(?amazon > ?nile) .
-}
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+ 
+SELECT DISTINCT ?type
+WHERE {
+  ?s a ?type.
+}LIMIT 5
+
         
         Results
         Number of results
-        1
+        5
         Type of the results
         literal
         List of results
-        true
+        http://www.w3.org/2002/07/owl#FunctionalProperty
 
 

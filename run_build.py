@@ -90,7 +90,7 @@ for repo in g.get_user().get_repos():
         	print list(result.iter())[1].attrib
         	print type_res.replace(" ","").replace("\n","")
         	attrib = list(result.iter())[1].attrib
-    	   	if not type_res.replace(" ","").replace("\n","") in  attrib['datatype']:
+    	   	if not type_res.replace(" ","").replace("\n","") in (tag or attrib['datatype']):
     	   		if not ("len" or  "list" in error_list):
     	   				i += 1
     	   				s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'

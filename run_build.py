@@ -52,14 +52,14 @@ for repo in g.get_user().get_repos():
     else:
     	#check if the number of results are the same that the user expected
     	if  ">" in num_res:
-    		if len(list_results) < int(num_res.replace('>','')):
+    		if len(list_elements_results) < int(num_res.replace('>','')):
     			error_list.append("len")
     	   		i += 1
     		 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
 			s += "\t- The ontology return fewer results than expected.\n"    		 
     		 	flag = True
     	elif "<" in num_res:
-    		if len(list_results) > int(num_res.replace('<','')):
+    		if len(list_elements_results) > int(num_res.replace('<','')):
     			error_list.append("len")
     	   		i += 1
     		 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
@@ -67,7 +67,7 @@ for repo in g.get_user().get_repos():
     	 	 	s += "\t- The ontology return more results than expected.\n" 
     	 	 	
     	else:
-    		 if len(list_results) != int(num_res.replace('=','')):
+    		 if len(list_elements_results) != int(num_res.replace('=','')):
     		 	error_list.append("len")
     	   		i += 1
     		 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'

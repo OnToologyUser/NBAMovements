@@ -15,7 +15,7 @@ WHERE {
         Number of results
         >5
         Type of the results
-        number
+        literal
         List of results
         90076012
 

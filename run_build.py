@@ -32,14 +32,18 @@ for repo in g.get_user().get_repos():
     print results
     root = ElementTree.fromstring(results)
     list_results = root.findall('{http://www.w3.org/2005/sparql-results#}results/{http://www.w3.org/2005/sparql-results#}result/{http://www.w3.org/2005/sparql-results#}binding')
+    if not list_results:
+    	print "None"
+    	list_results = root.findall('{http://www.w3.org/2005/sparql-results#}boolean')
+    	
     list_elements_results = []
     error_list = []
     for result in list_results:
     	list_elements_results.append(list(result.iter())[1].text)
     	
-    if not list_results:
+    if not list_elements_results:
     	i += 1
-    	s += "%d. " % (i) + 'The ontology can not respond to the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
+    	s += "%d. " % (i) + 'The ontology can not answer to the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
     	repo.create_issue('Acceptance test notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
     else:
     	#check if the number of results are the same that the user expected

@@ -77,8 +77,8 @@ for repo in g.get_user().get_repos():
         #check if the user examples are contained in the results 
         for result in list_results_user:
         	print 'check-----------------------'
-        	print result
-        	print list_elements_results
+        	print result.replace(" ","").replace("\n","") 
+        	print list_elements_results[0]
     	   	if not result.replace(" ","").replace("\n","") in list_elements_results:
     	   		if not "len" in error_list:
     	   			i += 1

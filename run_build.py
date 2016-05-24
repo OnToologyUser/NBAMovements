@@ -30,15 +30,22 @@ for repo in g.get_user().get_repos():
     flag = False
     results = results.toxml()
     print results
+    list_elements_results = []
     root = ElementTree.fromstring(results)
     list_results = root.findall('{http://www.w3.org/2005/sparql-results#}results/{http://www.w3.org/2005/sparql-results#}result/{http://www.w3.org/2005/sparql-results#}binding')
+    # "ask" queries
     if not list_results:
-    	list_results = root.findall('{http://www.w3.org/2005/sparql-results#}boolean')
+    	print root.tag
+    	for child in root:
+    		print child.tag
+    		print child.text
+    		print child.attrib
+    		list_elements_results.append(child.text)
     	
-    list_elements_results = []
     error_list = []
     for result in list_results:
-    	list_elements_results.append(list(result.iter())[1].text)
+    	if not list(result.iter())[1].attrib == "head":
+    		list_elements_results.append(list(result.iter())[1].text)
     	
     if not list_elements_results:
     	i += 1

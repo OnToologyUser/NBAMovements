@@ -1,22 +1,17 @@
 
-PREFIX type: <http://dbpedia.org/class/yago/>
-PREFIX prop: <http://dbpedia.org/property/>
-SELECT ?population 
+SELECT DISTINCT ?concept
 WHERE {
-    ?country a type:LandlockedCountries ;
-             rdfs:label ?country_name ;
-             prop:populationEstimate ?population .
-    FILTER (?population > 15000000 && langMatches(lang(?country_name), "EN")) .
-} ORDER BY DESC(?population)
+    ?s a ?concept .
+} LIMIT 50
 
         
         Results
         Number of results
         >5
         Type of the results
-        literal
+        uri
         List of results
-        90076012
+        http://www.w3.org/2002/07/owl#FunctionalProperty
 
 
 

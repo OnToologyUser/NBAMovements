@@ -86,6 +86,8 @@ for repo in g.get_user().get_repos():
         #check if the types are the same that the user expected
         for result in list_results:
         	tag = list(result.iter())[1].tag
+        	print tag
+        	print list(result.iter())[1].attrib
     	   	if not type_res.replace(" ","").replace("\n","") in list(result.iter())[1].tag:
     	   		if not ("len" or  "list" in error_list):
     	   				i += 1

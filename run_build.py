@@ -32,54 +32,59 @@ for repo in g.get_user().get_repos():
     root = ElementTree.fromstring(results)
     list_results = root.findall('{http://www.w3.org/2005/sparql-results#}results/{http://www.w3.org/2005/sparql-results#}result/{http://www.w3.org/2005/sparql-results#}binding')
     list_elements_results = []
+    error_list = []
     for result in list_results:
     	list_elements_results.append(list(result.iter())[1].text)
     	
     if not list_results:
-    	print 'empty list'
     	i += 1
-    	s += "%d. " % (i) + '- The ontology did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
+    	s += "%d. " % (i) + 'The ontology did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
     	repo.create_issue('Acceptance test notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
     else:
-    	#checking if the number of results are the same
+    	#check if the number of results are the same that the user expected
     	if  ">" in num_res:
     		if len(list_results) < int(num_res.replace('>','')):
-    			print 'error len'
+    			error_list.append("len")
     	   		i += 1
-    		 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
+    		 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.'
+			s += "\t- The ontology return fewer results than expected.\n"    		 
     		 	flag = True
-    		 	break
     	elif "<" in num_res:
     		if len(list_results) > int(num_res.replace('<','')):
-    			print 'error len'
+    			error_list.append("len")
     	   		i += 1
     		 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
     	 	 	flag = True
-    	 	 	break
+    	 	 	s += "\t- The ontology return more results than expected.\n" 
+    	 	 	
     	else:
     		 if len(list_results) != int(num_res.replace('=','')):
-    		 	print 'error len'
+    		 	error_list.append("len")
     	   		i += 1
     		 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
+    	 	 	s += "\t- The ontology did not return the number of results expected.\n" 
     	 	 	flag = True
-    	 	 	break
-        #checking if the user examples are contained in the results
+    	 	 
+        #check if the user examples are contained in the results 
         for result in list_results_user:
     	   	if not result.replace(" ","").replace("\n","") in list_elements_results:
-    	   		print 'error list'
-    	   		i += 1
-    			s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
+    	   		if not "len" in error_list:
+    	   			s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
+   	   		error_list.append("list")
+   	   		i += 1
+      			s += "\t- The ontology did not return the results that the user expected.\n"
     			flag = True
-    			break
-        #checking if the types are the same
+    			
+        #checking if the types are the same that the user expected
         for result in list_results:
         	tag = list(result.iter())[1].tag
     	   	if not type_res.replace(" ","").replace("\n","") in list(result.iter())[1].tag:
-    	   		print 'error tag'
+    	   		if not "len" in error_list or not "list" in error_list:
+    	   				s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
     	   		i += 1
-    	   	 	s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
+    	   		s += "\t- The results returned by the ontology has not the data type expected by the user.\n"
     	   		flag = True
-    	   		break		
+    	error_list.clear()   				
   if flag == True:
 	 repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug']) 
     		

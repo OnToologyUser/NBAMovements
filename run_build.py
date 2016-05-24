@@ -74,21 +74,25 @@ for repo in g.get_user().get_repos():
         for result in list_results_user:
     	   	if not result.replace(" ","").replace("\n","") in list_elements_results:
     	   		if not "len" in error_list:
+    	   			i += 1
     	   			s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
    	   		error_list.append("list")
-   	   		i += 1
+   	   	
       			s += "\t- The ontology did not return the results that the user expected.\n"
     			flag = True
+    			break
     			
         #checking if the types are the same that the user expected
         for result in list_results:
         	tag = list(result.iter())[1].tag
     	   	if not type_res.replace(" ","").replace("\n","") in list(result.iter())[1].tag:
     	   		if not "len" in error_list or not "list" in error_list:
+    	   				i += 1
     	   				s += "%d. " % (i) + 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
-    	   		i += 1
+    	   		
     	   		s += "\t- The results returned by the ontology has not the data type expected by the user.\n"
     	   		flag = True
+    	   		break
     	error_list[:] = [] 				
   	if flag == True:
   		repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug']) 

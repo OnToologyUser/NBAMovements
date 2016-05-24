@@ -29,6 +29,7 @@ for repo in g.get_user().get_repos():
     results, num_res,type_res,list_results_user = ont_query(file)
     flag = False
     results = results.toxml()
+    print results
     root = ElementTree.fromstring(results)
     list_results = root.findall('{http://www.w3.org/2005/sparql-results#}results/{http://www.w3.org/2005/sparql-results#}result/{http://www.w3.org/2005/sparql-results#}binding')
     list_elements_results = []
@@ -38,7 +39,7 @@ for repo in g.get_user().get_repos():
     	
     if not list_results:
     	i += 1
-    	s += "%d. " % (i) + 'The ontology did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
+    	s += "%d. " % (i) + 'The ontology can not respond to the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
     	repo.create_issue('Acceptance test notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
     else:
     	#check if the number of results are the same that the user expected

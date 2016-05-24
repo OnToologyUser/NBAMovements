@@ -1,20 +1,22 @@
 
         
+PREFIX type: <http://dbpedia.org/class/yago/>
 PREFIX prop: <http://dbpedia.org/property/>
-ASK
-{
-  <http://dbpedia.org/resource/Amazon_River> prop:length ?amazon .
-  <http://dbpedia.org/resource/Nile> prop:length ?nile .
-  FILTER(?amazon > ?nile) .
-} 
+SELECT  ?population
+WHERE {
+    ?country a type:LandlockedCountries ;
+             rdfs:label ?country_name ;
+             prop:populationEstimate ?population .
+    FILTER (?population > 15000000 && langMatches(lang(?country_name), "EN")) .
+} ORDER BY DESC(?population)
 
         
         Results
         Number of results
-        1
+        >5
         Type of the results
-        boolean
+        number
         List of results
-        true
+        90076012
 
 

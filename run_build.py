@@ -30,7 +30,6 @@ for repo in g.get_user().get_repos():
     results, num_res,type_res,list_results_user = ont_query(file)
     flag = False
     results = results.toxml()
-    print results
     list_elements_results = []
     error_list = []
     root = ElementTree.fromstring(results)
@@ -55,7 +54,7 @@ for repo in g.get_user().get_repos():
     			error_list.append("len")
     	   		i += 1
     		 	s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
-			s += "\t- The ontology return fewer results than expected. Expected >"+str(num_res)+ " but was "+str(len(list_elements_results))+".\n"    		 
+			s += "    - The ontology return fewer results than expected. Expected: "+str(num_res)+ " but was: "+str(len(list_elements_results))+".\n"    		 
     		 	flag = True
     	elif "<" in num_res:
     		if len(list_elements_results) > int(num_res.replace('<','')):
@@ -63,13 +62,13 @@ for repo in g.get_user().get_repos():
     	   		i += 1
     		 	s += "%d. " % (i) + 'Error with the requirement with ID  ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
     	 	 	flag = True
-    	 	 	s += "\t- The ontology return more results than expected. Expected < "+str(num_res)+ " but was "+str(len(list_elements_results))+".\n"
+    	 	 	s += "    - The ontology return more results than expected. Expected: "+str(num_res)+ " but was: "+str(len(list_elements_results))+".\n"
     	else:
     		 if len(list_elements_results) != int(num_res.replace('=','')):
     		 	error_list.append("len")
     	   		i += 1
     		 	s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
-    	 	 	s += "\t- The ontology did not return the number of results expected. Expected "+str(num_res)+ " but was "+str(len(list_elements_results))+".\n"
+    	 	 	s += "    - The ontology did not return the number of results expected. Expected: "+str(num_res)+ " but was: "+str(len(list_elements_results))+".\n"
     	 	 	flag = True
     	 	 
         #check if the user examples are contained in the results 
@@ -79,7 +78,7 @@ for repo in g.get_user().get_repos():
     	   			i += 1
     	   			s += "%d. " % (i) + 'Error with the requirement with ID  ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
    	   		error_list.append("list")
-      			s += "\t- The ontology did not return the results that the user expected. Expected <"+ result + "> in the list of results.\n"
+      			s += "    - The ontology did not return the results that the user expected. Expected: <"+ result.replace(" ","").replace("\n","") + "> in the list of results.\n"
     			flag = True
     			break
 
@@ -88,15 +87,13 @@ for repo in g.get_user().get_repos():
         	tag = list(result.iter())[1].tag
         	attrib = list(result.iter())[1].attrib
         	if len(attrib) > 0:
-        		print 'attrib'
-        		print len(attrib)
         		attrib = attrib.values()[0]
 		options = [tag, attrib]
 		if not any(type_res.replace(" ","").replace("\n","")  in op for op in options ):
     	   		if not ("len" or  "list" in error_list):
     	   				i += 1
     	   				s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
-    	   		s += "\t- The results returned by the ontology has not the data type expected by the user. Expected <"+type_res+ "> but was <"+ tag +">.\n"
+    	   		s += "    - The results returned by the ontology has not the data type expected by the user. Expected <"+type_res.replace(" ","").replace("\n","")+ "> but was <"+ tag +">.\n"
     	   		flag = True
     	   		break
     	error_list[:] = [] 				
@@ -129,13 +126,11 @@ for repo in g.get_user().get_repos():
     num_res = num_res.replace("\n","")
     type_res = query_aux[1].split('List of results')[0]
     list_results_user = query_aux[1].split('List of results')[1]
-    list_results_user.replace(" ","")
-    list_results_user.replace("\n","")
     list_elements_result = list_results_user.split(",")
     sparql.setReturnFormat(XML)
     results = sparql.query().convert()
     req.close()
-    return results, num_res.replace(" ",""),type_res.replace(" ",""),list_elements_result
+    return results, num_res,type_res,list_elements_result
      
  def create_labels(repo):
    flag_acc = False

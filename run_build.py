@@ -93,7 +93,7 @@ for repo in g.get_user().get_repos():
     	   		if not ("len" or  "list" in error_list):
     	   				i += 1
     	   				s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
-    	   		s += "    - The results returned by the ontology has not the data type expected by the user. Expected <"+type_res.replace(" ","").replace("\n","")+ "> but was <"+ tag +">.\n"
+    	   		s += "    - The results returned by the ontology has not the data type expected by the user. Expected: "+type_res.replace(" ","").replace("\n","")+ " but was: "+ tag +".\n"
     	   		flag = True
     	   		break
     	error_list[:] = [] 				

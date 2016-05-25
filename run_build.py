@@ -63,13 +63,13 @@ for repo in g.get_user().get_repos():
     	   		i += 1
     		 	s += "%d. " % (i) + 'Error with the requirement with ID  ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
     	 	 	flag = True
-    	 	 	s += "\t- The ontology return more results than expected. Expected < "+num_res+ " but was "+len(list_elements_results)+".\n"\n" 
+    	 	 	s += "\t- The ontology return more results than expected. Expected < "+num_res+ " but was "+len(list_elements_results)+".\n"
     	else:
     		 if len(list_elements_results) != int(num_res.replace('=','')):
     		 	error_list.append("len")
     	   		i += 1
     		 	s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
-    	 	 	s += "\t- The ontology did not return the number of results expected. Expected "+num_res+ " but was "+len(list_elements_results)+".\n"\n" 
+    	 	 	s += "\t- The ontology did not return the number of results expected. Expected "+num_res+ " but was "+len(list_elements_results)+".\n"
     	 	 	flag = True
     	 	 
         #check if the user examples are contained in the results 

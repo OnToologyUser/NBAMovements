@@ -7,9 +7,9 @@ WHERE {
         
         Results
         Number of results
-        >5
+        <5
         Type of the results
-        uri
+        literal
         List of results
         http://www.w3.org/2002/07/owl#FunctionalProperty
 

@@ -52,6 +52,9 @@ for repo in g.get_user().get_repos():
     		for element in el:
     			print 'Element ' 
     			print  str(list(element.iter())[1].text)
+    			print element.tag
+    			print element.attrib
+    			print 'fin element'
     			list_e.append(str(list(element.iter())[1].text))
     		list_elements_results.append(list_e)
     print 'list_element_results'

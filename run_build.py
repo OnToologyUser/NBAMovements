@@ -143,7 +143,6 @@ for repo in g.get_user().get_repos():
     query_aux = query[1].split('Type of the results')
     num_res = query_aux[0].replace('Number of results','')
     num_res = num_res.replace("\n","")
-    list_num_res = num_res.split(",")
     type_res = query_aux[1].split('List of results')[0]
     list_type_res = type_res.split(",")
     list_results_user = query_aux[1].split('List of results')[1]
@@ -156,11 +155,10 @@ for repo in g.get_user().get_repos():
     sparql.setReturnFormat(XML)
     results = sparql.query().convert()
     print 'query'
-    print list_num_res
     print list_type_res
     print list_res
     req.close()
-    return results, list_num_res,list_type_res,list_res
+    return results, num_res,list_type_res,list_res
      
  def create_labels(repo):
    flag_acc = False

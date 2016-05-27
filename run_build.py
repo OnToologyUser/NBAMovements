@@ -50,7 +50,7 @@ for repo in g.get_user().get_repos():
     		for element in el:
     			list_e.append(str(list(element.iter())[1].text))
     		list_elements_results.append(list_e)
-    		lis_e[:] = []
+    		list_e[:] = []
     print 'list_element_results'
     print list_elements_results	
     	

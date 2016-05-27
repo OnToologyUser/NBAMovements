@@ -97,7 +97,7 @@ for repo in g.get_user().get_repos():
     	   				i += 1
     	   				s += "%d. " % (i) + 'Error with the requirement with ID  ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
    	   		error_list.append("list")
-      			s += "    - The ontology did not return the results that the user expected. Expected: <"+ result.replace(" ","").replace("\n","") + "> in the list of results.\n"
+      			s += "    - The ontology did not return the results that the user expected. Expected: <"+ result+ "> in the list of results.\n"
     			flag = True
     			break
 

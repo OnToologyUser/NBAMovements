@@ -90,18 +90,23 @@ for repo in g.get_user().get_repos():
         inside = False
         for result in list_results_user:
         		print '================================'
-        		print result
-        		for list_elem in list_elements_results:
+             		for list_elem in list_elements_results:
+        			print result
         			print list_elem
         			if all(x in result for x in list_elem):
+        				print 'inside'
+					inside = True
+				if result == list_elem:
+					print 'inside 2'
 					inside = True
     	   		
-    	   		if inside is False:
+    	   		if inside == False:
     	   			if not "len" in error_list:
     	   					i += 1
     	   					s += "%d. " % (i) + 'Error with the requirement with ID  ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
    	   		error_list.append("list")
-      			s += '    - The ontology did not return the results that the user expected. Expected: '.join(result)+ ' in the list of results.\n'
+      			s += '    - The ontology did not return the results that the user expected. Expected: '.join(result)
+      			s+=' in the list of results.\n'
     			flag = True
     			break
 

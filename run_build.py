@@ -387,6 +387,7 @@ for repo in g.get_user().get_repos():
         labels.append("Unit test bug")
         labels.append("Inference")
         create_oops_issue_in_github(repo, ont_file, i_p, labels)
+        print labels
         labels[:] = []
      if len(mod_pitf) > 0:
         #p += "The Pitfalls are the following: \n"
@@ -425,6 +426,7 @@ for repo in g.get_user().get_repos():
         labels.append("Unit test bug")
         labels.append("Language")
         create_oops_issue_in_github(repo, ont_file, l_p, labels)
+        print labels
         labels[:] = []
          
              

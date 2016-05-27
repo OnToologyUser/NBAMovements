@@ -87,8 +87,7 @@ for repo in g.get_user().get_repos():
         			if all(x in result for x in list_elem):
 					inside = True
     	   		if inside == False:
-    	   			
-    	   			if not "len" in error_list:
+    	   			if len(error_list) >0:
     	   					i += 1
     	   					s += "%d. " % (i) + 'Error with the requirement with ID  ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
    	   			error_list.append("list")

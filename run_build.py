@@ -87,10 +87,10 @@ for repo in g.get_user().get_repos():
         			if all(x in result for x in list_elem):
 					inside = True
     	   		if inside == False:
-    	   			if len(error_list) >0:
+    	   			if len(error_list) == 0:
     	   					i += 1
     	   					s += "%d. " % (i) + 'Error with the requirement with ID  ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
-   	   			error_list.append("list")
+   	   					error_list.append("list")
       				s += '    - The ontology did not return the results that the user expected. Expected: '+', '.join(result)
       				
       				s+=' in the list of results.\n'
@@ -107,7 +107,7 @@ for repo in g.get_user().get_repos():
         		attrib = attrib.values()[0]
 		options = [tag, attrib]
 		if not any(type_res[j]  in op for op in options ):
-    	   		if len(error_list) > 0:
+    	   		if len(error_list) == 0:
     	   			error_list.append("type")
     	   			i += 1
     	   			s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'

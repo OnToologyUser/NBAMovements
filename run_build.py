@@ -44,6 +44,7 @@ for repo in g.get_user().get_repos():
     			list_elements_results.append(child.text)
     
     list_e = []
+    list_elements_results.append(list_e)
     for result in list_results:
     		list_e = []
     	#if not list(result.iter())[1].attrib == "head":
@@ -57,7 +58,7 @@ for repo in g.get_user().get_repos():
     		print list_elements_results
     		print 'list e despues de for'
     		print list_e
-    		list_elements_results.append(list_e)
+    		
     		print list_elements_results
     		
     print 'list_element_results'

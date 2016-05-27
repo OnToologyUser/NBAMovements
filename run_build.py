@@ -118,7 +118,7 @@ for repo in g.get_user().get_repos():
     	error_list[:] = [] 				
   	if flag == True:
   		print 'Acceptance test notification'
-  		s += "    - The results returned by the ontology has not the data type expected by the user. Expected: "+', '.join(type_res)+" but was: "+', '.join(tag)+" \n"
+  		s += "    - The results returned by the ontology has not the data type expected by the user. Expected: "+', '.join(type_res)+"\n"
   		repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug']) 
   		break
     		

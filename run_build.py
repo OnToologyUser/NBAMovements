@@ -105,7 +105,6 @@ for repo in g.get_user().get_repos():
         for result_c in list_results:
            i = 0
            for result in result_c: 
-           	i += 1
         	tag = list(result.iter())[1].tag
         	attrib = list(result.iter())[1].attrib
         	if len(attrib) > 0:
@@ -119,6 +118,7 @@ for repo in g.get_user().get_repos():
     	   		s += "    - The results returned by the ontology has not the data type expected by the user. Expected: ".join(type_res) + " but was: ".join(tag) +".\n"
     	   		flag = True
     	   		break
+    	   	i+=1
     	error_list[:] = [] 				
   	if flag == True:
   		print 'Acceptance test notification'

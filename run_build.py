@@ -92,7 +92,8 @@ for repo in g.get_user().get_repos():
     	   					i += 1
     	   					s += "%d. " % (i) + 'Error with the requirement with ID  ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
    	   			error_list.append("list")
-      				s += '    - The ontology did not return the results that the user expected. Expected: '.join(result)
+      				s += '    - The ontology did not return the results that the user expected. Expected: '+', '.join(result)
+      				
       				s+=' in the list of results.\n'
     				flag = True
     				break
@@ -117,7 +118,7 @@ for repo in g.get_user().get_repos():
     	error_list[:] = [] 				
   	if flag == True:
   		print 'Acceptance test notification'
-  		s += "    - The results returned by the ontology has not the data type expected by the user. Expected "+', '.join(type_res)+" \n"
+  		s += "    - The results returned by the ontology has not the data type expected by the user. Expected: "+', '.join(type_res)+" but was: "+', '.join(tag)+" \n"
   		repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug']) 
   		break
     		

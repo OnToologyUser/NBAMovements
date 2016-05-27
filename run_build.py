@@ -47,6 +47,7 @@ for repo in g.get_user().get_repos():
     list_e = []
     for result in list_results:
     	#if not list(result.iter())[1].attrib == "head":
+    		print result
     		el = result.findall('http://www.w3.org/2005/sparql-results#}binding')
     		print el
     		for element in el:

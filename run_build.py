@@ -418,7 +418,7 @@ for repo in g.get_user().get_repos():
         l_p += "The Pitfalls are the following: \n"
         for i in range(len(lang_pitf)):
             l_p += "%d. " % (i + 1) + lang_pitf[i] + ". Importance level: "+ lang_pitf_i[i].replace('\"','') +"\n"
-             if not lang_pitf_i[i].replace('\"','') in labels:
+            if not lang_pitf_i[i].replace('\"','') in labels:
           	labels.append(lang_pitf_i[i].replace('\"',''))
         labels.append("Unit test bug")
         labels.append("Language")

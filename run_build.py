@@ -300,8 +300,7 @@ for repo in g.get_user().get_repos():
      met_pitf_i = []
      lang_pitf_i = []
      desc = ""
-     print 'oops!'
-     print nodes
+     labels = []
      for node in nodes[:-1]:
      	labels = []
         attrs = node.split("\n")
@@ -317,7 +316,6 @@ for repo in g.get_user().get_repos():
            #minor pitfalls
            if  'hasImportanceLevel: \"Minor\"' in attr and desc != "":
                 m_pitf.append(desc)
-                labels.append(attr.replace('hasImportanceLevel: ', ''))
                 break
            #critical-important pitfalls     
            if 'hasCode' in attr:
@@ -343,23 +341,15 @@ for repo in g.get_user().get_repos():
            if 'hasImportanceLevel' in attr:
             if flag_i == True:
              inf_pitf_i.append(attr.replace('hasImportanceLevel: ', ''))
-             if not attr.replace('hasImportanceLevel: ', '') in labels:
-             	labels.append(attr.replace('hasImportanceLevel: ', ''))
              break
             elif flag_mo ==True:
               mod_pitf_i.append(attr.replace('hasImportanceLevel: ', ''))
-              if not attr.replace('hasImportanceLevel: ', '') in labels:
-              	labels.append(attr.replace('hasImportanceLevel: ', ''))
               break   
             elif flag_me ==True:
               met_pitf_i.append(attr.replace('hasImportanceLevel: ', ''))
-              if not attr.replace('hasImportanceLevel: ', '') in labels:
-              	labels.append(attr.replace('hasImportanceLevel: ', ''))
               break
             elif flag_l == True:
               lang_pitf_i.append(attr.replace('hasImportanceLevel: ', ''))
-              if not attr.replace('hasImportanceLevel: ', '') in labels:
-              	labels.append(attr.replace('hasImportanceLevel: ', ''))
               break
         #suggestions to improve the ontolgy
         if sugg_flag in node:
@@ -378,19 +368,25 @@ for repo in g.get_user().get_repos():
 		if len(m_pitf) > 0:
 			s += "\n\nOOPS! has encountered some minor pitfalls:\n" 
 			for i in range(len(m_pitf)):
-				s += "%d. " % (i + 1) + m_pitf[i] +"\n"                   
+				s += "%d. " % (i + 1) + m_pitf[i] +"\n"  
+			if not 'Minor' in labels:
+				labels.append("Minor")
                 labels.append("enhancement")
                 create_oops_issue_in_github(repo, ont_file, s, labels) 
+                labels[:] = []
      if len(inf_pitf) > 0:
         i_p = p
         i_p += "inference. \n"
         i_p += "The Pitfalls are the following: \n"
         for i in range(len(inf_pitf)):
           i_p += "%d. " % (i + 1) + inf_pitf[i] + ". Importance level: "+ inf_pitf_i[i].replace('\"','') +"\n"
-        labels = ["Unit test bug", "Inference"]
+       # labels = ["Unit test bug", "Inference"]
+          if not inf_pitf_i[i].replace('\"','') in labels:
+          	labels.append(inf_pitf_i[i].replace('\"',''))
         labels.append("Unit test bug")
         labels.append("Inference")
         create_oops_issue_in_github(repo, ont_file, i_p, labels)
+        labels[:] = []
      if len(mod_pitf) > 0:
         #p += "The Pitfalls are the following: \n"
         m_p = p
@@ -398,27 +394,36 @@ for repo in g.get_user().get_repos():
         m_p += "The Pitfalls are the following: \n"
         for i in range(len(mod_pitf)):
             m_p += "%d. " % (i + 1) + mod_pitf[i] + ". Importance level: "+ mod_pitf_i[i].replace('\"','') + "\n"
+            if not mod_pitf_i[i].replace('\"','') in labels:
+          	labels.append(mod_pitf_i[i].replace('\"',''))
         labels.append("Unit test bug")
         labels.append("Modelling")
         create_oops_issue_in_github(repo, ont_file, m_p, labels)
+        labels[:] = []
      if len(met_pitf) > 0:
         met_p = p
         met_p += "metadata. \n"
         met_p += "The Pitfalls are the following: \n"
         for i in range(len(met_pitf)):
             met_p += "%d. " % (i + 1) + met_pitf[i] + ". Importance level: "+ met_pitf_i[i].replace('\"','') +"\n"
+            if not met_pitf_i[i].replace('\"','') in labels:
+          	labels.append(met_pitf_i[i].replace('\"',''))
         labels.append("Unit test bug")
         labels.append("Metadata")
         create_oops_issue_in_github(repo, ont_file, met_p, labels)
+        labels[:] = []
      if len(lang_pitf) > 0:
         l_p  = p
         l_p += "ontology language. \n"
         l_p += "The Pitfalls are the following: \n"
         for i in range(len(lang_pitf)):
             l_p += "%d. " % (i + 1) + lang_pitf[i] + ". Importance level: "+ lang_pitf_i[i].replace('\"','') +"\n"
+             if not lang_pitf_i[i].replace('\"','') in labels:
+          	labels.append(lang_pitf_i[i].replace('\"',''))
         labels.append("Unit test bug")
         labels.append("Language")
         create_oops_issue_in_github(repo, ont_file, l_p, labels)
+        labels[:] = []
          
              
     

@@ -93,7 +93,7 @@ for repo in g.get_user().get_repos():
         		print result
         		for list_elem in list_elements_results:
         			print list_elem
-				if result in list_elem:
+				if result == list_elem:
 					inside = True
     	   		
     	   		if inside is False:

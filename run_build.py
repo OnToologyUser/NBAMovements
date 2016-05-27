@@ -31,8 +31,6 @@ for repo in g.get_user().get_repos():
     flag = False
 
     results = results.toxml()
-    print 'results'
-    print results
     list_elements_results = []
     error_list = []
     root = ElementTree.fromstring(results)
@@ -52,10 +50,6 @@ for repo in g.get_user().get_repos():
     			list_e.append(list(element.iter())[1].text)
     			
     		list_elements_results.append(list_e)
-    		print list_elements_results
-    		
-    print 'list_element_results'
-    print list_elements_results	
     	
     if not list_elements_results:
     	i += 1
@@ -89,10 +83,7 @@ for repo in g.get_user().get_repos():
         #check if the user examples are contained in the results 
         inside = False
         for result in list_results_user:
-        		print '================================'
              		for list_elem in list_elements_results:
-        			print result
-        			print list_elem
         			if all(x in result for x in list_elem):
 					inside = True
     	   		

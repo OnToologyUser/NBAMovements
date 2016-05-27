@@ -49,14 +49,8 @@ for repo in g.get_user().get_repos():
     	#if not list(result.iter())[1].attrib == "head":
     		el = result.findall('{http://www.w3.org/2005/sparql-results#}binding')
     		for element in el:
-    			print 'Element' 
-    			print list(element.iter())[1].text
     			list_e.append(list(element.iter())[1].text)
-    			print list_e
-    		print 'list elements antes'
-    		print list_elements_results
-    		print 'list e despues de for'
-    		print list_e
+    			
     		list_elements_results.append(list_e)
     		print list_elements_results
     		
@@ -94,8 +88,6 @@ for repo in g.get_user().get_repos():
     	 	 
         #check if the user examples are contained in the results 
         for result in list_results_user:
-        		print 'result'
-        		print result.replace(" ","").replace("\n","")
     	   		if not result.replace(" ","").replace("\n","") in list_elements_results:
     	   			if not "len" in error_list:
     	   				i += 1
@@ -151,13 +143,24 @@ for repo in g.get_user().get_repos():
     query_aux = query[1].split('Type of the results')
     num_res = query_aux[0].replace('Number of results','')
     num_res = num_res.replace("\n","")
+    list_num_res = num_res.split(",")
     type_res = query_aux[1].split('List of results')[0]
+    list_type_res = type_res.split(",")
     list_results_user = query_aux[1].split('List of results')[1]
-    list_elements_result = list_results_user.split(",")
+    list_elements_result = list_results_user.split("\n")
+    list_res = []
+    for element in list_elements_result:
+    	element = elements.split(",")
+    	list_res.append(element)
+    	
     sparql.setReturnFormat(XML)
     results = sparql.query().convert()
+    print 'query'
+    print list_num_res
+    print list_type_res
+    print list_res
     req.close()
-    return results, num_res,type_res,list_elements_result
+    return results, list_num_res,list_type_res,list_res
      
  def create_labels(repo):
    flag_acc = False

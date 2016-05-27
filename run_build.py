@@ -148,9 +148,9 @@ for repo in g.get_user().get_repos():
     num_res = query_aux[0].replace('Number of results','')
     num_res = num_res.replace("\n","")
     type_res = query_aux[1].split('List of results')[0]
-    list_type_res = type_res.split(",")
+    list_type_res = type_res.replace("\n","").replace(" ","").split(",")
     list_results_user = query_aux[1].split('List of results')[1]
-    list_elements_result = list_results_user.split("\n")
+    list_elements_result = list_results_user.replace(" ","").split("\n")
     list_res = []
     for element in list_elements_result:
     	element_list = element.split(",")

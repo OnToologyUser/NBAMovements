@@ -112,7 +112,7 @@ for repo in g.get_user().get_repos():
         		attrib = attrib.values()[0]
 		options = [tag, attrib]
 		
-		if not any(type_res.replace(" ","").replace("\n","")[i]  in op for op in options ):
+		if not any(type_res[i]  in op for op in options ):
     	   		if not ("len" or  "list" in error_list):
     	   				i += 1
     	   				s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'

@@ -52,7 +52,7 @@ for repo in g.get_user().get_repos():
     			list_e.append(str(list(element.iter())[1].text))
     		list_elements_results.append(list_e)
     print 'list_element_results'
-    print list_element_results	
+    print list_elements_results	
     	
     if not list_elements_results:
     	i += 1

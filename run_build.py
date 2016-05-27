@@ -43,15 +43,16 @@ for repo in g.get_user().get_repos():
     	for child in root:
     		if child.text is not None: 
     			list_elements_results.append(child.text)
-    print 'results'
+    
     list_e = []
     for result in list_results:
     	#if not list(result.iter())[1].attrib == "head":
     		el = result.findall('{http://www.w3.org/2005/sparql-results#}binding')
     		for element in el:
-    			list_e.append(list(element.iter())[1].text)
+    			list_e.append(str(list(element.iter())[1].text))
     		list_elements_results.append(list_e)
-    		print list_elements_results
+    print 'list_element_results'
+    print list_element_results	
     	
     if not list_elements_results:
     	i += 1
@@ -84,7 +85,8 @@ for repo in g.get_user().get_repos():
     	 	 
         #check if the user examples are contained in the results 
         for result in list_results_user:
-        		print result
+        		print 'result'
+        		print result.replace(" ","").replace("\n","")
     	   		if not result.replace(" ","").replace("\n","") in list_elements_results:
     	   			if not "len" in error_list:
     	   				i += 1

@@ -45,6 +45,7 @@ for repo in g.get_user().get_repos():
     
     list_e = []
     for result in list_results:
+    		list_e[:] = []
     	#if not list(result.iter())[1].attrib == "head":
     		el = result.findall('{http://www.w3.org/2005/sparql-results#}binding')
     		for element in el:
@@ -52,7 +53,7 @@ for repo in g.get_user().get_repos():
     			print list(element.iter())[1].text
     			list_e.append(list(element.iter())[1].text)
     		list_elements_results.append(list_e)
-    		list_e[:] = []
+    		
     print 'list_element_results'
     print list_elements_results	
     	

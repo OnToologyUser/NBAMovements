@@ -1,13 +1,19 @@
 
-SELECT DISTINCT ?concept
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX type: <http://dbpedia.org/class/yago/>
+PREFIX prop: <http://dbpedia.org/property/>
+SELECT ?country_name ?population
 WHERE {
-    ?s a ?concept .
-} LIMIT 50
+ ?country a type:LandlockedCountries ;
+ rdfs:label ?country_name ;
+ prop:populationEstimate ?population .
+ FILTER (?population > 15000000) .
+}LIMIT 5
 
         
         Results
         Number of results
-        <5
+        5
         Type of the results
         literal
         List of results

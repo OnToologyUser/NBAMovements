@@ -159,9 +159,9 @@ for repo in g.get_user().get_repos():
     elif label.name == "Important":
       flag_important = True
     elif label.name == "Critical":
-      flag_critical == True
+      flag_critical = True
     elif label.name == "Minor":
-      flag_minor == True
+      flag_minor = True
       
       
    if flag_acc == False:  

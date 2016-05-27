@@ -51,7 +51,6 @@ for repo in g.get_user().get_repos():
     		el = result.findall('{http://www.w3.org/2005/sparql-results#}binding')
     		for element in el:
     			print 'Element ' 
-    			print element
     			print  str(list(element.iter())[1].text)
     			list_e.append(str(list(element.iter())[1].text))
     		list_elements_results.append(list_e)

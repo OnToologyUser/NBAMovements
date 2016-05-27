@@ -93,7 +93,7 @@ for repo in g.get_user().get_repos():
         		print result
         		for list_elem in list_elements_results:
         			print list_elem
-				if result == list_elem:
+        			if all(x in result for x in list_elem):
 					inside = True
     	   		
     	   		if inside is False:
@@ -155,7 +155,6 @@ for repo in g.get_user().get_repos():
     list_type_res = type_res.replace("\n","").replace(" ","").split(",")
     list_results_user = query_aux[1].split('List of results')[1]
     list_elements_result = list_results_user.replace(" ","")
-    print list_elements_result
     list_elements_result = list_elements_result.split("\n")
     list_res = []
     for element in list_elements_result:
@@ -165,9 +164,6 @@ for repo in g.get_user().get_repos():
     	
     sparql.setReturnFormat(XML)
     results = sparql.query().convert()
-    print 'query'
-    print list_type_res
-    print list_res
     req.close()
     return results, num_res,list_type_res,list_res
      

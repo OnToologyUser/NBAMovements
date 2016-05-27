@@ -42,8 +42,10 @@ for repo in g.get_user().get_repos():
     	for child in root:
     		if child.text is not None: 
     			list_elements_results.append(child.text)
+    print 'results'
     for result in list_results:
     	if not list(result.iter())[1].attrib == "head":
+    		print result
     		list_elements_results.append(list(result.iter())[1].text)
     	
     if not list_elements_results:
@@ -51,6 +53,7 @@ for repo in g.get_user().get_repos():
     	s += "%d. " % (i) + 'The ontology can not answer to the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
     	repo.create_issue('Acceptance test notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
     else:
+    	
     	#check if the number of results are the same that the user expected
     	if  ">" in num_res:
     		if len(list_elements_results) < int(num_res.replace('>','')):

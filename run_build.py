@@ -56,6 +56,7 @@ for repo in g.get_user().get_repos():
     		print 'list e despues de for'
     		print list_e
     		list_elements_results.append(list_e)
+    		print list_elements_results
     		
     print 'list_element_results'
     print list_elements_results	

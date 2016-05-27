@@ -37,7 +37,6 @@ for repo in g.get_user().get_repos():
     error_list = []
     root = ElementTree.fromstring(results)
     list_results = root.findall('{http://www.w3.org/2005/sparql-results#}results/{http://www.w3.org/2005/sparql-results#}result')
-    #/{http://www.w3.org/2005/sparql-results#}binding')
     # "ask" queries
     if not list_results:
     	for child in root:
@@ -46,17 +45,12 @@ for repo in g.get_user().get_repos():
     
     list_e = []
     for result in list_results:
-    		print 'index'
     	#if not list(result.iter())[1].attrib == "head":
     		el = result.findall('{http://www.w3.org/2005/sparql-results#}binding')
     		for element in el:
-    			print 'Element ' 
-    			print  str(list(element.iter())[1].text)
-    			print element.tag
-    			print element.attrib
-    			print 'fin element'
     			list_e.append(str(list(element.iter())[1].text))
     		list_elements_results.append(list_e)
+    		lis_e[:] = []
     print 'list_element_results'
     print list_elements_results	
     	

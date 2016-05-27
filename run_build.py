@@ -29,6 +29,8 @@ for repo in g.get_user().get_repos():
   for file in list_of_files:
     results, num_res,type_res,list_results_user = ont_query(file)
     flag = False
+    print 'results'
+    print results
     results = results.toxml()
     list_elements_results = []
     error_list = []

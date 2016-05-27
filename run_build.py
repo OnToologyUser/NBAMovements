@@ -142,6 +142,7 @@ for repo in g.get_user().get_repos():
    flag_en = False
    flag_important = False
    flag_critical = False
+   flag_minor = False
    for label in repo.get_labels():
     if label.name == "Acceptance test bug":
       flag_acc = True
@@ -160,7 +161,7 @@ for repo in g.get_user().get_repos():
     elif label.name == "Critical":
       flag_critical == True
     elif label.name == "Minor":
-      flag_critical == True
+      flag_minor == True
       
       
    if flag_acc == False:  
@@ -179,7 +180,7 @@ for repo in g.get_user().get_repos():
     repo.create_label("Important", "FFB266")
    if flag_critical == False:
     repo.create_label("Critical", "F50511")
-   if flag_critical == False:
+   if flag_minor == False:
     repo.create_label("Minor", "FFFF00")
     
  def get_pitfalls(ont_file):

@@ -36,17 +36,22 @@ for repo in g.get_user().get_repos():
     list_elements_results = []
     error_list = []
     root = ElementTree.fromstring(results)
-    list_results = root.findall('{http://www.w3.org/2005/sparql-results#}results/{http://www.w3.org/2005/sparql-results#}result/{http://www.w3.org/2005/sparql-results#}binding')
+    list_results = root.findall('{http://www.w3.org/2005/sparql-results#}results/{http://www.w3.org/2005/sparql-results#}result')
+    #/{http://www.w3.org/2005/sparql-results#}binding')
     # "ask" queries
     if not list_results:
     	for child in root:
     		if child.text is not None: 
     			list_elements_results.append(child.text)
     print 'results'
+    list_e = []
     for result in list_results:
-    	if not list(result.iter())[1].attrib == "head":
-    		print result
-    		list_elements_results.append(list(result.iter())[1].text)
+    	#if not list(result.iter())[1].attrib == "head":
+    		el = result.findall('http://www.w3.org/2005/sparql-results#}binding')
+    		print el
+    		for element in el:
+    			list_e.append(list(element.iter())[1].text)
+    		list_elements_results.append(list_e)
     	
     if not list_elements_results:
     	i += 1
@@ -79,23 +84,27 @@ for repo in g.get_user().get_repos():
     	 	 
         #check if the user examples are contained in the results 
         for result in list_results_user:
-    	   	if not result.replace(" ","").replace("\n","") in list_elements_results:
-    	   		if not "len" in error_list:
-    	   			i += 1
-    	   			s += "%d. " % (i) + 'Error with the requirement with ID  ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
+    	   		if not result.replace(" ","").replace("\n","") in list_elements_results:
+    	   			if not "len" in error_list:
+    	   				i += 1
+    	   				s += "%d. " % (i) + 'Error with the requirement with ID  ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
    	   		error_list.append("list")
       			s += "    - The ontology did not return the results that the user expected. Expected: <"+ result.replace(" ","").replace("\n","") + "> in the list of results.\n"
     			flag = True
     			break
 
         #check if the types are the same that the user expected
-        for result in list_results:
+        for result_c in list_results:
+           i = 0
+           for result in result_c: 
+           	i += 1
         	tag = list(result.iter())[1].tag
         	attrib = list(result.iter())[1].attrib
         	if len(attrib) > 0:
         		attrib = attrib.values()[0]
 		options = [tag, attrib]
-		if not any(type_res.replace(" ","").replace("\n","")  in op for op in options ):
+		
+		if not any(type_res.replace(" ","").replace("\n","")[i]  in op for op in options ):
     	   		if not ("len" or  "list" in error_list):
     	   				i += 1
     	   				s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'

@@ -109,8 +109,10 @@ for repo in g.get_user().get_repos():
 		if not any(type_res[j]  in op for op in options ):
     	   		if not "len"  in error_list:
     	   			if not "list" in error_list:
-    	   				i += 1
-    	   				s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
+    	   				if not "type" in error_list:
+    	   					error_list.append("type")
+    	   					i += 1
+    	   					s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
     	   		flag = True
     	   		break
     	   	j+=1

@@ -382,12 +382,10 @@ for repo in g.get_user().get_repos():
           i_p += "%d. " % (i + 1) + inf_pitf[i] + ". Importance level: "+ inf_pitf_i[i].replace('\"','') +"\n"
        # labels = ["Unit test bug", "Inference"]
           if not inf_pitf_i[i].replace('\"','') in labels:
-          	print inf_pitf_i[i].replace('\"','')
-          	labels.append(inf_pitf_i[i].replace('\"',''))
+          	labels.append(str(inf_pitf_i[i].replace('\"','')))
         labels.append("Unit test bug")
         labels.append("Inference")
         create_oops_issue_in_github(repo, ont_file, i_p, labels)
-        print labels
         labels[:] = []
      if len(mod_pitf) > 0:
         #p += "The Pitfalls are the following: \n"
@@ -397,7 +395,7 @@ for repo in g.get_user().get_repos():
         for i in range(len(mod_pitf)):
             m_p += "%d. " % (i + 1) + mod_pitf[i] + ". Importance level: "+ mod_pitf_i[i].replace('\"','') + "\n"
             if not mod_pitf_i[i].replace('\"','') in labels:
-          	labels.append(mod_pitf_i[i].replace('\"',''))
+          	labels.append(str(mod_pitf_i[i].replace('\"','')))
         labels.append("Unit test bug")
         labels.append("Modelling")
         create_oops_issue_in_github(repo, ont_file, m_p, labels)
@@ -409,7 +407,7 @@ for repo in g.get_user().get_repos():
         for i in range(len(met_pitf)):
             met_p += "%d. " % (i + 1) + met_pitf[i] + ". Importance level: "+ met_pitf_i[i].replace('\"','') +"\n"
             if not met_pitf_i[i].replace('\"','') in labels:
-          	labels.append(met_pitf_i[i].replace('\"',''))
+          	labels.append(str(met_pitf_i[i].replace('\"','')))
         labels.append("Unit test bug")
         labels.append("Metadata")
         create_oops_issue_in_github(repo, ont_file, met_p, labels)
@@ -421,12 +419,10 @@ for repo in g.get_user().get_repos():
         for i in range(len(lang_pitf)):
             l_p += "%d. " % (i + 1) + lang_pitf[i] + ". Importance level: "+ lang_pitf_i[i].replace('\"','') +"\n"
             if not lang_pitf_i[i].replace('\"','') in labels:
-            	print lang_pitf_i[i].replace('\"','')
-           	labels.append(lang_pitf_i[i].replace('\"',''))
+           	labels.append(str(lang_pitf_i[i].replace('\"','')))
         labels.append("Unit test bug")
         labels.append("Language")
         create_oops_issue_in_github(repo, ont_file, l_p, labels)
-        print labels
         labels[:] = []
          
              

@@ -89,7 +89,10 @@ for repo in g.get_user().get_repos():
         #check if the user examples are contained in the results 
         inside = False
         for result in list_results_user:
+        		print '================================'
+        		print result
         		for list_elem in list_elements_results:
+        			print list_elem
 				if result in list_elem:
 					inside = True
     	   		
@@ -98,7 +101,7 @@ for repo in g.get_user().get_repos():
     	   					i += 1
     	   					s += "%d. " % (i) + 'Error with the requirement with ID  ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
    	   		error_list.append("list")
-      			s += '    - The ontology did not return the results that the user expected. Expected: <'.join(result)+ '> in the list of results.\n'
+      			s += '    - The ontology did not return the results that the user expected. Expected: '.join(result)+ ' in the list of results.\n'
     			flag = True
     			break
 

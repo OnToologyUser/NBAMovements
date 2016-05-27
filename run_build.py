@@ -106,12 +106,10 @@ for repo in g.get_user().get_repos():
         	if len(attrib) > 0:
         		attrib = attrib.values()[0]
 		options = [tag, attrib]
-		print type_res
 		if not any(type_res[i]  in op for op in options ):
     	   		if not ("len" or  "list" in error_list):
     	   				i += 1
     	   				s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
-    	   		s += "    - The results returned by the ontology has not the data type expected by the user. \n"
     	   		flag = True
     	   		break
     	   	i+=1
@@ -119,6 +117,7 @@ for repo in g.get_user().get_repos():
   	if flag == True:
   		print 'Acceptance test notification'
   		print s
+  		s += "    - The results returned by the ontology has not the data type expected by the user. \n"
   		repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug']) 
   		break
     		

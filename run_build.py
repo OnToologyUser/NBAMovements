@@ -382,6 +382,7 @@ for repo in g.get_user().get_repos():
           i_p += "%d. " % (i + 1) + inf_pitf[i] + ". Importance level: "+ inf_pitf_i[i].replace('\"','') +"\n"
        # labels = ["Unit test bug", "Inference"]
           if not inf_pitf_i[i].replace('\"','') in labels:
+          	print inf_pitf_i[i].replace('\"','')
           	labels.append(inf_pitf_i[i].replace('\"',''))
         labels.append("Unit test bug")
         labels.append("Inference")
@@ -419,6 +420,7 @@ for repo in g.get_user().get_repos():
         for i in range(len(lang_pitf)):
             l_p += "%d. " % (i + 1) + lang_pitf[i] + ". Importance level: "+ lang_pitf_i[i].replace('\"','') +"\n"
             if not lang_pitf_i[i].replace('\"','') in labels:
+            	print lang_pitf_i[i].replace('\"','')
            	labels.append(lang_pitf_i[i].replace('\"',''))
         labels.append("Unit test bug")
         labels.append("Language")

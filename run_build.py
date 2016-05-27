@@ -47,7 +47,7 @@ for repo in g.get_user().get_repos():
     list_e = []
     for result in list_results:
     	#if not list(result.iter())[1].attrib == "head":
-    		el = result.find('http://www.w3.org/2005/sparql-results#}binding')
+    		el = result.findall('{http://www.w3.org/2005/sparql-results#}binding')
     		print el
     		for element in el:
     			list_e.append(list(element.iter())[1].text)

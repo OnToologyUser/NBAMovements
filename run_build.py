@@ -111,7 +111,7 @@ for repo in g.get_user().get_repos():
     	   		if not ("len" or  "list" in error_list):
     	   				i += 1
     	   				s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
-    	   		s += "    - The results returned by the ontology has not the data type expected by the user. Expected: ".join(type_res) + " but was: ".join(tag) +".\n"
+    	   		s += "    - The results returned by the ontology has not the data type expected by the user. \n"
     	   		flag = True
     	   		break
     	   	i+=1
@@ -144,7 +144,9 @@ for repo in g.get_user().get_repos():
     num_res = query_aux[0].replace('Number of results','')
     num_res = num_res.replace("\n","")
     type_res = query_aux[1].split('List of results')[0]
+    print type_res
     list_type_res = type_res.replace("\n","").replace(" ","").split(",")
+    print list_type_res
     list_results_user = query_aux[1].split('List of results')[1]
     list_elements_result = list_results_user.replace(" ","")
     list_elements_result = list_elements_result.split("\n")

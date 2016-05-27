@@ -150,8 +150,8 @@ for repo in g.get_user().get_repos():
     list_elements_result = list_results_user.split("\n")
     list_res = []
     for element in list_elements_result:
-    	element = elements.split(",")
-    	list_res.append(element)
+    	element_list = element.split(",")
+    	list_res.append(element_list)
     	
     sparql.setReturnFormat(XML)
     results = sparql.query().convert()

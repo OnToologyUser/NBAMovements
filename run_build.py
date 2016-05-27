@@ -86,8 +86,8 @@ for repo in g.get_user().get_repos():
              		for list_elem in list_elements_results:
         			if all(x in result for x in list_elem):
 					inside = True
-    	   		
     	   		if inside == False:
+    	   			
     	   			if not "len" in error_list:
     	   					i += 1
     	   					s += "%d. " % (i) + 'Error with the requirement with ID  ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
@@ -99,20 +99,21 @@ for repo in g.get_user().get_repos():
 
         #check if the types are the same that the user expected
         for result_c in list_results:
-           i = 0
+           j = 0
            for result in result_c: 
         	tag = list(result.iter())[1].tag
         	attrib = list(result.iter())[1].attrib
         	if len(attrib) > 0:
         		attrib = attrib.values()[0]
 		options = [tag, attrib]
-		if not any(type_res[i]  in op for op in options ):
+		if not any(type_res[j]  in op for op in options ):
+			print error_list
     	   		if not ("len" or  "list" in error_list):
     	   				i += 1
     	   				s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
     	   		flag = True
     	   		break
-    	   	i+=1
+    	   	j+=1
     	error_list[:] = [] 				
   	if flag == True:
   		print 'Acceptance test notification'

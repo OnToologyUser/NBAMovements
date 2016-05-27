@@ -106,7 +106,7 @@ for repo in g.get_user().get_repos():
         	if len(attrib) > 0:
         		attrib = attrib.values()[0]
 		options = [tag, attrib]
-		print type_res[i]
+		print type_res
 		if not any(type_res[i]  in op for op in options ):
     	   		if not ("len" or  "list" in error_list):
     	   				i += 1

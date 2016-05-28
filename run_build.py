@@ -53,7 +53,7 @@ def main():
 	    	s += "%d. " % (i) + 'The ontology can not answer to the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
 	    	repo.create_issue('Acceptance test notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
 	    else:
-	    	checking_results(num_res,type_res, list_elements_results, list_results_user,file,list_results,i,s)
+	    	checking_results(num_res,type_res, list_elements_results, list_results_user,file,list_results,i,s,repo)
 	    ##Unit test
 	    ont_files = glob.glob('./*.owl')
 	    print 'Starting unit test with OOPS!...'
@@ -65,7 +65,7 @@ def main():
 		    nicer_oops_output(issues_s,file,repo)
 	    
    
-def checking_results(num_res,type_res, list_elements_results, list_results_user,file, list_results,i,s):
+def checking_results(num_res,type_res, list_elements_results, list_results_user,file, list_results,i,s,repo):
  	flag = False
   	error_list = []
     	#check if the number of results are the same that the user expected

@@ -93,7 +93,6 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
     	 	
         #check if the user examples are contained in the results 
         inside = False
-        print 'samples'
         for result in list_results_user:
              		for list_elem in list_elements_results:
              			print list_elem
@@ -109,7 +108,6 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
       				s += '    - The ontology did not return the results that the user expected. Expected: {'+', '.join(result)
       				
       				s+='} in the list of results.\n'
-    				flag = True
     				break
 
         #check if the types are the same that the user expected
@@ -120,22 +118,22 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
         		attrib = list(result.iter())[1].attrib
         		if len(attrib) > 0:
         			attrib = attrib.values()[0]
-        	options = [tag, attrib]
-        	if not any(type_res[j]  in op for op in options ):
-    	   		if len(error_list) == 0:
-    	   			error_list.append("type")
-    	   			i += 1
-    	   			s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
-    	   		flag = True
-    	   		break
-    	   	j+=1
-    	error_list[:] = [] 
-    	if flag == True:
-	  		print 'Acceptance test notification'
-	  		s += "    - The results returned by the ontology has not the data type expected by the user. Expected: {"+', '.join(type_res)+"}\n"
-	  		repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug']) 
-	  		break
- 
+        		options = [tag, attrib]
+        		if not any(type_res[j]  in op for op in options ):
+    	   			if len(error_list) == 0:
+    	   				error_list.append("type")
+    	   				i += 1
+    	   				s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
+    	   			flag = True
+    	   			break
+    	   		j+=1 
+    			if flag == True:
+	  			s += "    - The results returned by the ontology has not the data type expected by the user. Expected: {"+', '.join(type_res)+"}\n"
+	  			break
+	  if len(error_list) > 0:
+ 		repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug']) 
+ 		
+ 		
 def read_query(req_file):
     req = open(req_file, 'r')
     sparql = SPARQLWrapper("http://dbpedia.org/sparql")

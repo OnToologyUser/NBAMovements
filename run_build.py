@@ -129,8 +129,8 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
     	   		flag = True
     	   		break
     	   	j+=1
-    	   	error_list[:] = [] 
-    	    	if flag == True:
+    	error_list[:] = [] 
+    	if flag == True:
 	  		print 'Acceptance test notification'
 	  		s += "    - The results returned by the ontology has not the data type expected by the user. Expected: {"+', '.join(type_res)+"}\n"
 	  		repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug']) 

@@ -107,7 +107,12 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
     				break
 
         #check if the types are the same that the user expected
-        for result_c in list_elements_results: #list_results
+        print 'list_results'
+        print list_results
+        print 'list_elements_results'
+        print list_elements_results
+        for result_c in list_results: #list_results
+        	print result_c
         	j = 0
            	for result in result_c: 
         		tag = list(result.iter())[1].tag

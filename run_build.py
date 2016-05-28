@@ -253,7 +253,7 @@ def output_parsed_pitfalls(ont_file, oops_reply):
     print 'oops issues gotten'
     return s
     
- def parse_oops_issues(oops_rdf):
+def parse_oops_issues(oops_rdf):
     p = rdfxml.parseRDF(oops_rdf)
     raw_oops_list = p.result
     oops_issues = {}
@@ -298,7 +298,7 @@ def output_parsed_pitfalls(ont_file, oops_reply):
                 oops_issues_filter4[i][intda] = oops_issues_filter3[i][intda]
     return oops_issues_filter4, issue_interesting_data
     
- def nicer_oops_output(issues,ont_file):
+def nicer_oops_output(issues,ont_file):
     sugg_flag = '<http://www.oeg-upm.net/oops#suggestion>'
     pitf_flag = '<http://www.oeg-upm.net/oops#pitfall>'
     warn_flag = '<http://www.oeg-upm.net/oops#warning>'
@@ -450,20 +450,20 @@ def output_parsed_pitfalls(ont_file, oops_reply):
              
     
     
- def close_old_oops_issues_in_github(repo, ont_file):
+def close_old_oops_issues_in_github(repo, ont_file):
     print 'will close old oops issues'
     for i in repo.get_issues(state='open'):
         if i.title == ('OOPS! Evaluation for ' + os.path.splitext(os.path.basename(ont_file))[0]):
             i.edit(state='closed')
             
- def close_old_acc_issues_in_github(repo):
+def close_old_acc_issues_in_github(repo):
     print 'will close old acceptance test issues'
     for i in repo.get_issues(state='open'):
     	print i.title
         if i.title == ('Acceptance test notification'):
             i.edit(state='closed')
             
- def create_oops_issue_in_github(repo, ont_file, oops_issues,label):
+def create_oops_issue_in_github(repo, ont_file, oops_issues,label):
     print 'will create an oops issue'
     try:
         repo.create_issue(

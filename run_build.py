@@ -27,43 +27,56 @@ for repo in g.get_user().get_repos():
   s = "The ontology created has not passed the acceptance test:\n" 
   i = 0
   for file in list_of_files:
-    results, num_res,type_res,list_results_user = ont_query(file)
-    flag = False
-
+    #Reading result given by the user
+    results, num_res,type_res,list_results_user = read_query(file)
     results = results.toxml()
     list_elements_results = []
-    error_list = []
     root = ElementTree.fromstring(results)
+    #Results obtained by the system
     list_results = root.findall('{http://www.w3.org/2005/sparql-results#}results/{http://www.w3.org/2005/sparql-results#}result')
-    # "ask" queries
+    # for "ask" queries. The result is only a boolean
     if not list_results:
     	for child in root:
     		if child.text is not None: 
     			list_elements_results.append(child.text)
     
-    list_e = []
+    list_aux = []
     for result in list_results:
-    		list_e = []
-    	#if not list(result.iter())[1].attrib == "head":
+    		list_aux = []
     		el = result.findall('{http://www.w3.org/2005/sparql-results#}binding')
     		for element in el:
-    			list_e.append(list(element.iter())[1].text)
-    			
-    		list_elements_results.append(list_e)
-    	
+    			list_aux.append(list(element.iter())[1].text)
+    		list_elements_results.append(list_aux)
+    #Check results	
     if not list_elements_results:
     	i += 1
     	s += "%d. " % (i) + 'The ontology can not answer to the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
     	repo.create_issue('Acceptance test notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
     else:
+    	checking_results(num_res,type_res, list_elements_results, lists_results_user,flag,file)
+    ##Unit test
+    ont_files = glob.glob('./*.owl')
+    print 'Starting unit test with OOPS!...'
+    for file in ont_files:
+	    f = open(file, 'r')
+	    ont = f.read()
+	    issues_s = get_pitfalls(ont)
+	    close_old_oops_issues_in_github(repo, file)
+	    nicer_oops_output(issues_s,file)
     	
+    
+   
+   
+ def checking_results(num_res,type_res, list_elements_results, lists_results_user,file):
+ 	flag = False
+  	error_list = []
     	#check if the number of results are the same that the user expected
     	if  ">" in num_res:
     		if len(list_elements_results) < int(num_res.replace('>','')):
     			error_list.append("len")
     	   		i += 1
     		 	s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
-			s += "    - The ontology return fewer results than expected. Expected: "+str(num_res)+ " but was: "+str(len(list_elements_results))+".\n"    		 
+    		 	s += "    - The ontology return fewer results than expected. Expected: "+str(num_res)+ " but was: "+str(len(list_elements_results))+".\n"    		 
     		 	flag = True
     	elif "<" in num_res:
     		if len(list_elements_results) > int(num_res.replace('<','')):
@@ -98,15 +111,15 @@ for repo in g.get_user().get_repos():
     				break
 
         #check if the types are the same that the user expected
-        for result_c in list_results:
+        for result_c in list_elements_results: #list_results
            j = 0
            for result in result_c: 
         	tag = list(result.iter())[1].tag
         	attrib = list(result.iter())[1].attrib
         	if len(attrib) > 0:
         		attrib = attrib.values()[0]
-		options = [tag, attrib]
-		if not any(type_res[j]  in op for op in options ):
+        	options = [tag, attrib]
+        	if not any(type_res[j]  in op for op in options ):
     	   		if len(error_list) == 0:
     	   			error_list.append("type")
     	   			i += 1
@@ -114,26 +127,15 @@ for repo in g.get_user().get_repos():
     	   		flag = True
     	   		break
     	   	j+=1
-    	error_list[:] = [] 				
-  	if flag == True:
+    	error_list[:] = [] 
+    	if flag == True:
   		print 'Acceptance test notification'
   		s += "    - The results returned by the ontology has not the data type expected by the user. Expected: {"+', '.join(type_res)+"}\n"
   		repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug']) 
   		break
     		
-  ##Unit test
-  ont_files = glob.glob('./*.owl')
-  print 'Starting unit test with OOPS!...'
-  for file in ont_files:
-    f = open(file, 'r')
-    ont = f.read()
-    issues_s = get_pitfalls(ont)
-    close_old_oops_issues_in_github(repo, file)
-    nicer_oops_output(issues_s,file)
-    
-    
  
- def ont_query(req_file):
+ def read_query(req_file):
     req = open(req_file, 'r')
     sparql = SPARQLWrapper("http://dbpedia.org/sparql")
     query_c =  req.read()
@@ -143,17 +145,14 @@ for repo in g.get_user().get_repos():
     num_res = query_aux[0].replace('Number of results','')
     num_res = num_res.replace("\n","")
     type_res = query_aux[1].split('List of results')[0]
-    print type_res
     list_type_res = type_res.replace("\n","").replace(" ","").split(",")
-    print list_type_res
-    list_results_user = query_aux[1].split('List of results')[1]
-    list_elements_result = list_results_user.replace(" ","")
-    list_elements_result = list_elements_result.split("\n")
-    list_res = []
+    results_user = query_aux[1].split('List of results')[1]
+    list_elements_result = results_user.replace(" ","").split("\n")
+    list_aux = []
     for element in list_elements_result:
     	if element != '':
-    		element_list = element.split(",")
-    		list_res.append(element_list)
+    		element_aux = element.split(",")
+    		list_aux.append(element_aux)
     	
     sparql.setReturnFormat(XML)
     results = sparql.query().convert()

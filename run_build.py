@@ -62,7 +62,7 @@ def main():
 		    ont = f.read()
 		    issues_s = get_pitfalls(ont)
 		    close_old_oops_issues_in_github(repo, file)
-		    nicer_oops_output(issues_s,file)
+		    nicer_oops_output(issues_s,file,repo)
 	    
    
 def checking_results(num_res,type_res, list_elements_results, list_results_user,file, list_results,i,s):
@@ -301,7 +301,7 @@ def parse_oops_issues(oops_rdf):
                 oops_issues_filter4[i][intda] = oops_issues_filter3[i][intda]
     return oops_issues_filter4, issue_interesting_data
     
-def nicer_oops_output(issues,ont_file):
+def nicer_oops_output(issues,ont_file,repo):
     sugg_flag = '<http://www.oeg-upm.net/oops#suggestion>'
     pitf_flag = '<http://www.oeg-upm.net/oops#pitfall>'
     warn_flag = '<http://www.oeg-upm.net/oops#warning>'

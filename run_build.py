@@ -7,67 +7,63 @@ import myconf
 import rdfxml  as rdfxml
 from xml.etree import ElementTree as ElementTree
 
-
-#GitHub authentication
-client_token = os.environ['github_token']
-
-g = Github(client_token)
-
-
-for repo in g.get_user().get_repos():
- if repo.has_in_collaborators('OnToologyUser'):
-  #create labels for acceptance test notifications
-  create_labels(repo)
-  ##########TESTS#########
-  ##Acceptance test
-  print 'Starting acceptance test...'
-  list_of_files = glob.glob('./*.rq')
-  close_old_acc_issues_in_github(repo)
-   # Each file has a requirement
-  s = "The ontology created has not passed the acceptance test:\n" 
-  i = 0
-  for file in list_of_files:
-    #Reading result given by the user
-    results, num_res,type_res,list_results_user = read_query(file)
-    results = results.toxml()
-    list_elements_results = []
-    root = ElementTree.fromstring(results)
-    #Results obtained by the system
-    list_results = root.findall('{http://www.w3.org/2005/sparql-results#}results/{http://www.w3.org/2005/sparql-results#}result')
-    # for "ask" queries. The result is only a boolean
-    if not list_results:
-    	for child in root:
-    		if child.text is not None: 
-    			list_elements_results.append(child.text)
-    
-    list_aux = []
-    for result in list_results:
-    		list_aux = []
-    		el = result.findall('{http://www.w3.org/2005/sparql-results#}binding')
-    		for element in el:
-    			list_aux.append(list(element.iter())[1].text)
-    		list_elements_results.append(list_aux)
-    #Check results	
-    if not list_elements_results:
-    	i += 1
-    	s += "%d. " % (i) + 'The ontology can not answer to the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
-    	repo.create_issue('Acceptance test notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
-    else:
-    	checking_results(num_res,type_res, list_elements_results, lists_results_user,flag,file)
-    ##Unit test
-    ont_files = glob.glob('./*.owl')
-    print 'Starting unit test with OOPS!...'
-    for file in ont_files:
-	    f = open(file, 'r')
-	    ont = f.read()
-	    issues_s = get_pitfalls(ont)
-	    close_old_oops_issues_in_github(repo, file)
-	    nicer_oops_output(issues_s,file)
-    	
-    
+def main():
+	#GitHub authentication
+	client_token = os.environ['github_token']
+	g = Github(client_token)
+	
+	for repo in g.get_user().get_repos():
+	 if repo.has_in_collaborators('OnToologyUser'):
+	  #create labels for acceptance test notifications
+	  create_labels(repo)
+	  ##########TESTS#########
+	  ##Acceptance test
+	  print 'Starting acceptance test...'
+	  list_of_files = glob.glob('./*.rq')
+	  close_old_acc_issues_in_github(repo)
+	   # Each file has a requirement
+	  s = "The ontology created has not passed the acceptance test:\n" 
+	  i = 0
+	  for file in list_of_files:
+	    #Reading result given by the user
+	    results, num_res,type_res,list_results_user = read_query(file)
+	    results = results.toxml()
+	    list_elements_results = []
+	    root = ElementTree.fromstring(results)
+	    #Results obtained by the system
+	    list_results = root.findall('{http://www.w3.org/2005/sparql-results#}results/{http://www.w3.org/2005/sparql-results#}result')
+	    # for "ask" queries. The result is only a boolean
+	    if not list_results:
+	    	for child in root:
+	    		if child.text is not None: 
+	    			list_elements_results.append(child.text)
+	    
+	    list_aux = []
+	    for result in list_results:
+	    		list_aux = []
+	    		el = result.findall('{http://www.w3.org/2005/sparql-results#}binding')
+	    		for element in el:
+	    			list_aux.append(list(element.iter())[1].text)
+	    		list_elements_results.append(list_aux)
+	    #Check results	
+	    if not list_elements_results:
+	    	i += 1
+	    	s += "%d. " % (i) + 'The ontology can not answer to the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
+	    	repo.create_issue('Acceptance test notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
+	    else:
+	    	checking_results(num_res,type_res, list_elements_results, list_results_user,flag,file)
+	    ##Unit test
+	    ont_files = glob.glob('./*.owl')
+	    print 'Starting unit test with OOPS!...'
+	    for file in ont_files:
+		    f = open(file, 'r')
+		    ont = f.read()
+		    issues_s = get_pitfalls(ont)
+		    close_old_oops_issues_in_github(repo, file)
+		    nicer_oops_output(issues_s,file)
+	    
    
-   
- def checking_results(num_res,type_res, list_elements_results, lists_results_user,file):
+def checking_results(num_res,type_res, list_elements_results, lists_results_user,file):
  	flag = False
   	error_list = []
     	#check if the number of results are the same that the user expected
@@ -133,10 +129,8 @@ for repo in g.get_user().get_repos():
 	  		s += "    - The results returned by the ontology has not the data type expected by the user. Expected: {"+', '.join(type_res)+"}\n"
 	  		repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug']) 
 	  		break
-  
-    		
  
- def read_query(req_file):
+def read_query(req_file):
     req = open(req_file, 'r')
     sparql = SPARQLWrapper("http://dbpedia.org/sparql")
     query_c =  req.read()
@@ -160,7 +154,7 @@ for repo in g.get_user().get_repos():
     req.close()
     return results, num_res,list_type_res,list_aux
      
- def create_labels(repo):
+def create_labels(repo):
    flag_acc = False
    flag_unit = False
    flag_inference = False
@@ -211,7 +205,7 @@ for repo in g.get_user().get_repos():
    if flag_minor == False:
     repo.create_label("Minor", "FFFF00")
     
- def get_pitfalls(ont_file):
+def get_pitfalls(ont_file):
     url = 'http://oops-ws.oeg-upm.net/rest'
     xml_content = """
     <?xml version="1.0" encoding="UTF-8"?>
@@ -244,7 +238,7 @@ for repo in g.get_user().get_repos():
     issues_s = output_parsed_pitfalls(ont_file, oops_reply)
     return issues_s
     
- def output_parsed_pitfalls(ont_file, oops_reply):
+def output_parsed_pitfalls(ont_file, oops_reply):
     issues, interesting_features = parse_oops_issues(oops_reply)
     s = ""
     for i in issues:
@@ -476,6 +470,14 @@ for repo in g.get_user().get_repos():
             'OOPS! Evaluation for ' + os.path.splitext(os.path.basename(ont_file))[0], oops_issues, labels = label)
     except Exception as e:
         print 'exception when creating issue: ' + str(e)
+        
+# #########################################################################
+# ###################################   main  #############################
+# #########################################################################
+
+
+if __name__ == "__main__":
+    main()
 
 
 

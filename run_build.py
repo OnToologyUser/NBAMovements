@@ -63,7 +63,7 @@ def main():
 		    nicer_oops_output(issues_s,file)
 	    
    
-def checking_results(num_res,type_res, list_elements_results, lists_results_user,file):
+def checking_results(num_res,type_res, list_elements_results, list_results_user,file):
  	flag = False
   	error_list = []
     	#check if the number of results are the same that the user expected

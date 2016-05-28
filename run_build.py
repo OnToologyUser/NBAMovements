@@ -28,6 +28,8 @@ def main():
 	    #Reading result given by the user
 	    results, num_res,type_res,list_results_user = read_query(file)
 	    results = results.toxml()
+	    print 'results'
+	    print results
 	    list_elements_results = []
 	    root = ElementTree.fromstring(results)
 	    #Results obtained by the system
@@ -51,7 +53,7 @@ def main():
 	    	s += "%d. " % (i) + 'The ontology can not answer to the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
 	    	repo.create_issue('Acceptance test notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
 	    else:
-	    	checking_results(num_res,type_res, list_elements_results, list_results_user,file,list_results)
+	    	checking_results(num_res,type_res, list_elements_results, list_results_user,file,list_results,i)
 	    ##Unit test
 	    ont_files = glob.glob('./*.owl')
 	    print 'Starting unit test with OOPS!...'
@@ -63,7 +65,7 @@ def main():
 		    nicer_oops_output(issues_s,file)
 	    
    
-def checking_results(num_res,type_res, list_elements_results, list_results_user,file, list_results):
+def checking_results(num_res,type_res, list_elements_results, list_results_user,file, list_results,i):
  	flag = False
   	error_list = []
     	#check if the number of results are the same that the user expected
@@ -91,8 +93,11 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
     	 	
         #check if the user examples are contained in the results 
         inside = False
+        print 'sample'
         for result in list_results_user:
+        		print result
              		for list_elem in list_elements_results:
+             			print list_elem
         			if all(x in result for x in list_elem):
 					inside = True
     	   		if inside == False:

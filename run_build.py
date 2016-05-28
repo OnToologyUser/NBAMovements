@@ -88,7 +88,7 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
     		 	s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
     	 	 	s += "    - The ontology did not return the number of results expected. Expected: "+str(num_res)+ " but was: "+str(len(list_elements_results))+".\n"
     	 	 	flag = True
-    	 	 
+    	 	
         #check if the user examples are contained in the results 
         inside = False
         for result in list_results_user:

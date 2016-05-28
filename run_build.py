@@ -113,9 +113,11 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
         #check if the types are the same that the user expected
         for result_c in list_results: #list_results
         	j = 0
+        	list_tags = []
            	for result in result_c: 
-        		tag = list(result.iter())[1].tag
+           		tag = list(result.iter())[1].tag
         		attrib = list(result.iter())[1].attrib
+        		list_tags.append(tag)
         		if len(attrib) > 0:
         			attrib = attrib.values()[0]
         		options = [tag, attrib]
@@ -125,10 +127,10 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
     	   				i += 1
     	   				s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
     	   			flag = True
-    	   			break
+    	   			
     	   		j+=1 
     		if flag == True:
-	  		s += "    - The results returned by the ontology has not the data type expected by the user. Expected: {"+', '.join(type_res)+"\n"
+	  		s += "    - The results returned by the ontology has not the data type expected by the user. Expected: {"+', '.join(type_res)+"} but was:"+', '.join(list_tags)+"\n"
 	  		break
 	if len(error_list) > 0:
  		repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug']) 

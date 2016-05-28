@@ -112,12 +112,12 @@ for repo in g.get_user().get_repos():
 
         #check if the types are the same that the user expected
         for result_c in list_elements_results: #list_results
-           j = 0
-           for result in result_c: 
-        	tag = list(result.iter())[1].tag
-        	attrib = list(result.iter())[1].attrib
-        	if len(attrib) > 0:
-        		attrib = attrib.values()[0]
+        	j = 0
+           	for result in result_c: 
+        		tag = list(result.iter())[1].tag
+        		attrib = list(result.iter())[1].attrib
+        		if len(attrib) > 0:
+        			attrib = attrib.values()[0]
         	options = [tag, attrib]
         	if not any(type_res[j]  in op for op in options ):
     	   		if len(error_list) == 0:
@@ -127,12 +127,13 @@ for repo in g.get_user().get_repos():
     	   		flag = True
     	   		break
     	   	j+=1
-    	error_list[:] = [] 
-    	if flag == True:
-  		print 'Acceptance test notification'
-  		s += "    - The results returned by the ontology has not the data type expected by the user. Expected: {"+', '.join(type_res)+"}\n"
-  		repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug']) 
-  		break
+    	   	error_list[:] = [] 
+    	    	if flag == True:
+	  		print 'Acceptance test notification'
+	  		s += "    - The results returned by the ontology has not the data type expected by the user. Expected: {"+', '.join(type_res)+"}\n"
+	  		repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug']) 
+	  		break
+  
     		
  
  def read_query(req_file):

@@ -17,7 +17,8 @@ def main():
 	  #create labels for acceptance test notifications
 	  create_labels(repo)
 	  ##########TESTS#########
-	  ##Acceptance test
+	  
+	  ###Acceptance test
 	  print 'Starting acceptance test...'
 	  list_of_files = glob.glob('./*.rq')
 	  close_old_acc_issues_in_github(repo)
@@ -25,16 +26,14 @@ def main():
 	  s = "The ontology created has not passed the acceptance test:\n" 
 	  i = 0
 	  for file in list_of_files:
-	    #Reading result given by the user
+	    #Reading the results given by the user
 	    results, num_res,type_res,list_results_user = read_query(file)
 	    results = results.toxml()
-	    print 'results'
-	    print results
 	    list_elements_results = []
 	    root = ElementTree.fromstring(results)
 	    #Results obtained by the system
 	    list_results = root.findall('{http://www.w3.org/2005/sparql-results#}results/{http://www.w3.org/2005/sparql-results#}result')
-	    # for "ask" queries. The result is only a boolean
+	    # for "ask" queries. The result obtained is only a boolean
 	    if not list_results:
 	    	for child in root:
 	    		if child.text is not None: 
@@ -47,14 +46,16 @@ def main():
 	    		for element in el:
 	    			list_aux.append(list(element.iter())[1].text)
 	    		list_elements_results.append(list_aux)
-	    #Check results	
+	    #Checking the results obtained by the system 
 	    if not list_elements_results:
 	    	i += 1
 	    	s += "%d. " % (i) + 'The ontology can not answer to the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
 	    	repo.create_issue('Acceptance test notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
 	    else:
 	    	checking_results(num_res,type_res, list_elements_results, list_results_user,file,list_results,i,s,repo)
-	    ##Unit test
+	    	
+	    	
+	    ###Unit test
 	    ont_files = glob.glob('./*.owl')
 	    print 'Starting unit test with OOPS!...'
 	    for file in ont_files:
@@ -64,7 +65,37 @@ def main():
 		    close_old_oops_issues_in_github(repo, file)
 		    nicer_oops_output(issues_s,file,repo)
 	    
-   
+  
+
+ 		
+##Function to read the cqs and the results given by the user
+
+def read_query(req_file):
+    req = open(req_file, 'r')
+    sparql = SPARQLWrapper("http://dbpedia.org/sparql")
+    query_c =  req.read()
+    query = query_c.split('#Results')
+    sparql.setQuery(query[0])
+    query_aux = query[1].split('#Type of the results')
+    num_res = query_aux[0].replace('#Number of results','')
+    num_res = num_res.replace("\n","")
+    type_res = query_aux[1].split('#List of results')[0]
+    list_type_res = type_res.replace("\n","").replace(" ","").split(",")
+    results_user = query_aux[1].split('#List of results')[1]
+    list_elements_result = results_user.replace(" ","").split("\n")
+    list_aux = []
+    for element in list_elements_result:
+    	if element != '':
+    		element_aux = element.split(",")
+    		list_aux.append(element_aux)
+    	
+    sparql.setReturnFormat(XML)
+    results = sparql.query().convert()
+    req.close()
+    return results, num_res,list_type_res,list_aux
+    
+##Function to check if the results obtained by the system are correct
+ 
 def checking_results(num_res,type_res, list_elements_results, list_results_user,file, list_results,i,s,repo):
  	flag = False
   	error_list = []
@@ -133,33 +164,10 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
 	  		s += "    - The results returned by the ontology has not the data type expected by the user. Expected: ["+', '.join(type_res)+"] but was: ["+', '.join(list_tags)+"]\n"
 	  		break
 	if len(error_list) > 0:
- 		repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug']) 
- 		
- 		
-def read_query(req_file):
-    req = open(req_file, 'r')
-    sparql = SPARQLWrapper("http://dbpedia.org/sparql")
-    query_c =  req.read()
-    query = query_c.split('#Results')
-    sparql.setQuery(query[0])
-    query_aux = query[1].split('#Type of the results')
-    num_res = query_aux[0].replace('#Number of results','')
-    num_res = num_res.replace("\n","")
-    type_res = query_aux[1].split('#List of results')[0]
-    list_type_res = type_res.replace("\n","").replace(" ","").split(",")
-    results_user = query_aux[1].split('#List of results')[1]
-    list_elements_result = results_user.replace(" ","").split("\n")
-    list_aux = []
-    for element in list_elements_result:
-    	if element != '':
-    		element_aux = element.split(",")
-    		list_aux.append(element_aux)
-    	
-    sparql.setReturnFormat(XML)
-    results = sparql.query().convert()
-    req.close()
-    return results, num_res,list_type_res,list_aux
+ 		repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug'])     
      
+##Function to create issues labels in github
+
 def create_labels(repo):
    flag_acc = False
    flag_unit = False
@@ -201,7 +209,7 @@ def create_labels(repo):
    if flag_model == False:
     repo.create_label("Modelling",  "d4c5f9")
    if flag_lang == False:
-    repo.create_label("Language",  "fef2c0")
+    repo.create_label("Language",  "FFCCE5")
    if flag_metadata == False:
     repo.create_label("Metadata", "c5def5")
    if flag_important == False:
@@ -210,6 +218,8 @@ def create_labels(repo):
     repo.create_label("Critical", "F50511")
    if flag_minor == False:
     repo.create_label("Minor", "FFFF00")
+    
+##Functions to obtain oops pitfalls and to create github issues
     
 def get_pitfalls(ont_file):
     url = 'http://oops-ws.oeg-upm.net/rest'
@@ -455,7 +465,8 @@ def nicer_oops_output(issues,ont_file,repo):
          
              
     
-    
+##Functions to open and close old github issues    
+
 def close_old_oops_issues_in_github(repo, ont_file):
     print 'will close old oops issues'
     for i in repo.get_issues(state='open'):

@@ -53,7 +53,7 @@ def main():
 	    	s += "%d. " % (i) + 'The ontology can not answer to the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
 	    	repo.create_issue('Acceptance test notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
 	    else:
-	    	checking_results(num_res,type_res, list_elements_results, list_results_user,file,list_results,i)
+	    	checking_results(num_res,type_res, list_elements_results, list_results_user,file,list_results,i,s)
 	    ##Unit test
 	    ont_files = glob.glob('./*.owl')
 	    print 'Starting unit test with OOPS!...'
@@ -65,7 +65,7 @@ def main():
 		    nicer_oops_output(issues_s,file)
 	    
    
-def checking_results(num_res,type_res, list_elements_results, list_results_user,file, list_results,i):
+def checking_results(num_res,type_res, list_elements_results, list_results_user,file, list_results,i,s):
  	flag = False
   	error_list = []
     	#check if the number of results are the same that the user expected
@@ -93,9 +93,7 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
     	 	
         #check if the user examples are contained in the results 
         inside = False
-        print 'sample'
         for result in list_results_user:
-        		print result
              		for list_elem in list_elements_results:
              			print list_elem
         			if all(x in result for x in list_elem):
@@ -112,12 +110,7 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
     				break
 
         #check if the types are the same that the user expected
-        print 'list_results'
-        print list_results
-        print 'list_elements_results'
-        print list_elements_results
         for result_c in list_results: #list_results
-        	print result_c
         	j = 0
            	for result in result_c: 
         		tag = list(result.iter())[1].tag

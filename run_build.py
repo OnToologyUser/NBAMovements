@@ -138,14 +138,14 @@ def read_query(req_file):
     req = open(req_file, 'r')
     sparql = SPARQLWrapper("http://dbpedia.org/sparql")
     query_c =  req.read()
-    query = query_c.split('Results')
+    query = query_c.split('#Results')
     sparql.setQuery(query[0])
-    query_aux = query[1].split('Type of the results')
-    num_res = query_aux[0].replace('Number of results','')
+    query_aux = query[1].split('#Type of the results')
+    num_res = query_aux[0].replace('#Number of results','')
     num_res = num_res.replace("\n","")
-    type_res = query_aux[1].split('List of results')[0]
+    type_res = query_aux[1].split('#List of results')[0]
     list_type_res = type_res.replace("\n","").replace(" ","").split(",")
-    results_user = query_aux[1].split('List of results')[1]
+    results_user = query_aux[1].split('#List of results')[1]
     list_elements_result = results_user.replace(" ","").split("\n")
     list_aux = []
     for element in list_elements_result:

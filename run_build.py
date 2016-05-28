@@ -93,11 +93,14 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
     	 	
         #check if the user examples are contained in the results 
         inside = False
+        print 'samples'
         for result in list_results_user:
              		for list_elem in list_elements_results:
              			print list_elem
+             			print result
         			if all(x in result for x in list_elem):
 					inside = True
+			print inside
     	   		if inside == False:
     	   			if len(error_list) == 0:
     	   					i += 1

@@ -158,7 +158,7 @@ for repo in g.get_user().get_repos():
     sparql.setReturnFormat(XML)
     results = sparql.query().convert()
     req.close()
-    return results, num_res,list_type_res,list_res
+    return results, num_res,list_type_res,list_aux
      
  def create_labels(repo):
    flag_acc = False
